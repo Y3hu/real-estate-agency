@@ -32,7 +32,7 @@ const AdminComponent = ({ firebase }) => {
     return (
         <AuthUserContext.Consumer>
             {authUser => 
-                <div>
+                <div className="container">
                     <h1>Hi {authUser.email}</h1>
                     {loading && <div>Loading ...</div>}
                     <UserList users={users} />

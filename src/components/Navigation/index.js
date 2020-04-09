@@ -19,68 +19,80 @@ const NavigationComponent = () => (
 )
 
 const NavigationAuth = () => (
-    <nav className={`navbar fixed-top navbar-expand-lg ${styles.nav_background}`}>
-        <img className={`navbar-brand ${styles.logo}`} src={Logo} title="logo" alt="logo" /> 
+    <nav className={`navbar navbar-expand-lg navbar-light bg-light ${styles.nav_container}`}>
+        <div className={`navbar-brand ${styles.logo_search_input}`}>
+            <img className={styles.logo} src={Logo} title="logo" alt="logo" />
+            <form className={styles.form}>
+                <div class="input-group">
+                    <input class="form-control border-right-0" placeholder="listing code"/>
+                    <span class="input-group-append bg-white">
+                        <button class="btn border border-left-0" type="button"><i class="fas fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
+        </div>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <div className={`collapse navbar-collapse ${styles.nav_list}`} id="navbarTogglerDemo02">
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li className={`nav-item active ${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white"}}>Landing <span className="sr-only">(current)</span></Link>
+                    <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>Landing <span className="sr-only">(current)</span></Link>
                 </li>
                 <li className={`nav-item active ${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.HOME} className="nav-link" style={{color: "white"}}>Home</Link>
+                    <Link to={ROUTES.HOME} className="nav-link" style={{color: "white", textAlign: "center"}}>Home</Link>
                 </li>
                 <li className={`nav-item active ${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.ACCOUNT} className="nav-link" style={{color: "white"}}>Account</Link>
+                    <Link to={ROUTES.ACCOUNT} className="nav-link" style={{color: "white", textAlign: "center"}}>Account</Link>
                 </li>
                 <li className={`nav-item active ${styles.nav_items_styles}`}>
-                <Link to={ROUTES.ADMIN} className="nav-link" style={{color: "white"}}>Admin</Link>
+                    <Link to={ROUTES.ADMIN} className="nav-link" style={{color: "white", textAlign: "center"}}>Admin</Link>
                 </li>
                 <li className={`nav-item active ${styles.nav_items_styles}`}>
                     <SignOut />
                 </li>
             </ul>
-            <form className="form-inline my-2 my-lg-0">
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" />
-                <button className="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
-            </form>
         </div>
     </nav>
 )
 
 const NavigationNonAuth = () => (
-    <nav className={`navbar fixed-top navbar-expand-lg ${styles.nav_background}`}>
-        <img className={`navbar-brand ${styles.logo}`} src={Logo} title="logo" alt="logo" /> 
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <nav className={`navbar navbar-expand-lg navbar-light bg-light ${styles.nav_container}`}>
+        <div className={`navbar-brand ${styles.logo_search_input}`}>
+            <img className={styles.logo} src={Logo} title="logo" alt="logo" />
+            <form className={styles.form}>
+                <div class="input-group">
+                    <input class="form-control border-right-0" placeholder="listing code"/>
+                    <span class="input-group-append bg-white">
+                        <button class="btn border border-left-0" type="button"><i class="fas fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <button className={`navbar-toggler ${styles.nav_button}`} type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <div className={`collapse navbar-collapse ${styles.nav_list}`} id="navbarTogglerDemo02">
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li className={`nav-item active ${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white"}}>Home</Link>
+                    <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>Home</Link>
                 </li>
                 <li className={`nav-item active ${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white"}}>Properties</Link>
+                    <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>Properties</Link>
                 </li>
                 <li className={`nav-item active ${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white"}}>Construction</Link>
+                    <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>Construction</Link>
                 </li>
                 <li className={`nav-item active ${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white"}}>About</Link>
+                    <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>About</Link>
                 </li>
                 <li className={`nav-item active ${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white"}}>Contact</Link>
+                    <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>Contact</Link>
                 </li>
                 <li className={`nav-item active ${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.SIGN_IN} className="nav-link" style={{color: "white"}}>Sign In</Link>
+                    <Link to={ROUTES.SIGN_IN} className="nav-link" style={{color: "white", textAlign: "center"}}>Sign In</Link>
                 </li>
             </ul>
-            <form className="form-inline my-2 my-lg-0">
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" />
-                <button className="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
-            </form>
         </div>
     </nav>
 )
