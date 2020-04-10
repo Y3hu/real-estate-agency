@@ -61,10 +61,10 @@ const NavigationNonAuth = () => (
         <div className={`navbar-brand ${styles.logo_search_input}`}>
             <img className={styles.logo} src={Logo} title="logo" alt="logo" />
             <form className={styles.form}>
-                <div class="input-group">
-                    <input class="form-control border-right-0" placeholder="listing code"/>
-                    <span class="input-group-append bg-white">
-                        <button class="btn border border-left-0" type="button"><i class="fas fa-search"></i></button>
+                <div className="input-group">
+                    <input className="form-control border-right-0" placeholder="listing code"/>
+                    <span className="input-group-append bg-white">
+                        <button className="btn border border-left-0" type="button"><i className="fas fa-search"></i></button>
                     </span>
                 </div>
             </form>
