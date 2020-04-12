@@ -42,38 +42,40 @@ $breakpoint-lg: 1360px;
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
+  min-width: 100%;
 
   @include media(lg){
     width: 40%;
-    margin-bottom: 10vh;
+    margin-bottom: 4vh;
     flex-flow: row wrap;
     justify-content: space-around;
-    align-items: center;
-    min-width: 100%;
   }
 
   @include media(md){
     width: 40%;
-    margin-bottom: 10vh;
+    margin-bottom: 4vh;
     flex-flow: row wrap;
     justify-content: space-around;
-    align-items: center;
-    min-width: 100%;
   }
 }
 
 .carousel_slides_container{
   max-width: 350px;
   max-height: 200px;
+  background-size: cover;
+  border-radius: 10px;
+  -webkit-box-shadow: 6px 6px 22px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 6px 6px 22px -1px rgba(0,0,0,0.75);
+  box-shadow: 6px 6px 22px -1px rgba(0,0,0,0.75);
 
   @include media(lg){
-    max-width: 550px;
-    max-height: 330px;
+    min-width: 950px;
+    max-height: 530px;
   }
 
   @include media(md){
-    max-width: 550px;
-    max-height: 330px;
+    min-width: 950px;
+    max-height: 530px;
   }
 }
 
@@ -83,16 +85,21 @@ $breakpoint-lg: 1360px;
   flex-flow: column wrap;
   align-items: flex-start;
   justify-content: center;
+  background-size: cover;
+  min-width: 950px;
+  min-height: 500px;
   
   img{
     max-width: 350px;
 
     @include media(lg){
-      max-width: 550px;
+      min-width: 950px;
+      min-height: 530px;
     }
 
     @include media(md){
-      max-width: 550px;
+      min-width: 950px;
+      min-height: 530px;
     }
   }
 
@@ -100,4 +107,160 @@ $breakpoint-lg: 1360px;
 
 .carousel-caption{
   padding-bottom: 200px !important;
+}
+
+.categories_container{
+  //background-color: red;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2%;
+
+  button{
+    width: 40vw;
+    height: 15vh;
+    margin: 2%;
+    font-size: medium;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    color: #FFFFFF;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:hover span {
+      padding-right: 5px;
+    }
+
+    &:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+
+    span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      color: #fff;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      transition: 0.5s;
+
+      &::after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -5px;
+        transition: 0.5s;
+      }
+    }
+
+  }
+
+  @include media(lg){
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    padding: 5%;
+    button{
+      width: 20vw;
+      height: 20vh;
+      margin: 2%;
+      font-size: larger;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      border: none;
+      color: #FFFFFF;
+      padding: 20px;
+      transition: all 0.5s;
+      cursor: pointer;
+  
+      &:hover span {
+        padding-right: 25px;
+      }
+  
+      &:hover span:after {
+        opacity: 1;
+        right: 0;
+      }
+  
+      span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        color: #fff;
+        width: 90%;
+        background: rgba(0, 0, 0, 0.6);
+        transition: 0.5s;
+  
+        &::after {
+          content: '\00bb';
+          position: absolute;
+          opacity: 0;
+          top: 0;
+          right: -25px;
+          transition: 0.5s;
+        }
+      }
+  
+    }
+  }
+
+  @include media(md){
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    padding: 5%;
+    button{
+      width: 15vw;
+      height: 15vh;
+      margin: 2%;
+      font-size: larger;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      border: none;
+      color: #FFFFFF;
+      text-align: center;
+      padding: 20px;
+      transition: all 0.5s;
+      cursor: pointer;
+  
+      &:hover span {
+        padding-right: 25px;
+      }
+  
+      &:hover span:after {
+        opacity: 1;
+        right: 0;
+      }
+  
+      span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        color: #fff;
+        width: 90%;
+        background: rgba(0, 0, 0, 0.6);
+        transition: 0.5s;
+  
+        &::after {
+          content: '\00bb';
+          position: absolute;
+          opacity: 0;
+          top: 0;
+          right: -20px;
+          transition: 0.5s;
+        }
+      }
+  
+    }
+  }
+
 }

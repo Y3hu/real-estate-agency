@@ -19,7 +19,7 @@ const NavigationComponent = () => (
 )
 
 const NavigationAuth = () => (
-    <nav className={`navbar navbar-expand-lg navbar-light bg-light ${styles.nav_container}`}>
+    <nav className={`navbar navbar-expand-lg ${styles.nav_container}`}>
         <div className={`navbar-brand ${styles.logo_search_input}`}>
             <img className={styles.logo} src={Logo} title="logo" alt="logo" />
             <form className={styles.form}>
@@ -31,33 +31,33 @@ const NavigationAuth = () => (
                 </div>
             </form>
         </div>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
+        <button className={`navbar-toggler ${styles.nav_button}`} type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <i className={`navbar-toggler-icon fas fa-bars ${styles.nav_button_icon}`}></i>
         </button>
         <div className={`collapse navbar-collapse ${styles.nav_list}`} id="navbarTogglerDemo02">
-            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li className={`nav-item active ${styles.nav_items_styles}`}>
+            <div className={`${styles.nav_list_items_container}`}>
+                <i className={`${styles.nav_items_styles}`}>
                     <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>Landing <span className="sr-only">(current)</span></Link>
-                </li>
-                <li className={`nav-item active ${styles.nav_items_styles}`}>
+                </i>
+                <i className={`${styles.nav_items_styles}`}>
                     <Link to={ROUTES.HOME} className="nav-link" style={{color: "white", textAlign: "center"}}>Home</Link>
-                </li>
-                <li className={`nav-item active ${styles.nav_items_styles}`}>
+                </i>
+                <i className={`${styles.nav_items_styles}`}>
                     <Link to={ROUTES.ACCOUNT} className="nav-link" style={{color: "white", textAlign: "center"}}>Account</Link>
-                </li>
-                <li className={`nav-item active ${styles.nav_items_styles}`}>
+                </i>
+                <i className={`${styles.nav_items_styles}`}>
                     <Link to={ROUTES.ADMIN} className="nav-link" style={{color: "white", textAlign: "center"}}>Admin</Link>
-                </li>
-                <li className={`nav-item active ${styles.nav_items_styles}`}>
+                </i>
+                <i className={`${styles.nav_items_styles}`}>
                     <SignOut />
-                </li>
-            </ul>
+                </i>
+            </div>
         </div>
     </nav>
 )
 
 const NavigationNonAuth = () => (
-    <nav className={`navbar navbar-expand-lg navbar-light bg-light ${styles.nav_container}`}>
+    <nav className={`navbar navbar-expand-lg ${styles.nav_container}`}>
         <div className={`navbar-brand ${styles.logo_search_input}`}>
             <img className={styles.logo} src={Logo} title="logo" alt="logo" />
             <form className={styles.form}>
@@ -70,29 +70,29 @@ const NavigationNonAuth = () => (
             </form>
         </div>
         <button className={`navbar-toggler ${styles.nav_button}`} type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
+            <i className={`navbar-toggler-icon fas fa-bars ${styles.nav_button_icon}`}></i>
         </button>
         <div className={`collapse navbar-collapse ${styles.nav_list}`} id="navbarTogglerDemo02">
-            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li className={`nav-item active ${styles.nav_items_styles}`}>
+            <div className={`navbar-nav mr-auto mt-2 mt-lg-0 ${styles.nav_list_items_container}`}>
+                <i className={`${styles.nav_items_styles}`}>
                     <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>Home</Link>
-                </li>
-                <li className={`nav-item active ${styles.nav_items_styles}`}>
+                </i>
+                <i className={`${styles.nav_items_styles}`}>
                     <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>Properties</Link>
-                </li>
-                <li className={`nav-item active ${styles.nav_items_styles}`}>
+                </i>
+                <i className={`${styles.nav_items_styles}`}>
                     <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>Construction</Link>
-                </li>
-                <li className={`nav-item active ${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>About</Link>
-                </li>
-                <li className={`nav-item active ${styles.nav_items_styles}`}>
+                </i>
+                <i className={`${styles.nav_items_styles}`}>
+                    <Link to={ROUTES.ABOUT} className="nav-link" style={{color: "white", textAlign: "center"}}>About</Link>
+                </i>
+                <i className={`${styles.nav_items_styles}`}>
                     <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>Contact</Link>
-                </li>
-                <li className={`nav-item active ${styles.nav_items_styles}`}>
+                </i>
+                <i className={`${styles.nav_items_styles}`}>
                     <Link to={ROUTES.SIGN_IN} className="nav-link" style={{color: "white", textAlign: "center"}}>Sign In</Link>
-                </li>
-            </ul>
+                </i>
+            </div>
         </div>
     </nav>
 )

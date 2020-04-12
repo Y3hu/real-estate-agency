@@ -5,7 +5,6 @@ import CarouselComponent from './carousel'
 import styles from './landing.module.scss'
 //import DropdownComponent from './dropdown'
 
-import FB_LOGO from '../../assets/fb_logo.jpg'
 import CategoriesComponent from './categories'
 
 /**const optArray= [
@@ -27,6 +26,15 @@ import CategoriesComponent from './categories'
     }
 ]*/
 
+const categories = [
+    {name: "RESIDENTIAL", image: "https://www.w3schools.com/w3images/house1.jpg"}, 
+    {name: "ACRAGE", image: "https://www.w3schools.com/w3images/house2.jpg"},
+    {name: "COMMERCIAL", image: "https://www.w3schools.com/w3images/house3.jpg"},
+    {name: "DEVELOPMENTS", image: "https://www.w3schools.com/w3images/house4.jpg"},
+    {name: "RENTALS", image: "https://www.w3schools.com/w3images/house5.jpg"},
+    {name: "CONSTRUCTION", image: "https://www.w3schools.com/w3images/architect.jpg"},
+]
+
 const LandingComponent = props => {
     //const [showList, setShowList] = useState(false)
 
@@ -34,12 +42,6 @@ const LandingComponent = props => {
         <div className={`${styles.landing_container}`}>
             <div className={styles.carousel_container}>
                 <CarouselComponent />
-                <div className="card" style={{width: "18rem", marginTop: "1vh"}}>
-                    <img src={FB_LOGO} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <p className="card-text">Lake Arenal's premiere full service real estate & construction company.</p>
-                    </div>
-                </div>
             </div>
 
             {/**<div className={styles.dropdowns}>
@@ -49,8 +51,12 @@ const LandingComponent = props => {
                     ))
                 }
             </div>*/}
-            <div>
-                <CategoriesComponent />
+            <div className={styles.categories_container}>
+                {
+                    categories.map( (e, i) => (
+                        <CategoriesComponent name={e.name} image={e.image} key={i} />
+                    ))
+                }
             </div>
         </div>
     )
