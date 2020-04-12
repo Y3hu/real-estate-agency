@@ -87,7 +87,7 @@ const NavigationNonAuth = () => (
                     <Link to={ROUTES.ABOUT} className="nav-link" style={{color: "white", textAlign: "center"}}>About</Link>
                 </i>
                 <i className={`${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>Contact</Link>
+                    <Link to={ROUTES.CONTACT} className="nav-link" style={{color: "white", textAlign: "center"}}>Contact</Link>
                 </i>
                 <i className={`${styles.nav_items_styles}`}>
                     <Link to={ROUTES.SIGN_IN} className="nav-link" style={{color: "white", textAlign: "center"}}>Sign In</Link>

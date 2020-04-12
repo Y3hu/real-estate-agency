@@ -17,12 +17,9 @@ const AboutComponent = props => {
             </div>
             <div className={styles.info_container}>
                 <div className={styles.info_left}>
-                    
-                        <h1 className={`display-4 ${styles.color}`} style={{textAlign: "center", marginBottom: "2vw"}}>ABOUT US!</h1>
-                        <p className={`lead ${styles.color}`}>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                        <p className={`${styles.color}`}>It uses utility classNamees for typography and spacing to space content out within the larger container.</p>
-                        
-                    
+                    <h1 className={`display-4 ${styles.color}`} style={{textAlign: "center", marginBottom: "2vw"}}>ABOUT US!</h1>
+                    <p className={`lead ${styles.color}`}>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                    <p className={`${styles.color}`}>It uses utility classNamees for typography and spacing to space content out within the larger container.</p>
                 </div>
                 <div className={styles.info_right}>
                     <p className={`${styles.color}`}>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information465465465 465 4654564 65465 4654564654.</p>

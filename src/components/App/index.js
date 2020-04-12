@@ -15,6 +15,7 @@ import HomePage from '../Home'
 import AccountPage from '../Account'
 import AdminPage from '../Admin'
 import About from '../About'
+import Contact from '../Contact'
 import * as ROUTES from '../../constants/routes'
 
 import styles from './app.module.scss'
@@ -33,6 +34,7 @@ const App = () => {
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={ROUTES.ADMIN} component={AdminPage} />
           <Route path={ROUTES.ABOUT} component={About} />
+          <Route path={ROUTES.CONTACT} component={Contact} />
         </div>
       
     </Router>
