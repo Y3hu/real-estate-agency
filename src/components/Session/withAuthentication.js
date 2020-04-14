@@ -14,7 +14,6 @@ const withAuthentication = Component => {
             authUser ? setAuthUser(authUser) : setAuthUser(null)
           },
         )
-  
     }, [props.firebase])
 
     return (

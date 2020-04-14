@@ -11,8 +11,9 @@ const ContactComponent = props => {
                 <div className={styles.contact_top_section_left}>
                     <h1>El Lago Real Estate</h1>
                     <hr />
-                    <p className={`lead ${styles.color}`}>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                    <p className={`${styles.color}`}>It uses utility classNamees for typography and spacing to space content out within the larger container.</p>
+                    <p>To request more information, leave feedback, or just say hello - please contact us.</p>
+                    <p>Please fill in all required fields and you will be contacted as soon as possible!</p>
+                    <p>Also, feel free to send me a direct email to <a href="mailto:info@ellagoarenal.com?Subject=Hello" target="_top">info@ellagoarenal.com</a></p>
                 </div>
                 <div className={styles.contact_top_section_right}>
                     <iframe title="lake arenal" width="560" height="315" src="https://www.youtube.com/embed/79aQnf_W8mo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
