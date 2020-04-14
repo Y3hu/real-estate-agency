@@ -23,10 +23,17 @@ const FormComponent = _ => {
             email: state.email,
             message: state.message
         }
+        console.log(userInfo)
 
-        axios.get('https://us-central1-real-estate-agency-3a42a.cloudfunctions.net/sendMessage', userInfo)
+        /**axios.get(`https://us-central1-gym1000-b0dd5.cloudfunctions.net/sendMail/<${user.email}>`)
+            .then(res => {
+                this.updateUser(user)
+            })
+            .catch(err => console.log(err))*/
+
+        axios.post('https://us-central1-real-estate-agency-3a42a.cloudfunctions.net/sendMessage', userInfo)
         .then(res => {
-            cleanState()
+            //cleanState()
             console.log(res)
         })
         .catch(err=> console.log(err))

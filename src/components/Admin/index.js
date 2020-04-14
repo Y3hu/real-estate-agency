@@ -13,12 +13,12 @@ const AdminComponent = ({ firebase }) => {
         firebase.users().on('value', snapshot => {
             const usersObject = snapshot.val()
 
-            for(let key in usersObject){
+            for (let key in usersObject) {
                 let user = {
                     uid: key,
                     ...usersObject[key]
                 }
-                
+
                 setUsers(u => [...u, user])
             }
 
@@ -31,7 +31,7 @@ const AdminComponent = ({ firebase }) => {
 
     return (
         <AuthUserContext.Consumer>
-            {authUser => 
+            {authUser =>
                 <div className="container">
                     <h1>Hi {authUser.email}</h1>
                     {loading && <div>Loading ...</div>}
@@ -45,17 +45,17 @@ const AdminComponent = ({ firebase }) => {
 const UserList = ({ users }) => (
     <ul>
         {users.map(user => (
-        <li key={user.uid}>
-            <span>
-            <strong>ID:</strong> {user.uid}
-            </span>
-            <span>
-            <strong>E-Mail:</strong> {user.email}
-            </span>
-            <span>
-            <strong>Username:</strong> {user.username}
-            </span>
-        </li>
+            <li key={user.uid}>
+                <span>
+                    <strong>ID:</strong> {user.uid}
+                </span>
+                <span>
+                    <strong>E-Mail:</strong> {user.email}
+                </span>
+                <span>
+                    <strong>Username:</strong> {user.username}
+                </span>
+            </li>
         ))}
     </ul>
 )

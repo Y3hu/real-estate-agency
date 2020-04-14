@@ -22,7 +22,7 @@ import * as ROUTES from '../../constants/routes'
 import styles from './app.module.scss'
 
 const App = () => {
-  return(
+  return (
     <Router>
       <header>
         <Navigation />
