@@ -33,7 +33,7 @@ const FormComponent = _ => {
 
         axios.post('https://us-central1-real-estate-agency-3a42a.cloudfunctions.net/sendMessage', userInfo)
         .then(res => {
-            //cleanState()
+            cleanState()
             console.log(res)
         })
         .catch(err=> console.log(err))

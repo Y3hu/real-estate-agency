@@ -8,8 +8,8 @@ admin.initializeApp();
 var transporter = nodemailer.createTransport({
     service: "hotmail",
     auth: {
-        user: "y_chavarria14@hotmail.com",
-        pass: "k!ller3546"
+        user: `${process.env.REACT_APP_EMAIL_USER}`,
+        pass: `${process.env.REACT_APP_EMAIL_PASS}`
     }
 })
 
@@ -19,7 +19,7 @@ exports.sendMessage = functions.https.onRequest((req, res) => {
 
         const mailOptions = {
             from: 'y_chavarria14@hotmail.com', // sender address (who sends)
-            to: 'ychavarria18@gmail.com', // list of receivers (who receives)
+            to: ['ychavarria18@gmail.com', 'info@ellagoarenal.com'], // list of receivers (who receives)
             subject: `Posible business`, // Subject line
             html: `<body style="margin: 0 padding: 0"> 
                 <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
@@ -37,12 +37,12 @@ exports.sendMessage = functions.https.onRequest((req, res) => {
                                             <tr>
                                                 <td style="color: #153643 font-family: Arial, sans-serif font-size: 24px">
                                                     
-                                                    <b>${name} ${lastName} wnats to contact!</b>
+                                                    <b>${name} ${lastName} wants to contact!</b>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="padding: 20px 0 30px 0 color: #153643 font-family: Arial, sans-serif font-size: 16px line-height: 20px">
-                                                    ${name} says: ${message} and wants to be contacted by this email ${email}
+                                                    ${name} says: ${message} and left this email ${email}
                                                 </td>
                                             </tr>
                                             <tr>

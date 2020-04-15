@@ -24,7 +24,7 @@ const NavigationAuth = () => (
             <img className={styles.logo} src={Logo} title="logo" alt="logo" />
             <form className={styles.form}>
                 <div class="input-group">
-                    <input className="form-control border-right-0" type="text" placeholder="listing code"/>
+                    <input className="form-control border-right-0" type="text" placeholder="listing code number"/>
                     <span className="input-group-append bg-white">
                         <button className="btn border border-left-0" type="button"><i className="fas fa-search"></i></button>
                     </span>
@@ -62,7 +62,7 @@ const NavigationNonAuth = () => (
             <img className={styles.logo} src={Logo} title="logo" alt="logo" />
             <form className={styles.form}>
                 <div className="input-group">
-                    <input className="form-control border-right-0" type="text" placeholder="listing code"></input>
+                    <input className="form-control border-right-0" type="text" placeholder="listing code number"></input>
                     <span className="input-group-append bg-white">
                         <button className="btn border border-left-0" type="button"><i className="fas fa-search"></i></button>
                     </span>
@@ -78,7 +78,7 @@ const NavigationNonAuth = () => (
                     <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>Home</Link>
                 </i>
                 <i className={`${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>Properties</Link>
+                    <Link to={ROUTES.PROPERTIES} className="nav-link" style={{color: "white", textAlign: "center"}}>Properties</Link>
                 </i>
                 <i className={`${styles.nav_items_styles}`}>
                     <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>Construction</Link>

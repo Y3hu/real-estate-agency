@@ -6,20 +6,25 @@ $breakpoint-lg: 1360px;
 
 @mixin media($media) {
   @if $media == xs {
-    @media (max-width: $breakpoint-sm) { @content; }
-  }
-  @else if $media == sm {
-    @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) { @content; }
-  }
-  @else if $media == md {
-    @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) { @content; }
-  }
-  @else if $media == lg {
-    @media (min-width: $breakpoint-lg) { @content; }
+    @media (max-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $media == sm {
+    @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $media == md {
+    @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $media == lg {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
   }
 }
 
-.landing_container{
+.landing_container {
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
@@ -27,16 +32,7 @@ $breakpoint-lg: 1360px;
   width: 100%;
 }
 
-.dropdowns{
-  display: flex;
-  justify-content: space-around;
-  
-  min-width: 100%;
-  min-height: 10%;
-  margin-bottom: 2vh;
-}
-
-.carousel_container{
+.carousel_container {
   display: flex;
   margin-bottom: 5vh;
   flex-flow: column wrap;
@@ -44,14 +40,14 @@ $breakpoint-lg: 1360px;
   justify-content: center;
   min-width: 100%;
 
-  @include media(lg){
+  @include media(lg) {
     width: 40%;
     margin-bottom: 4vh;
     flex-flow: row wrap;
     justify-content: space-around;
   }
 
-  @include media(md){
+  @include media(md) {
     width: 40%;
     margin-bottom: 4vh;
     flex-flow: row wrap;
@@ -59,28 +55,31 @@ $breakpoint-lg: 1360px;
   }
 }
 
-.carousel_slides_container{
+.box-shadow {
+  -webkit-box-shadow: 6px 6px 22px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 6px 6px 22px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 6px 6px 22px -1px rgba(0, 0, 0, 0.75);
+}
+
+.carousel_slides_container {
   max-width: 350px;
   max-height: 200px;
   background-size: cover;
   border-radius: 10px;
-  -webkit-box-shadow: 6px 6px 22px -1px rgba(0,0,0,0.75);
-  -moz-box-shadow: 6px 6px 22px -1px rgba(0,0,0,0.75);
-  box-shadow: 6px 6px 22px -1px rgba(0,0,0,0.75);
+  @extend .box-shadow;
 
-  @include media(lg){
+  @include media(lg) {
     min-width: 950px;
     max-height: 530px;
   }
 
-  @include media(md){
+  @include media(md) {
     min-width: 950px;
     max-height: 530px;
   }
 }
 
-
-.carousel_slide{
+.carousel_slide {
   display: flex;
   flex-flow: column wrap;
   align-items: flex-start;
@@ -88,28 +87,27 @@ $breakpoint-lg: 1360px;
   background-size: cover;
   min-width: 950px;
   min-height: 500px;
-  
-  img{
+
+  img {
     max-width: 350px;
 
-    @include media(lg){
+    @include media(lg) {
       min-width: 950px;
       min-height: 530px;
     }
 
-    @include media(md){
+    @include media(md) {
       min-width: 950px;
       min-height: 530px;
     }
   }
-
 }
 
-.carousel-caption{
+.carousel-caption {
   padding-bottom: 200px !important;
 }
 
-.categories_container{
+.categories_container {
   //background-color: red;
   display: flex;
   flex-flow: row wrap;
@@ -118,7 +116,7 @@ $breakpoint-lg: 1360px;
   width: 100%;
   padding: 2%;
 
-  button{
+  button {
     width: 40vw;
     height: 15vh;
     margin: 2%;
@@ -126,9 +124,11 @@ $breakpoint-lg: 1360px;
     background-size: cover;
     background-repeat: no-repeat;
     border: none;
-    color: #FFFFFF;
+    color: #ffffff;
     transition: all 0.5s;
     cursor: pointer;
+    border-radius: 5px;
+    @extend .box-shadow;
 
     &:hover span {
       padding-right: 5px;
@@ -149,7 +149,7 @@ $breakpoint-lg: 1360px;
       transition: 0.5s;
 
       &::after {
-        content: '\00bb';
+        content: "\00bb";
         position: absolute;
         opacity: 0;
         top: 0;
@@ -157,17 +157,16 @@ $breakpoint-lg: 1360px;
         transition: 0.5s;
       }
     }
-
   }
 
-  @include media(lg){
+  @include media(lg) {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
     width: 90%;
     padding: 5%;
-    button{
+    button {
       width: 20vw;
       height: 20vh;
       margin: 2%;
@@ -175,20 +174,20 @@ $breakpoint-lg: 1360px;
       background-size: 100%;
       background-repeat: no-repeat;
       border: none;
-      color: #FFFFFF;
+      color: #ffffff;
       padding: 20px;
       transition: all 0.5s;
       cursor: pointer;
-  
+
       &:hover span {
         padding-right: 25px;
       }
-  
+
       &:hover span:after {
         opacity: 1;
         right: 0;
       }
-  
+
       span {
         cursor: pointer;
         display: inline-block;
@@ -197,9 +196,9 @@ $breakpoint-lg: 1360px;
         width: 90%;
         background: rgba(0, 0, 0, 0.6);
         transition: 0.5s;
-  
+
         &::after {
-          content: '\00bb';
+          content: "\00bb";
           position: absolute;
           opacity: 0;
           top: 0;
@@ -207,18 +206,17 @@ $breakpoint-lg: 1360px;
           transition: 0.5s;
         }
       }
-  
     }
   }
 
-  @include media(md){
+  @include media(md) {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
     width: 80%;
     padding: 5%;
-    button{
+    button {
       width: 15vw;
       height: 15vh;
       margin: 2%;
@@ -226,21 +224,21 @@ $breakpoint-lg: 1360px;
       background-size: 100%;
       background-repeat: no-repeat;
       border: none;
-      color: #FFFFFF;
+      color: #ffffff;
       text-align: center;
       padding: 20px;
       transition: all 0.5s;
       cursor: pointer;
-  
+
       &:hover span {
         padding-right: 25px;
       }
-  
+
       &:hover span:after {
         opacity: 1;
         right: 0;
       }
-  
+
       span {
         cursor: pointer;
         display: inline-block;
@@ -249,9 +247,9 @@ $breakpoint-lg: 1360px;
         width: 90%;
         background: rgba(0, 0, 0, 0.6);
         transition: 0.5s;
-  
+
         &::after {
-          content: '\00bb';
+          content: "\00bb";
           position: absolute;
           opacity: 0;
           top: 0;
@@ -259,8 +257,6 @@ $breakpoint-lg: 1360px;
           transition: 0.5s;
         }
       }
-  
     }
   }
-
 }

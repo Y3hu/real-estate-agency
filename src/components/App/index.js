@@ -17,6 +17,7 @@ import AccountPage from '../Account'
 import AdminPage from '../Admin'
 import About from '../About'
 import Contact from '../Contact'
+import Properties from '../Properties'
 import * as ROUTES from '../../constants/routes'
 
 import styles from './app.module.scss'
@@ -37,6 +38,7 @@ const App = () => {
         <Route path={ROUTES.ADMIN} component={AdminPage} />
         <Route path={ROUTES.ABOUT} component={About} />
         <Route path={ROUTES.CONTACT} component={Contact} />
+        <Route path={ROUTES.PROPERTIES} component={Properties} />
       </main>
       <FooterComponent />
     </Router>
