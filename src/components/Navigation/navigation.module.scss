@@ -31,7 +31,7 @@ $breakpoint-lg: 1360px;
 
 .logo_search_input{
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
   min-width: 100%;
@@ -90,7 +90,7 @@ $breakpoint-lg: 1360px;
 }
 
 .nav_list{
-  width: 100%;
+  min-width: 100%;
 }
 
 .nav_list_items_container{
@@ -111,15 +111,13 @@ $breakpoint-lg: 1360px;
   opacity: 1;
 
   @include media(lg){
-    margin-left: 1.5vw;
-    width: 120px;
-    font-size: 15px;
+    width: 170px;
+    font-size: 22px;
   }
 
   @include media(md){
-    margin-left: 1.5vw;
-    width: 110px;
-    font-size: 15px;
+    width: 170px;
+    font-size: 22px;
   }
 
   &:hover{

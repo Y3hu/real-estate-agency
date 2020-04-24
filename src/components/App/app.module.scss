@@ -21,7 +21,7 @@ $breakpoint-lg: 1360px;
 
 .main_container{
     padding: 2vw;
-    margin-top: 40vw;
+    margin-top: 50vw;
 
     @include media(lg){
         margin-top: 12vw;
@@ -30,4 +30,7 @@ $breakpoint-lg: 1360px;
     @include media(md){
         margin-top: 12vw;
     }
+    @include media(sm){
+      margin-top: 40vw;
+  }
 }

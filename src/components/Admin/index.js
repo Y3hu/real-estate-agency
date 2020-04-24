@@ -32,8 +32,8 @@ const AdminComponent = ({ firebase }) => {
     return (
         <AuthUserContext.Consumer>
             {authUser =>
-                <div className="container">
-                    <h1>Hi {authUser.email}</h1>
+                <div>
+                    <h4>Hi {authUser.email}</h4>
                     {loading && <div>Loading ...</div>}
                     <UserList users={users} />
                 </div>

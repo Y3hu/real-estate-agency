@@ -108,12 +108,11 @@ $breakpoint-lg: 1360px;
 }
 
 .categories_container {
-  //background-color: red;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  min-width: 100%;
   padding: 2%;
 
   button {
@@ -124,11 +123,15 @@ $breakpoint-lg: 1360px;
     background-size: cover;
     background-repeat: no-repeat;
     border: none;
-    color: #ffffff;
+    color: #fff;
     transition: all 0.5s;
     cursor: pointer;
     border-radius: 5px;
     @extend .box-shadow;
+
+    @include media(xs){
+      font-size: 15px;
+    }
 
     &:hover span {
       padding-right: 5px;
@@ -136,7 +139,7 @@ $breakpoint-lg: 1360px;
 
     &:hover span:after {
       opacity: 1;
-      right: 0;
+      right: 8px;
     }
 
     span {
@@ -147,6 +150,7 @@ $breakpoint-lg: 1360px;
       width: 100%;
       background: rgba(0, 0, 0, 0.6);
       transition: 0.5s;
+      padding: 0 5px;
 
       &::after {
         content: "\00bb";

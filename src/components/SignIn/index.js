@@ -34,7 +34,7 @@ const SignInFormBase = props =>  {
     props.firebase.doSignInWithEmailAndPassword(email.trim(), password)
     .then(() => {
         cleanState({...INITIAL_STATE})
-        props.history.push(ROUTES.HOME)
+        props.history.push(ROUTES.ADMIN)
     })
     .catch(error => {
         changeState({ error })

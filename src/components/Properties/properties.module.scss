@@ -30,6 +30,7 @@ $breakpoint-lg: 1360px;
   justify-content: center;
   align-items: center;
   min-width: 100%;
+  margin-top: -2vh;
 }
 
 .dropdown_rounded {
@@ -41,47 +42,74 @@ $breakpoint-lg: 1360px;
 
 .dropdown {
   @extend .dropdown_rounded;
+  border: 0;
+  margin-bottom: 1vh;
+  width: 170px;
+  font-size: 22px;
+
+  &:hover {
+    @extend .card_shadow;
+  }
+
+  div {
+    min-width: 100%;
+  }
+
   button {
     @extend .dropdown_rounded;
     color: #fff;
-    font-size: 15px;
+
+    border: 0;
+    margin-top: 1px;
+
+    &:hover {
+      color: #fff;
+      background: #00008b 0% 0% no-repeat padding-box;
+      border: 0;
+      @extend .card_shadow;
+    }
 
     @include media(lg) {
-      font-size: 18px;
+      font-size: 22px;
     }
+
     @include media(md) {
-      font-size: 18px;
+      font-size: 22px;
     }
   }
 }
 
 .dropdown_menu {
   border-radius: 10px;
+  width: 280px;
   button {
+    font-size: 18px;
     text-align: center;
   }
 }
 
 .properties_top {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  align-items: center;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: flex-start;
   min-width: 100%;
-  min-height: 10vh;
+  min-height: 8vh;
 
   @include media(lg) {
-    justify-content: space-evenly;
+    justify-content: space-around;
+    flex-flow: row wrap;
   }
   @include media(md) {
     justify-content: space-evenly;
+    flex-flow: row wrap;
   }
 }
 
 .card_shadow {
-  -webkit-box-shadow: 6px 6px 22px -1px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 6px 6px 22px -1px rgba(0, 0, 0, 0.75);
-  box-shadow: 6px 6px 22px -1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
 }
 
 .properties_bottom {
@@ -136,44 +164,60 @@ $breakpoint-lg: 1360px;
   }
 }
 
-/**.button_animated {
-  background: #00008b 0% 0% no-repeat padding-box;
-  border-radius: 4px;
+.button_animated {
+  width: 70%;
+  height: 4.5vh;
+  //background: #00008b 0% 0% no-repeat padding-box;
   border: none;
+  font-size: small;
   color: #fff;
-  text-align: center;
-  padding: 10px;
-  width: 136px;
   transition: all 0.5s;
   cursor: pointer;
 
+  @include media(lg) {
+    width: 50%;
+    height: 5vh;
+    font-size: large;
+  }
+
+  @include media(md) {
+    width: 50%;
+    height: 5vh;
+    font-size: large;
+  }
+
   &:hover span {
-    padding-right: 25px;
+    padding-right: 26px;
   }
 
   &:hover span:after {
     opacity: 1;
-    right: 0;
+    right: 8px;
   }
 
   span {
     cursor: pointer;
     display: inline-block;
     position: relative;
+    color: #fff;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
     transition: 0.5s;
+    padding: 0 5px;
+    @extend .card_shadow;
 
     &::after {
       content: "\00bb";
       position: absolute;
       opacity: 0;
       top: 0;
-      right: -20px;
+      right: -26px;
       transition: 0.5s;
     }
   }
-}*/
+}
 
-$color: #00008b;
+/**$color: #00008b;
 
 .button_animated {
   display: inline-block;
@@ -218,4 +262,4 @@ $color: #00008b;
   }
 
  
-}
+}*/

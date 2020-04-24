@@ -19,11 +19,11 @@ const NavigationComponent = () => (
 )
 
 const NavigationAuth = () => (
-    <nav className={`navbar navbar-expand-lg ${styles.nav_container}`}>
+    <nav className={`navbar fixed-top navbar-expand-lg ${styles.nav_container}`}>
         <div className={`navbar-brand ${styles.logo_search_input}`}>
             <img className={styles.logo} src={Logo} title="logo" alt="logo" />
             <form className={styles.form}>
-                <div class="input-group">
+                <div className="input-group">
                     <input className="form-control border-right-0" type="text" placeholder="listing code number"/>
                     <span className="input-group-append bg-white">
                         <button className="btn border border-left-0" type="button"><i className="fas fa-search"></i></button>
@@ -40,7 +40,7 @@ const NavigationAuth = () => (
                     <Link to={ROUTES.LANDING} className="nav-link" style={{color: "white", textAlign: "center"}}>Landing <span className="sr-only">(current)</span></Link>
                 </i>
                 <i className={`${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.HOME} className="nav-link" style={{color: "white", textAlign: "center"}}>Home</Link>
+                    <Link to={ROUTES.MANAGEPROPERTIES} className="nav-link" style={{color: "white", textAlign: "center"}}>Properties</Link>
                 </i>
                 <i className={`${styles.nav_items_styles}`}>
                     <Link to={ROUTES.ACCOUNT} className="nav-link" style={{color: "white", textAlign: "center"}}>Account</Link>

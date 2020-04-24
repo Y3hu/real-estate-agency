@@ -46,7 +46,7 @@ const SignUpFormBase = ({ history, firebase }) => {
     })
     .then(() => {
       cleanState({...INITIAL_STATE})
-      history.push(ROUTES.HOME)
+      history.push(ROUTES.ADMIN)
     })
     .catch(error => changeState({ error }))
 

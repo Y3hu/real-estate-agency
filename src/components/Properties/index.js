@@ -6,20 +6,24 @@ import styles from './properties.module.scss'
 
 const optArray = [
     {
-        name: "category",
+        name: "Category",
         options: ["buy", "rent", "other"]
     },
     {
-        name: "price",
-        options: ["+$10K-$20K", "+$20K-$30K", "$35K-more"]
+        name: "City",
+        options: ["Nuevo Arenal", "Fortuna", "Tronadora", "Tilarán", "Bagaces"]
     },
     {
-        name: "bedrooms",
-        options: ["2", "3", "4", "+4"]
+        name: "Price",
+        options: ["Min. $0 - $50,000 Max", "Min $50,000 - $150,000 Max", "Min $150,000 - $250,000 Max", "Min $250,000 - $ 350,000 Max", "Min $400,000 +"]
     },
     {
-        name: "bathrooms",
-        options: ["2", "3", "4", "+4"]
+        name: "Bedrooms",
+        options: ["1", "2", "3", "4+"]
+    },
+    {
+        name: "Bathrooms",
+        options: ["1", "2", "3", "4+"]
     }
 ]
 
@@ -58,7 +62,7 @@ const PropertiesComponent = props => {
             <div className={styles.properties_bottom}>
                 {
                     properties.map((e, i) => (
-                        <CardsComponent image={e.image} />
+                        <CardsComponent key={i} image={e.image} />
                     ))
                 }
             </div>
