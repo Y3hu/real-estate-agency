@@ -1,6 +1,7 @@
 import React from 'react'
 
-import TabsComponent from './tabs'
+import TabsComponent from './Tabs'
+//import MultiStepForm from './MultiStepForm'
 
 import styles from './manager-properties.module.scss'
 

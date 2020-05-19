@@ -5,19 +5,25 @@ $breakpoint-md: 1023px;
 $breakpoint-lg: 1360px;
 
 @mixin media($media) {
-  @if $media == xs {
+  @if $media==xs {
     @media (max-width: $breakpoint-sm) {
       @content;
     }
-  } @else if $media == sm {
+  }
+
+  @else if $media==sm {
     @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
       @content;
     }
-  } @else if $media == md {
+  }
+
+  @else if $media==md {
     @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
       @content;
     }
-  } @else if $media == lg {
+  }
+
+  @else if $media==lg {
     @media (min-width: $breakpoint-lg) {
       @content;
     }
@@ -25,115 +31,100 @@ $breakpoint-lg: 1360px;
 }
 
 .manager_properties_container {
-  display: flex;
-  flex-flow: column nowrap;
+  display        : flex;
+  flex-flow      : column nowrap;
   justify-content: center;
-  align-items: center;
-  min-width: 100%;
-  max-width: 100%;
+  align-items    : center;
+  min-width      : 100%;
+  max-width      : 100%;
 }
 
 .manager_top {
-  display: flex;
+  display        : flex;
   justify-content: center;
-  align-items: center;
-  min-width: 100%;
-  max-width: 100%;
+  align-items    : center;
+  min-width      : 100%;
+  max-width      : 100%;
+
+  h1 {
+    color: black;
+  }
 }
 
 .manager_bottom {
-  display: flex;
+  display        : flex;
   justify-content: center;
-  align-items: center;
-  min-width: 100%;
-  max-width: 100%;
-  margin-top: 4vh;
-  color: #0e0e95;
+  align-items    : center;
+  min-width      : 100%;
+  max-width      : 100%;
+  margin-top     : 4vh;
+  color          : #0e0e95;
 }
 
 .tab_container {
-  display: flex;
-  flex-flow: column nowrap;
+  display        : flex;
+  flex-flow      : column nowrap;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-
-  @include media(lg) {
-    flex-flow: row nowrap;
-  }
+  align-items    : center;
+  width          : 100%;
 }
 
 .list_group {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
+  display        : flex;
+  flex-flow      : row nowrap;
+  align-items    : center;
   justify-content: center;
-  max-width: 100%;
+  max-width      : 100%;
 
   a {
-    font-size: small;
+    font-size : small;
     text-align: center;
-    width: 20%;
-    height: 7vh;
+    width     : 20%;
+    height    : 7vh;
 
     @include media(lg) {
       font-size: larger;
-      height: 8vh;
-      width: 100%;
+      height   : 8vh;
+      width    : 100%;
     }
+
     @include media(md) {
       font-size: larger;
-      height: 8vh;
-      width: 100%;
+      height   : 8vh;
+      width    : 100%;
     }
   }
 
   @include media(lg) {
-    width: 10%;
-    flex-flow: column wrap;
-    justify-content: flex-start;
+    width: 100%;
   }
+
   @include media(md) {
-    width: 10%;
-    flex-flow: column wrap;
-    justify-content: flex-start;
+    width: 100%;
   }
 }
 
 .tab_content {
-  display: flex;
-  flex-flow: column wrap;
-  width: 100%;
+  display   : flex;
+  flex-flow : column wrap;
+  width     : 100%;
   margin-top: 1vh;
-
-  @include media(lg) {
-    width: 85%;
-    justify-content: flex-start;
-  }
-  @include media(md) {
-    width: 85%;
-    justify-content: flex-start;
-  }
 }
 
 .tab_pane {
-  width: 100%;
-  display: flex;
+  width          : 100%;
+  display        : flex;
   justify-content: center;
-  align-items: center;
-
-  form {
-    height: 100%;
-  }
+  align-items    : center;
 }
 
 .labels_to_left {
   //  width: 90px;
   text-align: center;
-  color: white;
+  color     : white;
   background: #2699fb 0% 0% no-repeat padding-box;
-  border: 0;
-  opacity: 1;
+  border    : 0;
+  opacity   : 1;
 }
 
 .input_size {
@@ -155,18 +146,19 @@ $breakpoint-lg: 1360px;
 }
 
 .details_form_container {
-  display: flex;
+  display        : flex;
   justify-content: flex-start;
-  align-items: flex-start;
-  flex-flow: column wrap;
+  align-items    : flex-start;
+  flex-flow      : column wrap;
+  width          : 100%;
 }
 
 .details_form_dropdowns {
-  display: flex;
-  justify-content: center;
-  flex-flow: row nowrap;
-  align-items: center;
-  width: 100%;
+  display        : flex;
+  justify-content: space-between;
+  flex-flow      : row wrap;
+  align-items    : center;
+  width          : 100%;
 
   @include media(lg) {
     justify-content: flex-start;
@@ -174,106 +166,172 @@ $breakpoint-lg: 1360px;
 }
 
 .details_form_checks_container {
-  display: flex;
-  flex-flow: column nowrap;
+  display        : flex;
+  flex-flow      : column nowrap;
   justify-content: flex-start;
-  align-items: flex-start;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
-  width: 100%;
-  min-height: 15vh;
-  margin-bottom: 1vh;
+  align-items    : flex-start;
+  background     : #ffffff 0% 0% no-repeat padding-box;
+  border         : 1px solid #dddddd;
+  opacity        : 1;
+  width          : 99%;
+  min-height     : 18vh;
+  margin         : 1vh .5%;
+}
 
-  @include media(lg) {
-    width: 90%;
-    margin-left: 0.8vw;
-  }
-  @include media(md) {
-    width: 90%;
-    margin-left: 0.8vw;
-  }
+.details_form_checks_tags {
+  display        : flex;
+  flex-flow      : row wrap;
+  justify-content: space-between;
+  align-items    : flex-start;
+  width          : 100%;
 }
 
 .details_form_checks_tag {
-  background: #eceeef 0% 0% no-repeat padding-box;
-  border: 1px solid #dddddd;
-  opacity: 1;
-  width: 87px;
-  height: 36px;
+  background    : #eceeef 0% 0% no-repeat padding-box;
+  border        : 1px solid #dddddd;
+  opacity       : 1;
+  height        : 6vh;
   letter-spacing: 0px;
-  text-align: center;
-  font-size: 27px;
-  margin-bottom: 1vh;
+  text-align    : center;
+  font-size     : 30px;
+  margin-bottom : 1vh;
+}
+
+.details_form_checks_options {
+  display        : flex;
+  flex-flow      : row wrap;
+  justify-content: flex-end;
+  align-items    : flex-start;
+
+  button {
+    font-size: 25px;
+
+    &:hover {
+      background-color: #0e0e95;
+    }
+
+    @include media(lg) {
+      font-size: 35px;
+    }
+
+    @include media(md) {
+      font-size: 35px;
+    }
+  }
+
 }
 
 .details_form_checks_checks {
-  display: flex;
-  justify-content: space-evenly;
-  flex-flow: row wrap;
-  align-items: center;
-  min-width: 100%;
+  display        : flex;
+  justify-content: space-between;
+  flex-flow      : row wrap;
+  align-items    : flex-start;
+  min-width      : 100%;
+  padding        : 0 2vw;
 
   div {
-    width: 119px;
-    height: 38px;
-    background: #0e0e95 0% 0% no-repeat padding-box;
-    border: 1px solid #dddddd;
-    border-radius: 0px 4px 4px 0px;
-    opacity: 1;
-    display: flex;
-    align-items: center;
+    border         : none;
+    opacity        : 1;
+    display        : flex;
+    font-size      : 20px;
     justify-content: center;
 
-    @include media(lg) {
-      font-size: 27px;
-      width: 160px;
-    }
-    @include media(md) {
-      font-size: 27px;
-      width: 160px;
-    }
     input,
     label {
       cursor: pointer;
-      background: #ffffff 0% 0% no-repeat padding-box;
-      border: 1px solid #dddddd;
-      border-radius: 0px 4px 4px 0px;
+
       opacity: 1;
-      width: 119px;
-      height: 38px;
+      width  : 150px;
 
       @include media(lg) {
-        width: 160px;
+        width: 250px;
       }
+
       @include media(md) {
-        width: 160px;
+        width: 250px;
       }
+
     }
   }
 }
 
 .details_form_bottom {
-  width: 100%;
-  display: flex;
+  width          : 100%;
+  display        : flex;
   justify-content: center;
-  align-items: center;
+  align-items    : center;
 }
 
 .details_form_bottom_inputs {
-  display: flex;
-  flex-flow: row wrap;
+  display        : flex;
+  flex-flow      : row wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items    : center;
 
-  div {
-    div {
-      div {
-        width: 60px;
-      }
-    }
-  }
   input {
     width: 100px;
+  }
+}
+
+.details_form_container_images {
+  display        : flex;
+  flex-flow      : row wrap;
+  justify-content: space-evenly;
+  align-items    : flex-end;
+  min-width      : 100%;
+
+  img {
+    width : 20vw;
+    height: 10vh;
+
+    @include media(lg) {
+      width : 15vw;
+      height: unset;
+    }
+  }
+
+  video {
+    width: 45vw;
+  }
+}
+
+.fileContainer {
+  overflow: hidden;
+  position: relative;
+  cursor  : pointer;
+  display : flex;
+
+
+  button {
+    background: #00008B 0% 0% no-repeat padding-box;
+    border    : none;
+  }
+}
+
+.fileContainer [type=file] {
+  cursor    : inherit;
+  display   : block;
+  font-size : 999px;
+  filter    : alpha(opacity=0);
+  min-height: 100%;
+  min-width : 100%;
+  opacity   : 0;
+  position  : absolute;
+  right     : 0;
+  text-align: right;
+  top       : 0;
+}
+
+.option_disabled {
+  color : gray;
+  cursor: not-allowed;
+}
+
+.option_enable {
+  color : #00008B;
+  cursor: pointer;
+
+  &:hover {
+    color: white;
   }
 }
