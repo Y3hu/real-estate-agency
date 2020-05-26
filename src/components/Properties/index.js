@@ -5,6 +5,7 @@ import CardsComponent from './cards'
 import { withFirebase } from '../Firebase'
 
 import styles from './properties.module.scss'
+import CarouselComponent from './Carousel'
 
 const optArray = [
     {
@@ -49,6 +50,7 @@ const optArray = [
 
 const PropertiesComponent = ({ firebase }) => {
     const [dbProperties, setDbProperties] = useState([])
+    const [property, setProperty] = useState({})
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
@@ -73,25 +75,147 @@ const PropertiesComponent = ({ firebase }) => {
 
     return (
         <div className={styles.properties_container}>
-            <div className={styles.properties_top}>
+            {
+                (Object.keys(property).length) ?
+                    <>
 
-                {
-                    optArray.map((e, i) => (
-                        <DropdownComponent key={i} name={e.name} options={e.options} />
-                    ))
-                }
+                        <PropertyComponent property={property} setProperty={setProperty} />
+                    </> :
+                    <>
+                        <div className={styles.properties_top}>
 
-            </div>
-            <div className={styles.properties_bottom}>
-                {
-                    (dbProperties.length > 0 && !loading) ?
-                        dbProperties.map((p, i) => (
-                            <CardsComponent key={i} info={p} />
-                        )) :
-                       ''
-                }
-            </div>
+                            {
+                                optArray.map((e, i) => (
+                                    <DropdownComponent key={i} name={e.name} options={e.options} />
+                                ))
+                            }
+
+                        </div>
+                        <div className={styles.properties_bottom}>
+                            {
+                                (dbProperties.length > 0 && !loading) ?
+                                    dbProperties.map((p, i) => (
+                                        <CardsComponent key={i} info={p} onSelect={setProperty} />
+                                    )) :
+                                    ''
+                            }
+                        </div>
+                    </>
+            }
         </div >
+    )
+}
+
+const PropertyComponent = ({ property, setProperty }) => {
+    const [general, setGeneral] = useState([])
+    const [features, setFeatures] = useState([])
+    const [community, setCommunity] = useState([])
+
+    useEffect(() => {
+        filterAmenities(property.general, 1)
+        filterAmenities(property.features, 2)
+        filterAmenities(property.community, 3)
+
+    }, [property.general, property.features, property.community])
+
+    const filterAmenities = (options, amenitieNumber) => {
+
+        for (let key in options) {
+            if (options[key]) {
+                switch (amenitieNumber) {
+                    case 1:
+                        setGeneral(general => [...general, key])
+                        break
+                    case 2:
+                        setFeatures(features => [...features, key])
+                        break
+                    case 3:
+                        setCommunity(community => [...community, key])
+                        break
+
+                    default:
+                        break
+                }
+            }
+
+        }
+
+    }
+
+    return (
+        <div className={styles.property_container}>
+            <button
+                className={`fas fa-arrow-alt-circle-left ${styles.backButton}`}
+                onClick={() => setProperty({})}
+            >
+                Back
+            </button>
+            <div className={styles.property_top}>
+                <div className={styles.property_top_left}>
+                    <CarouselComponent images={property.images} />
+                    <div className={styles.property_top_left_info}>
+                        <p className="btn-primary">{property.propertyTitle}</p>
+                        <p className="btn-primary">${property.price}</p>
+                    </div>
+                </div>
+                <div className={styles.property_top_right}>
+                    <ul className="list-group">
+                        <li className="list-group-item"><strong>Country:</strong> {property.country}</li>
+                        <li className="list-group-item"><strong>Province:</strong> {property.province}</li>
+                        <li className="list-group-item"><strong>Region:</strong> {property.region}</li>
+                        <li className="list-group-item"><strong>House Size (ft²):</strong> {property.house.ft2} ft²</li>
+                        <li className="list-group-item"><strong>House Size (m²):</strong> {property.house.m2} m²</li>
+                        <li className="list-group-item"><strong>Lot Size (acres):</strong> {property.lot.acres} acres</li>
+                        <li className="list-group-item"><strong>Lot Size (m²):</strong> {property.lot.m2} m²</li>
+                        <li className="list-group-item"><strong>Beds:</strong> {property.beds}</li>
+                        <li className="list-group-item"><strong>Baths:</strong> {property.baths}</li>
+                    </ul>
+                </div>
+            </div>
+            <div className={styles.property_bottom}>
+                <div className={styles.property_bottom_left}>
+                    <div className="jumbotron-fluid">
+                        <div className="container">
+                            <h1 className="display-4">Amenities</h1>
+                            <br />
+                            <br />
+                            <h2 className="display-6">General</h2>
+                            <hr className="my-4" />
+                            <ul>
+                                {
+                                    general.map((e, i) => <li key={i}>{e}</li>)
+                                }
+                            </ul>
+                            <br />
+                            <h2 className="display-6">Features</h2>
+                            <hr className="my-4" />
+                            <ul>
+                                {
+                                    features.map((e, i) => <li key={i}>{e}</li>)
+                                }
+                            </ul>
+                            <br />
+                            <h2 className="display-6">Community</h2>
+                            <hr className="my-4" />
+                            <ul>
+                                {
+                                    community.map((e, i) => <li key={i}>{e}</li>)
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.property_bottom_right}>
+                    <div className="jumbotron-fluid">
+                        <div className="container">
+                            <h1 className="display-4">Description</h1>
+                            <br />
+                            <p className="lead">{property.description}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 

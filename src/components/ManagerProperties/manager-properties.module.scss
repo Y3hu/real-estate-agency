@@ -335,3 +335,10 @@ $breakpoint-lg: 1360px;
     color: white;
   }
 }
+
+.upload_button{
+  display: flex;
+  align-self: flex-end;
+  justify-self: flex-end;
+  margin-right: .5vw;
+}

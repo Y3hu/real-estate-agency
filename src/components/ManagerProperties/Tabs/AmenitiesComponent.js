@@ -512,6 +512,22 @@ const Amenities = ({ setForm, formData }) => {
                         type="checkbox"
                         onChange={setForm} />
 
+                    <ItemForm label="Security Guard"
+                        name="community.security_guard"
+                        id="CommunitySecurityGuard"
+                        htmlFor="CommunitySecurityGuard"
+                        checked={community.security_guard}
+                        type="checkbox"
+                        onChange={setForm} />
+
+                    <ItemForm label="Security Gate"
+                        name="community.security_gate"
+                        id="CommunitySecurityGate"
+                        htmlFor="CommunitySecurityGate"
+                        checked={community.security_gate}
+                        type="checkbox"
+                        onChange={setForm} />
+
                     <ItemForm
                         label="Other"
                         name="community.other"

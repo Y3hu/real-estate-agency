@@ -168,7 +168,8 @@ const AssetsComponent = ({ firebase, setForm, formData }) => {
 
         // Create a user in your Firebase realtime database
         firebase.propertie(propertieInfo.listingCode)
-            .set({ ...propertieInfo })//
+            .set({ ...propertieInfo })
+            .then(() => console.log('added'))
     }
 
     return (
@@ -188,9 +189,9 @@ const AssetsComponent = ({ firebase, setForm, formData }) => {
                             </button>
                             <button
                                 type="button"
-                                className={(!Object.keys(imagesAsFiles).length) ? `btn btn-secondary fas fa-cloud-upload-alt ${styles.option_disabled}` : `btn btn-secondary fas fa-cloud-upload-alt ${styles.option_enable}`}
+                                className={(!Object.keys(imagesAsFiles).length || imagesUrls.length > 0) ? `btn btn-secondary fas fa-cloud-upload-alt ${styles.option_disabled}` : `btn btn-secondary fas fa-cloud-upload-alt ${styles.option_enable}`}
                                 onClick={handleImagesUpload}
-                                disabled={!Object.keys(imagesAsFiles).length}>
+                                disabled={(!Object.keys(imagesAsFiles).length || imagesUrls.length > 0)}>
 
                             </button>
                             <button
@@ -220,8 +221,8 @@ const AssetsComponent = ({ firebase, setForm, formData }) => {
 
                                 <input type="file" id="myfile" name="images" onChange={videoChanges} />
                             </button>
-                            <button type="button" className={(!videoAsFile.name) ? `btn btn-secondary fas fa-cloud-upload-alt ${styles.option_disabled}` : `btn btn-secondary fas fa-cloud-upload-alt ${styles.option_enable}`} onClick={handleVideoUpload}
-                                disabled={!videoAsFile.name}>
+                            <button type="button" className={(!videoAsFile.name || videoAsUrl.length > 0) ? `btn btn-secondary fas fa-cloud-upload-alt ${styles.option_disabled}` : `btn btn-secondary fas fa-cloud-upload-alt ${styles.option_enable}`} onClick={handleVideoUpload}
+                                disabled={(!videoAsFile.name || videoAsUrl.length > 0)}>
                             </button>
 
                             <button type="button" className={(!videoAsUrl.length) ? `btn btn-secondary fas fa-trash-alt ${styles.option_disabled}` : `btn btn-secondary fas fa-trash-alt ${styles.option_enable}`} onClick={deleteVideo}
@@ -236,7 +237,7 @@ const AssetsComponent = ({ firebase, setForm, formData }) => {
                 </div>
 
             </div>
-            <button type="button" className="btn btn-primary fas fa-upload" onClick={printPropertieInfo}></button>
+            <button type="button" className={`btn btn-primary btn-lg fas fa-upload ${styles.upload_button}`} onClick={printPropertieInfo}></button>
         </div>
     )
 }

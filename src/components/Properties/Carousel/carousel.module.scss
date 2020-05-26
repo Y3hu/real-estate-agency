@@ -1,0 +1,106 @@
+// variables:
+$breakpoint-xs: 360px;
+$breakpoint-sm: 767px;
+$breakpoint-md: 1023px;
+$breakpoint-lg: 1360px;
+
+@mixin media($media) {
+    @if $media==xs {
+        @media (max-width: $breakpoint-sm) {
+            @content;
+        }
+    }
+
+    @else if $media==sm {
+        @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+            @content;
+        }
+    }
+
+    @else if $media==md {
+        @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+            @content;
+        }
+    }
+
+    @else if $media==lg {
+        @media (min-width: $breakpoint-lg) {
+            @content;
+        }
+    }
+}
+
+.carousel_container {
+    display        : flex;
+    margin-bottom  : 5vh;
+    flex-flow      : column wrap;
+    align-items    : center;
+    justify-content: center;
+    min-width      : 100%;
+
+    @include media(lg) {
+        width          : 40%;
+        margin-bottom  : 4vh;
+        flex-flow      : row wrap;
+        justify-content: space-around;
+    }
+
+    @include media(md) {
+        width          : 40%;
+        margin-bottom  : 4vh;
+        flex-flow      : row wrap;
+        justify-content: space-around;
+    }
+}
+
+.box-shadow {
+    -webkit-box-shadow: 6px 6px 22px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow   : 6px 6px 22px -1px rgba(0, 0, 0, 0.75);
+    box-shadow        : 6px 6px 22px -1px rgba(0, 0, 0, 0.75);
+}
+
+.carousel_slides_container {
+    max-width      : 350px;
+    max-height     : 200px;
+    background-size: cover;
+    border-radius  : 10px;
+    @extend .box-shadow;
+
+    @include media(lg) {
+        min-width : 950px;
+        max-height: 530px;
+    }
+
+    @include media(md) {
+        min-width : 950px;
+        max-height: 530px;
+    }
+}
+
+.carousel_slide {
+    display        : flex;
+    flex-flow      : column wrap;
+    align-items    : flex-start;
+    justify-content: center;
+    background-size: cover;
+    min-width      : 950px;
+    min-height     : 500px;
+
+    img {
+        max-width: 350px;
+
+        @include media(lg) {
+            min-width : 950px;
+            min-height: 530px;
+        }
+
+        @include media(md) {
+            min-width : 950px;
+            min-height: 530px;
+        }
+    }
+}
+
+.carousel-caption {
+    padding-bottom: 200px !important;
+}

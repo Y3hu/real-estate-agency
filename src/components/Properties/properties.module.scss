@@ -5,19 +5,25 @@ $breakpoint-md: 1023px;
 $breakpoint-lg: 1360px;
 
 @mixin media($media) {
-  @if $media == xs {
+  @if $media==xs {
     @media (max-width: $breakpoint-sm) {
       @content;
     }
-  } @else if $media == sm {
+  }
+
+  @else if $media==sm {
     @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
       @content;
     }
-  } @else if $media == md {
+  }
+
+  @else if $media==md {
     @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
       @content;
     }
-  } @else if $media == lg {
+  }
+
+  @else if $media==lg {
     @media (min-width: $breakpoint-lg) {
       @content;
     }
@@ -25,27 +31,27 @@ $breakpoint-lg: 1360px;
 }
 
 .properties_container {
-  display: flex;
-  flex-flow: column wrap;
+  display        : flex;
+  flex-flow      : column wrap;
   justify-content: center;
-  align-items: center;
-  min-width: 100%;
-  margin-top: -2vh;
+  align-items    : center;
+  min-width      : 100%;
+  margin-top     : -2vh;
 }
 
 .dropdown_rounded {
-  background: #00008b 0% 0% no-repeat padding-box;
-  border: 1px solid #cccccc;
-  opacity: 1;
+  background   : #00008b 0% 0% no-repeat padding-box;
+  border       : 1px solid #cccccc;
+  opacity      : 1;
   border-radius: 26px;
 }
 
 .dropdown {
   @extend .dropdown_rounded;
-  border: 0;
+  border       : 0;
   margin-bottom: 1vh;
-  width: 170px;
-  font-size: 22px;
+  width        : 170px;
+  font-size    : 22px;
 
   &:hover {
     @extend .card_shadow;
@@ -59,13 +65,13 @@ $breakpoint-lg: 1360px;
     @extend .dropdown_rounded;
     color: #fff;
 
-    border: 0;
+    border    : 0;
     margin-top: 1px;
 
     &:hover {
-      color: #fff;
+      color     : #fff;
       background: #00008b 0% 0% no-repeat padding-box;
-      border: 0;
+      border    : 0;
       @extend .card_shadow;
     }
 
@@ -81,56 +87,58 @@ $breakpoint-lg: 1360px;
 
 .dropdown_menu {
   border-radius: 10px;
-  width: 280px;
+  width        : 280px;
+
   button {
-    font-size: 18px;
+    font-size : 18px;
     text-align: center;
   }
 }
 
 .properties_top {
-  display: flex;
-  flex-flow: column wrap;
+  display        : flex;
+  flex-flow      : column wrap;
   justify-content: center;
-  align-items: flex-start;
-  min-width: 100%;
-  min-height: 8vh;
+  align-items    : flex-start;
+  min-width      : 100%;
+  min-height     : 8vh;
 
   @include media(lg) {
     justify-content: space-around;
-    flex-flow: row wrap;
+    flex-flow      : row wrap;
   }
+
   @include media(md) {
     justify-content: space-evenly;
-    flex-flow: row wrap;
+    flex-flow      : row wrap;
   }
 }
 
 .card_shadow {
   -webkit-box-shadow: 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
-  box-shadow: 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow   : 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
+  box-shadow        : 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
 }
 
 .properties_bottom {
-  display: flex;
-  flex-flow: row wrap;
+  display        : flex;
+  flex-flow      : row wrap;
   justify-content: space-around;
-  align-items: center;
-  min-width: 100%;
+  align-items    : center;
+  min-width      : 100%;
 
   div {
-    width: 45vw;
-    min-height: 100%;
-    color: #000;
+    width        : 45vw;
+    min-height   : 100%;
+    color        : #000;
     margin-bottom: 2vh;
 
     p {
       visibility: hidden;
-      display: none;
+      display   : none;
 
       @include media(lg) {
-        display: flex;
+        display   : flex;
         visibility: visible;
       }
     }
@@ -144,13 +152,13 @@ $breakpoint-lg: 1360px;
     }
 
     @include media(lg) {
-      width: 20vw;
+      width : 20vw;
       height: 40vh;
       margin: 2vh;
     }
 
     @include media(md) {
-      width: 20vw;
+      width : 20vw;
       height: 40vh;
       margin: 2vh;
     }
@@ -159,30 +167,31 @@ $breakpoint-lg: 1360px;
   @include media(lg) {
     justify-content: center;
   }
+
   @include media(md) {
     justify-content: center;
   }
 }
 
 .button_animated {
-  width: 70%;
-  height: 4.5vh;
+  width       : 70%;
+  height      : 4.5vh;
   //background: #00008b 0% 0% no-repeat padding-box;
-  border: none;
-  font-size: small;
-  color: #fff;
-  transition: all 0.5s;
-  cursor: pointer;
+  border      : none;
+  font-size   : small;
+  color       : #fff;
+  transition  : all 0.5s;
+  cursor      : pointer;
 
   @include media(lg) {
-    width: 50%;
-    height: 5vh;
+    width    : 50%;
+    height   : 5vh;
     font-size: large;
   }
 
   @include media(md) {
-    width: 50%;
-    height: 5vh;
+    width    : 50%;
+    height   : 5vh;
     font-size: large;
   }
 
@@ -192,26 +201,26 @@ $breakpoint-lg: 1360px;
 
   &:hover span:after {
     opacity: 1;
-    right: 8px;
+    right  : 8px;
   }
 
   span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    color: #fff;
-    width: 100%;
+    cursor    : pointer;
+    display   : inline-block;
+    position  : relative;
+    color     : #fff;
+    width     : 100%;
     background: rgba(0, 0, 0, 0.6);
     transition: 0.5s;
-    padding: 0 5px;
+    padding   : 0 5px;
     @extend .card_shadow;
 
     &::after {
-      content: "\00bb";
-      position: absolute;
-      opacity: 0;
-      top: 0;
-      right: -26px;
+      content   : "\00bb";
+      position  : absolute;
+      opacity   : 0;
+      top       : 0;
+      right     : -26px;
       transition: 0.5s;
     }
   }
@@ -263,3 +272,167 @@ $breakpoint-lg: 1360px;
 
  
 }*/
+
+.property_container {
+  @extend .properties_container;
+  justify-content: flex-start;
+  align-items    : flex-start;
+}
+
+.property_top_bottom {
+  min-width      : 100%;
+  display        : flex;
+  flex-flow      : column wrap;
+  justify-content: center;
+  align-items    : center;
+
+  @include media(lg) {
+    flex-flow      : row wrap;
+    justify-content: space-between;
+    align-items    : flex-start;
+  }
+
+  @include media(md) {
+    flex-flow      : row wrap;
+    justify-content: space-between;
+    align-items    : flex-start;
+  }
+}
+
+.property_top {
+  @extend .property_top_bottom;
+
+  ul {
+    li {
+      color: black;
+    }
+  }
+}
+
+.property_top_left {
+  width          : 100%;
+  display        : flex;
+  flex-flow      : column wrap;
+  justify-content: center;
+  align-items    : center;
+
+  @include media(lg) {
+    width: 55%;
+  }
+}
+
+.property_top_left_info {
+  display        : flex;
+  flex-flow      : row nowrap;
+  justify-content: space-between;
+  width          : 90%;
+
+  p {
+    margin-top    : 1vh;
+    width         : 150px;
+    text-align    : center;
+    border-radius : 30px;
+    letter-spacing: 0px;
+    font-weight   : bold;
+    font-size     : 1.5rem;
+    opacity       : 1;
+
+    @include media(lg) {
+      font-size: 1.8rem;
+    }
+
+    @include media(md) {
+      font-size: 1.8rem;
+    }
+
+    &:hover {
+      -webkit-box-shadow: 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow   : 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
+      box-shadow        : 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
+    }
+  }
+
+}
+
+.property_top_right {
+  display    : flex;
+  flex-flow  : column wrap;
+  align-items: center;
+  min-height : 100%;
+  width      : 90%;
+  @extend .card_shadow;
+
+  @include media(lg) {
+    width: 35%;
+  }
+
+  ul {
+    width     : 100%;
+    min-height: 400px;
+  }
+
+}
+
+.property_bottom {
+  @extend .property_top_bottom;
+  margin-top: 4vh;
+}
+
+.property_bottom_left {
+  width: 90%;
+  @extend .card_shadow;
+
+  @include media(lg) {
+    width: 50%;
+  }
+
+  @include media(md) {
+    width: 50%;
+  }
+
+  ul {
+    display        : flex;
+    flex-flow      : row wrap;
+    justify-content: space-between;
+    align-items    : center;
+    list-style     : none;
+
+    li {
+      font-size: 1.4rem;
+      width    : 170px;
+
+      &::before {
+        content    : "\2022";
+        color      : red;
+        font-weight: bold;
+        font-size  : 1.4em;
+        display    : inline-block;
+        width      : 1em;
+        margin-left: -1em;
+      }
+    }
+  }
+}
+
+.property_bottom_right {
+  width     : 90%;
+  min-height: 400px;
+  @extend .card_shadow;
+  margin-top: 4vh;
+
+  @include media(lg) {
+    width     : 35%;
+    margin-top: 0;
+  }
+
+  @include media(md) {
+    width     : 35%;
+    margin-top: 0;
+  }
+}
+
+.backButton{
+  font-size: 1.4rem;
+  border-radius: 5px;
+  margin: 1vh 0;
+}

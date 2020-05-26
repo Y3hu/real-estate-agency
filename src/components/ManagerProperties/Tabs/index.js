@@ -130,6 +130,8 @@ const defaultData = {
         tennis_courts: false,
         community_pool: false,
         club_house: false,
+        security_guard: false,
+        security_gate: false,
         other: '',
     },
 
