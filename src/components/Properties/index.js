@@ -6,6 +6,7 @@ import { withFirebase } from '../Firebase'
 
 import styles from './properties.module.scss'
 import CarouselComponent from './Carousel'
+import FormComponent from '../Contact/form'
 
 const optArray = [
     {
@@ -174,7 +175,17 @@ const PropertyComponent = ({ property, setProperty }) => {
             </div>
             <div className={styles.property_bottom}>
                 <div className={styles.property_bottom_left}>
+
                     <div className="jumbotron-fluid">
+                        <div className="container">
+                            <h1 className="display-4">Description</h1>
+                            <hr className="my-4" />
+                            <br />
+                            <p className="lead">{property.description}</p>
+                        </div>
+                    </div>
+
+                    <div className="jumbotron-fluid amenities">
                         <div className="container">
                             <h1 className="display-4">Amenities</h1>
                             <br />
@@ -204,15 +215,10 @@ const PropertyComponent = ({ property, setProperty }) => {
                             </ul>
                         </div>
                     </div>
+
                 </div>
                 <div className={styles.property_bottom_right}>
-                    <div className="jumbotron-fluid">
-                        <div className="container">
-                            <h1 className="display-4">Description</h1>
-                            <br />
-                            <p className="lead">{property.description}</p>
-                        </div>
-                    </div>
+                    <FormComponent message={`(${property.listingCode}) (${property.propertyTitle})`}/>
                 </div>
             </div>
         </div>

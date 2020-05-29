@@ -380,7 +380,15 @@ $breakpoint-lg: 1360px;
 
 .property_bottom_left {
   width: 90%;
-  @extend .card_shadow;
+
+  div:first-child {
+    min-height: 400px;
+    @extend .card_shadow;
+  }
+
+  div:last-child {
+    margin-bottom: 8vh;
+  }
 
   @include media(lg) {
     width: 50%;
@@ -431,8 +439,16 @@ $breakpoint-lg: 1360px;
   }
 }
 
-.backButton{
-  font-size: 1.4rem;
-  border-radius: 5px;
-  margin: 1vh 0;
+.backButton {
+  font-size       : 2rem;
+  border-radius   : 5px;
+  margin          : 1vh 0;
+  height          : 45px;
+  width           : 150px;
+  background-color: #00008B;
+  color           : white;
+
+  &:hover {
+    @extend .card_shadow;
+  }
 }
