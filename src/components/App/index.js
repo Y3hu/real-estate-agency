@@ -38,7 +38,7 @@ const App = () => {
         <Route path={ROUTES.ADMIN} component={AdminPage} />
         <Route path={ROUTES.ABOUT} component={About} />
         <Route path={ROUTES.CONTACT} component={Contact} />
-        <Route path={ROUTES.PROPERTIES} component={Properties} />
+        <Route path={`${ROUTES.PROPERTIES}/:filter`} component={Properties} />
       </main>
       <FooterComponent />
     </Router>

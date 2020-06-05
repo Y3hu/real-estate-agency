@@ -140,7 +140,7 @@ const defaultData = {
     video: ''
 }
 
-const TabsComponent = _ => {
+const TabsComponent = ({ showAlertMessage }) => {
 
     const [formData, setForm] = useForm(defaultData)
 
@@ -173,7 +173,7 @@ const TabsComponent = _ => {
                     <Amenities {...props} />
                 </div>
                 <div className="tab-pane fade" id="list-other" role="tabpanel" aria-labelledby="list-other-list">
-                    <Assets {...props} />
+                    <Assets {...props} showAlertMessage={showAlertMessage} />
                 </div>
             </div>
 

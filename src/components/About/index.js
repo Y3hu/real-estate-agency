@@ -8,7 +8,7 @@ const AboutComponent = props => {
     console.log(process.env.REACT_APP_LOCATION_API_KEY)
 
     return (
-        <div className={`container ${styles.about_container}`}>
+        <div className={`${styles.about_container}`}>
             <div className={styles.media_container}>
                 <figure className="figure">
                     <img title="Lake Arenal" src={About_Image} className="figure-img img-fluid" alt="Lake Arenal View" />

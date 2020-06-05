@@ -1,15 +1,18 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
+import * as ROUTES from '../../constants/routes'
 
-const CategoriesComponent = ({ name, image, history }) => {
+const CategoriesComponent = ({ category, history }) => {
 
-    const categorieSelected = name => {
-        console.log(name)
+    let { image, name, filter } = category
+
+    const categorySelected = _ => {
+        history.push(`${ROUTES.PROPERTIES}/${filter}`)
     }
 
     return (
-        <button style={{ backgroundImage: `url(${image})` }} onClick={() => categorieSelected(name)}>
-            <span onClick={() => categorieSelected(name)}>{name.toUpperCase()} </span>
+        <button style={{ backgroundImage: `url(${image})` }} onClick={() => categorySelected()}>
+            <span>{name.toUpperCase()} </span>
         </button>
     )
 }

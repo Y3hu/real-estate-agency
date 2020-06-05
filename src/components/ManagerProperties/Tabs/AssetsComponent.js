@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 //import Img from 'react-image'
+import ModalComponent from '../../Shared/Modal'
+import SpinnerComponent from '../../Shared/Spinner'
 
 import { withAuthorization } from '../../Session'
 
 import styles from '../manager-properties.module.scss'
 
-const AssetsComponent = ({ firebase, setForm, formData }) => {
+const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage }) => {
     //const { images, video } = formData
     const [imagesAsFiles, setImagesAsFiles] = useState({})
     const [imagesUrls, setImagesUrls] = useState([])
     const [videoAsFile, setVideoAsFile] = useState({})
     const [videoAsUrl, setVideoAsUrl] = useState('')
+    const [uploading, setUploading] = useState(false)
 
     const imageChanges = e => {
         cleanImagesAndState()
@@ -89,8 +92,20 @@ const AssetsComponent = ({ firebase, setForm, formData }) => {
                 .on('state_changed',
                     (snapShot) => {
                         //takes a snap shot of the process as it is happening
-                        console.log("uploading progress")
-                        console.log(snapShot)
+                        console.log("transfered: ")
+                        console.log(snapShot.bytesTransferred)
+                        console.log("total: ")
+                        console.log(snapShot.totalBytes)
+                        if (snapShot.bytesTransferred < snapShot.totalBytes) {
+                            setUploading(true)
+                            document.getElementById("images").style.visibility = "hidden"
+                            document.getElementById("images").style.display = "none"
+                        }
+                        if (snapShot.bytesTransferred === snapShot.totalBytes) {
+                            setUploading(false)
+                            document.getElementById("images").style.visibility = "visible"
+                            document.getElementById("images").style.display = "unset"
+                        }
                     }, (err) => {
                         //catches the errors
                         console.log(err)
@@ -169,7 +184,7 @@ const AssetsComponent = ({ firebase, setForm, formData }) => {
         // Create a user in your Firebase realtime database
         firebase.propertie(propertieInfo.listingCode)
             .set({ ...propertieInfo })
-            .then(() => console.log('added'))
+            .then(() => showAlertMessage())
     }
 
     return (
@@ -204,9 +219,16 @@ const AssetsComponent = ({ firebase, setForm, formData }) => {
                         </div>
 
                     </div>
-                    <div id="images" className={styles.details_form_container_images}>
 
+                    <div className={styles.details_form_container_images}>
+                        {
+                            (Object.keys(imagesAsFiles).length > imagesUrls.length && uploading) ?
+                                <SpinnerComponent />
+                                : ''
+                        }
+                        <div id="images" className={styles.details_form_container_images}> </div>
                     </div>
+
                 </div>
             </div>
             <div className={styles.details_form_checks_container}>
@@ -237,7 +259,7 @@ const AssetsComponent = ({ firebase, setForm, formData }) => {
                 </div>
 
             </div>
-            <button type="button" className={`btn btn-primary btn-lg fas fa-upload ${styles.upload_button}`} onClick={printPropertieInfo}></button>
+            <ModalComponent buttonName="" message="Save this new property?" classes={`btn btn-primary btn-lg fas fa-upload ${styles.upload_button}`} func={printPropertieInfo} />
         </div>
     )
 }

@@ -1,33 +1,77 @@
+// variables:
+$breakpoint-xs: 360px;
+$breakpoint-sm: 767px;
+$breakpoint-md: 1023px;
+$breakpoint-lg: 1360px;
+
+@mixin media($media) {
+    @if $media==xs {
+        @media (max-width: $breakpoint-sm) {
+            @content;
+        }
+    }
+
+    @else if $media==sm {
+        @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+            @content;
+        }
+    }
+
+    @else if $media==md {
+        @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+            @content;
+        }
+    }
+
+    @else if $media==lg {
+        @media (min-width: $breakpoint-lg) {
+            @content;
+        }
+    }
+}
+
+
 .sticky_footer {
     flex-shrink: none;
+    margin-top : 5vh;
+
+    @include media(lg) {
+        margin-top: 1.5vh;
+    }
+
+    @include media(md) {
+        margin-top: 1.5vh;
+    }
 }
 
 .social_button {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    width: 3.125rem;
-    height: 3.125rem;
-    border: 0.125rem solid transparent;
-    padding: 0;
-    text-decoration: none;
-    text-align: center;
-    color: #fefefe;
-    font-size: 1.5625rem;
-    font-weight: normal;
-    line-height: 2em;
-    border-radius: 1.6875rem;
-    transition: all 0.5s ease;
-    margin-right: 0.25rem;
-    margin-bottom: 0.25rem;
-    background: #007bb5;
+    display         : inline-block;
+    position        : relative;
+    cursor          : pointer;
+    width           : 3.125rem;
+    height          : 3.125rem;
+    background-color: red;
+    border          : 0.125rem solid transparent;
+    padding         : 0;
+    text-decoration : none;
+    text-align      : center;
+    color           : #fefefe;
+    font-size       : 1.5625rem;
+    font-weight     : normal;
+    line-height     : 2em;
+    border-radius   : 1.6875rem;
+    transition      : all 0.5s ease;
+    margin-right    : 0.25rem;
+    margin-bottom   : 0.25rem;
+    background      : #007bb5;
 
-    &:hover, &:focus{
+    &:hover,
+    &:focus {
         -webkit-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-        transform: rotate(360deg);
-        color: #007bb5;
-        background: #fefefe;
-        border-color: #007bb5;
+        -ms-transform    : rotate(360deg);
+        transform        : rotate(360deg);
+        color            : #007bb5;
+        background       : #fefefe;
+        border-color     : #007bb5;
     }
 }

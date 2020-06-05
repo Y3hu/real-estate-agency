@@ -9,12 +9,12 @@ import CategoriesComponent from './categories'
 import SpinnerComponent from '../Shared/Spinner'
 
 const categoriesArray = [
-    { name: "RESIDENTIAL", image: "https://www.w3schools.com/w3images/house1.jpg" },
-    { name: "LAND / LOTS", image: "https://www.w3schools.com/w3images/house2.jpg" },
-    { name: "COMMERCIAL", image: "https://www.w3schools.com/w3images/house3.jpg" },
-    { name: "DEVELOPMENTS", image: "https://www.w3schools.com/w3images/house4.jpg" },
-    { name: "RENTALS", image: "https://www.w3schools.com/w3images/house5.jpg" },
-    { name: "CONSTRUCTION", image: "https://www.w3schools.com/w3images/architect.jpg" },
+    { name: "RESIDENTIAL", image: "https://www.w3schools.com/w3images/house1.jpg", filter: "residential" },
+    { name: "LAND / LOTS", image: "https://www.w3schools.com/w3images/house2.jpg", filter: "land_lots" },
+    { name: "COMMERCIAL", image: "https://www.w3schools.com/w3images/house3.jpg", filter: "commercial" },
+    { name: "DEVELOPMENTS", image: "https://www.w3schools.com/w3images/house4.jpg", filter: "developments" },
+    { name: "RENTALS", image: "https://www.w3schools.com/w3images/house5.jpg", filter: "rentals" },
+    
 ]
 
 const LandingComponent = props => {
@@ -54,7 +54,7 @@ const LandingComponent = props => {
                                         <CategoriesComponent name={e.name} image={e.url} key={i} />
                                     ))
                                     : categoriesArray.map((e, i) => (
-                                        <CategoriesComponent name={e.name} image={e.image} key={i} />
+                                        <CategoriesComponent category={e} key={i} />
                                     ))
                             }
                         </div>
