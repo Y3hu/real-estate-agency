@@ -29,7 +29,7 @@ const ModalComponent =
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-primary" onClick={() => func()}>Okay</button>
+                                <button type="button" className="btn btn-primary" onClick={() => func()} data-dismiss="modal">Okay</button>
                             </div>
                         </div>
                     </div>

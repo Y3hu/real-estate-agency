@@ -59,7 +59,7 @@ const PasswordForgetFormBase = props => {
 
 const PasswordForgetLink = () => (
   <p>
-    <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
+    <Link to={ROUTES.PASSWORD_FORGET} style={{ color: "#00008B" }}>Forgot Password?</Link>
   </p>
 )
 

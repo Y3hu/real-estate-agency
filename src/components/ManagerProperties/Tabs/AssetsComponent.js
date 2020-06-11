@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 //import Img from 'react-image'
 import ModalComponent from '../../Shared/Modal'
 import SpinnerComponent from '../../Shared/Spinner'
@@ -6,6 +6,7 @@ import SpinnerComponent from '../../Shared/Spinner'
 import { withAuthorization } from '../../Session'
 
 import styles from '../manager-properties.module.scss'
+import DragAndDropComponent from './DragAndDrop'
 
 const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage }) => {
     //const { images, video } = formData
@@ -14,10 +15,31 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage }) => {
     const [videoAsFile, setVideoAsFile] = useState({})
     const [videoAsUrl, setVideoAsUrl] = useState('')
     const [uploading, setUploading] = useState(false)
+    const [cities, setCities] = useState([])
 
-    const imageChanges = e => {
-        cleanImagesAndState()
-        let files = e.target.files
+    const { city } = formData
+
+    useEffect(() => {
+        firebase.cities().on('value', snapshot => {
+            const citiesObject = snapshot.val()
+
+            for (let key in citiesObject) {
+                let city = {
+                    uid: key,
+                    ...citiesObject[key]
+                }
+
+                setCities(c => [...c, city])
+            }
+
+        })
+
+        return () => firebase.cities().off()
+    }, [firebase])
+
+    const imageChanges = files => {
+        //cleanImagesAndState()
+        //let files = e.target.files
 
         setImagesAsFiles(files)
         /**for (let key in files) {
@@ -31,6 +53,8 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage }) => {
             figure.classList.add("figure")
             image.src = window.URL.createObjectURL(files[i])
             image.classList.add("figure-img", "img-fluid", "rounded")
+            image.style.width = "150px"
+            image.style.height = "150px"
 
             figure.appendChild(image)
             document.getElementById("images").appendChild(figure)
@@ -180,6 +204,17 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage }) => {
         let propertieInfo = { ...formData }
         propertieInfo.images = imagesUrls
         propertieInfo.video = videoAsUrl
+        //console.log(cities)
+
+        let findCity = cities.find(c => c.name.toUpperCase() === city.toUpperCase())
+        //console.log(findCity)
+
+        if (!findCity) {
+            let date = new Date()
+            // Add a new city in your Firebase realtime database
+            firebase.city(date.getTime().toString())
+                .set({ name: city })
+        }
 
         // Create a user in your Firebase realtime database
         firebase.propertie(propertieInfo.listingCode)
@@ -197,11 +232,7 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage }) => {
                     <div className={styles.details_form_checks_options}>
 
                         <div className="btn-group btn-group-toggle" data-toggle="buttons">
-                            <button
-                                type="button"
-                                className={`${styles.fileContainer} far fa-images btn btn-secondary`}>
-                                <input type="file" id="myfile" name="images" onChange={imageChanges} multiple />
-                            </button>
+
                             <button
                                 type="button"
                                 className={(!Object.keys(imagesAsFiles).length || imagesUrls.length > 0) ? `btn btn-secondary fas fa-cloud-upload-alt ${styles.option_disabled}` : `btn btn-secondary fas fa-cloud-upload-alt ${styles.option_enable}`}
@@ -226,7 +257,10 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage }) => {
                                 <SpinnerComponent />
                                 : ''
                         }
-                        <div id="images" className={styles.details_form_container_images}> </div>
+
+                        <DragAndDropComponent imageChanges={imageChanges} />
+                        <div id="images" className={styles.details_form_container_images}></div>
+
                     </div>
 
                 </div>
@@ -240,7 +274,6 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage }) => {
 
                         <div className="btn-group btn-group-toggle" data-toggle="buttons">
                             <button type="button" className={`${styles.fileContainer} fas fa-video btn btn-secondary`}>
-
                                 <input type="file" id="myfile" name="images" onChange={videoChanges} />
                             </button>
                             <button type="button" className={(!videoAsFile.name || videoAsUrl.length > 0) ? `btn btn-secondary fas fa-cloud-upload-alt ${styles.option_disabled}` : `btn btn-secondary fas fa-cloud-upload-alt ${styles.option_enable}`} onClick={handleVideoUpload}

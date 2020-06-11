@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
-
+import AlertHook from '../../hooks/alertHook'
 import styles from './properties.module.scss'
 import CarouselComponent from './Carousel'
 import FormComponent from '../Contact/form'
+import AlertComponent from '../Shared/Alert'
 
 const PropertyComponent = ({ property, setProperty }) => {
     const [general, setGeneral] = useState([])
     const [features, setFeatures] = useState([])
     const [community, setCommunity] = useState([])
+    const { added, showAlertMessage } = AlertHook()
 
     useEffect(() => {
         filterAmenities(property.general, 1)
@@ -125,10 +127,12 @@ const PropertyComponent = ({ property, setProperty }) => {
                         <div className="container">
                             <h1 className="display-5">Contact the agent</h1>
                             <hr className="my-4" />
-                            <FormComponent message={`(${property.listingCode}) (${property.propertyTitle})`} />
+                            <FormComponent message={`(${property.listingCode}) (${property.propertyTitle})`} showAlertMessage={showAlertMessage} />
                         </div>
                     </div>
-
+                    {
+                        (added) ? <AlertComponent message="Message sent successfully!" /> : ''
+                    }
                 </div>
             </div>
         </div>

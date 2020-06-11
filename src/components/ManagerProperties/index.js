@@ -1,21 +1,14 @@
-import React, { useState } from 'react'
-
+import React from 'react'
 import TabsComponent from './Tabs'
-//import MultiStepForm from './MultiStepForm'
+import AlertHook from '../../hooks/alertHook'
 
 import styles from './manager-properties.module.scss'
 
 import { withAuthorization } from '../Session'
+import AlertComponent from '../Shared/Alert'
 
 const PropertiesManagementComponent = () => {
-    const [added, setAdded] = useState(false)
-
-    const showAlertMessage = _ => {
-        setAdded(!added)
-        setTimeout(() => {
-            setAdded(!added)
-        }, 1500)
-    }
+    const { added, showAlertMessage } = AlertHook()
 
     return (
         <div className={styles.manager_properties_container}>
@@ -26,9 +19,7 @@ const PropertiesManagementComponent = () => {
                 <TabsComponent showAlertMessage={showAlertMessage} />
             </div>
             {
-                (added) ? <div className="alert alert-success" role="alert">
-                    Property added
-            </div> : ''
+                (added) ? <AlertComponent message="Property added successfully!" /> : ''
             }
         </div>
     )

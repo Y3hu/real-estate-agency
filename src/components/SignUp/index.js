@@ -90,8 +90,8 @@ const SignUpFormBase = ({ history, firebase }) => {
 }
 
 const SignUpLink = () => (
-  <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+  <p style={{ color: "#00008B" }}>
+    New account? <Link to={ROUTES.SIGN_UP} style={{ color: "#00008B" }}>Sign Up</Link>
   </p>
 )
 

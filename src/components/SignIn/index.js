@@ -6,14 +6,14 @@ import { PasswordForgetLink } from '../PasswordForget'
 import { withFirebase } from '../Firebase'
 import * as ROUTES from '../../constants/routes'
 import useFormHook from '../../hooks/formHook'
-//import styles from './signin.module.css'
+import styles from './signin.module.scss'
 
 const SignInPage = () => (
-  <div className="container pt-3">
+  <div className={`container pt-3 ${styles.signIn_container}`}>
     <div className="row justify-content-sm-center">
       <div className="col-sm-10 col-md-6">
         <div className="card border-info">
-          <div className="card-header">Sign In</div>
+          <div className="card-header" style={{ color: "#00008B" }}>Sign In</div>
           <div className="card-body">
             <div className="row">
               <div className="col-md-4 text-center">
@@ -26,7 +26,7 @@ const SignInPage = () => (
             </div>
           </div>
           <div className="card-footer">
-            <div className="row justify-content-sm-center">
+            <div style={{ display: "flex", flexFlow: "row no wrap", justifyContent: "space-between", alignItems: "center" }}>
               <PasswordForgetLink />
               <SignUpLink />
             </div>
@@ -84,7 +84,7 @@ const SignInFormBase = props => {
         placeholder="Password"
         required
       />
-      <button className="btn btn-lg btn-primary btn-block mb-1" type="submit" disabled={isInvalid}>Sign In</button>
+      <button className="btn btn-lg btn-primary btn-block mb-1" style={{ backgroundColor: "#00008B" }} type="submit" disabled={isInvalid}>Sign In</button>
       {state.error && <p>{state.error.message}</p>}
     </form>
   )

@@ -12,7 +12,7 @@ const INITIAL_STATE = {
     error: null
 }
 
-const FormComponent = ({ message }) => {
+const FormComponent = ({ message, showAlertMessage }) => {
     const { state, changeState, cleanState } = useFormHook({ INITIAL_STATE })
     const [allow, setAllow] = useState(true)
 
@@ -40,26 +40,27 @@ const FormComponent = ({ message }) => {
             message: state.message
         }
 
-        /**axios.get(`https://us-central1-gym1000-b0dd5.cloudfunctions.net/sendMail/<${user.email}>`)
-            .then(res => {
-                this.updateUser(user)
-            })
-            .catch(err => console.log(err))*/
-
         axios.post('https://us-central1-real-estate-agency-3a42a.cloudfunctions.net/sendMessage', userInfo)
             .then(res => {
                 cleanState()
-                console.log(res)
+                showAlertMessage()
             })
             .catch(err => console.log(err))
 
     }
 
+    const validateEmail = (email) => {
+        // eslint-disable-next-line
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        console.log(re.test(email.toLowerCase()))
+        return re.test(email.toLowerCase());
+    }
+
     let isInvalid =
-        state.name === '' ||
-        state.lastName === '' ||
-        state.email === '' ||
-        state.message === ''
+        state.name.length < 3 ||
+        state.lastName.length < 3 ||
+        !validateEmail(state.email) ||
+        state.message.length < 3
 
     return (
         <form style={{ width: "100%" }} onSubmit={onSubmitForm}>
@@ -70,7 +71,7 @@ const FormComponent = ({ message }) => {
                         <div className="input-group-prepend">
                             <div className={`input-group-text ${styles.labels_to_left}`}>Name</div>
                         </div>
-                        <input type="text" name="name" className={`form-control ${styles.input_size}`} onChange={e => changeState(e)} value={state.name || ''} id="inlineFormName" />
+                        <input type="text" name="name" className={`form-control ${styles.input_size}`} onChange={e => changeState(e)} value={state.name || ''} id="inlineFormName" required />
                     </div>
                 </div>
                 <div className="col-auto">
@@ -88,7 +89,7 @@ const FormComponent = ({ message }) => {
                         <div className="input-group-prepend">
                             <div className={`input-group-text ${styles.labels_to_left}`}>Email</div>
                         </div>
-                        <input type="email" name="email" className={`form-control ${styles.input_size}`} onChange={e => changeState(e)} value={state.email || ''} id="inlineInputEmail" />
+                        <input type="email" name="email" className={`form-control ${styles.input_size}`} onChange={e => changeState(e)} value={state.email || ''} id="inlineInputEmail" required />
                     </div>
                 </div>
                 <div className="col-auto">

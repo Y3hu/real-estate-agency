@@ -37,7 +37,7 @@ const NavigationAuth = () => (
         <div className={`collapse navbar-collapse ${styles.nav_list}`} id="navbarTogglerDemo02">
             <div className={`${styles.nav_list_items_container}`}>
                 <i className={`${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.LANDING} className="nav-link" style={{ color: "white", textAlign: "center" }}>Landing <span className="sr-only">(current)</span></Link>
+                    <Link to={ROUTES.LANDING} className="nav-link" style={{ color: "white", textAlign: "center" }}>Home <span className="sr-only">(current)</span></Link>
                 </i>
                 <i className={`${styles.nav_items_styles}`}>
                     <Link to={`${ROUTES.MANAGEPROPERTIES}/all`} className="nav-link" style={{ color: "white", textAlign: "center" }}>Properties</Link>

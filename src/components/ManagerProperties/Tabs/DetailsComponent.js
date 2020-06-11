@@ -5,27 +5,6 @@ import StateDrop from './StateDrop'
 
 import styles from '../manager-properties.module.scss'
 
-const bedsOptions = [
-    ["1", "1"],
-    ["2", "2"],
-    ["3", "3"],
-    ["+3", "+3"],
-]
-
-const bathsOptions = [
-    ["1", "1"],
-    ["2", "2"],
-    ["3", "3"],
-    ["+3", "+3"],
-]
-
-const unitsOptions = [
-    ["1", "1"],
-    ["2", "2"],
-    ["3", "3"],
-    ["+3", "+3"],
-]
-
 const HOAOptions = [
     [true, 'yes'],
     [false, 'no']
@@ -34,14 +13,23 @@ const HOAOptions = [
 const Contact = ({ setForm, formData }) => {
     const { beds, baths, units, year, view, access, house, lot, HOA } = formData
 
+    const quantityOptions = () => {
+        var options = []
+        for(let i = 0; i<=100; i++){
+            options = [...options, [i, i]]
+        }
+        options = [...options, ["100+", "100+"]]
+        return options
+    }
+
     return (
 
         <div className={styles.details_form_container}>
             <div className={styles.details_form_dropdowns}>
 
-                <StateDrop label="Beds" name="beds" options={bedsOptions} value={beds} onChange={setForm} />
-                <StateDrop label="Baths" name="baths" options={bathsOptions} value={baths} onChange={setForm} />
-                <StateDrop label="Units" name="units" options={unitsOptions} value={units} onChange={setForm} />
+                <StateDrop label="Beds" name="beds" options={quantityOptions()} value={beds} onChange={setForm} />
+                <StateDrop label="Baths" name="baths" options={quantityOptions()} value={baths} onChange={setForm} />
+                <StateDrop label="Units" name="units" options={quantityOptions()} value={units} onChange={setForm} />
             </div>
             <div className={styles.details_form_checks_container}>
                 <div className={styles.details_form_checks_tag}>

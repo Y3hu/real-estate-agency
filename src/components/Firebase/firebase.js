@@ -52,6 +52,10 @@ class Firebase {
 
     properties = () => this.db.ref('properties')
 
+    city = uid => this.db.ref(`cities/${uid}`)
+
+    cities = () => this.db.ref('cities')
+
 }
 
 export default Firebase

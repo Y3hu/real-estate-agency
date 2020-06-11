@@ -8,14 +8,23 @@ import { withFirebase } from '../Firebase'
 
 import styles from './properties.module.scss'
 
-const optArray = [
+const quantityOptions = () => {
+    var options = []
+    for(let i = 0; i<=100; i++){
+        options = [...options, i]
+    }
+    options = [...options, "100+"]
+    return options
+}
+
+let optArray = [
     {
         name: "Category",
         options: ["buy", "rent", "other"]
     },
     {
         name: "City",
-        options: ["Nuevo Arenal", "Fortuna", "Tronadora", "Tilarán", "Bagaces"]
+        options: []
     },
     {
         name: "Price",
@@ -23,31 +32,13 @@ const optArray = [
     },
     {
         name: "Bedrooms",
-        options: ["1", "2", "3", "4+"]
+        options: quantityOptions()
     },
     {
         name: "Bathrooms",
-        options: ["1", "2", "3", "4+"]
+        options: quantityOptions()
     }
 ]
-
-/**const properties = [
-    { name: "RESIDENTIAL", image: "https://www.w3schools.com/w3images/house1.jpg" },
-    { name: "ACRAGE", image: "https://www.w3schools.com/w3images/house2.jpg" },
-    { name: "COMMERCIAL", image: "https://www.w3schools.com/w3images/house3.jpg" },
-    { name: "DEVELOPMENTS", image: "https://www.w3schools.com/w3images/house4.jpg" },
-    { name: "RENTALS", image: "https://www.w3schools.com/w3images/house5.jpg" },
-    { name: "CONSTRUCTION", image: "https://www.w3schools.com/w3images/architect.jpg" },
-    { name: "RESIDENTIAL", image: "https://www.w3schools.com/w3images/house1.jpg" },
-    { name: "ACRAGE", image: "https://www.w3schools.com/w3images/house2.jpg" },
-    { name: "COMMERCIAL", image: "https://www.w3schools.com/w3images/house3.jpg" },
-    { name: "DEVELOPMENTS", image: "https://www.w3schools.com/w3images/house4.jpg" },
-    { name: "RENTALS", image: "https://www.w3schools.com/w3images/house5.jpg" },
-    { name: "CONSTRUCTION", image: "https://www.w3schools.com/w3images/architect.jpg" },
-    { name: "COMMERCIAL", image: "https://www.w3schools.com/w3images/house3.jpg" },
-    { name: "DEVELOPMENTS", image: "https://www.w3schools.com/w3images/house4.jpg" },
-    { name: "RENTALS", image: "https://www.w3schools.com/w3images/house5.jpg" },
-]*/
 
 const PropertiesComponent = ({ firebase }) => {
     const [dbProperties, setDbProperties] = useState([])
@@ -55,7 +46,6 @@ const PropertiesComponent = ({ firebase }) => {
     const [loading, setLoading] = useState(false)
 
     let { filter } = useParams();
-
     console.log(filter)
 
     useEffect(() => {
@@ -75,7 +65,33 @@ const PropertiesComponent = ({ firebase }) => {
             setLoading(false)
         })
 
-        return () => firebase.properties().off()
+        firebase.cities().on('value', snapshot => {
+            const citiesObject = snapshot.val()
+
+            for (let key in citiesObject) {
+                let city = {
+                    uid: key,
+                    ...citiesObject[key]
+                }
+
+                optArray.map(o => {
+                    if (o.name === "City") {
+                        let cityFound = o.options.find(c => c === city.name)
+                        console.log(cityFound)
+
+                        if (!cityFound) o.options = [...o.options, city.name.toUpperCase()]
+                    }
+                    return 0
+                })
+            }
+
+        })
+
+
+        return () => {
+            firebase.properties().off()
+            firebase.cities().off()
+        }
     }, [firebase])
 
     return (
