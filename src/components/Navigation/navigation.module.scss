@@ -157,4 +157,8 @@ $breakpoint-lg: 1360px;
   @include media(lg) {
     max-width: 25%;
   }
+
+  @include media(md) {
+    max-width: 25%;
+  }
 }

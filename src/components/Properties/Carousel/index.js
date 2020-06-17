@@ -7,11 +7,11 @@ import styles from './carousel.module.scss'
 const CarouselComponent = ({ images = [] }) => {
 
     return (
-        <div id="carouselExampleFade" className="carousel slide carousel-fade" data-ride="carousel">
+        <div id="carouselExampleFade" className={`carousel slide carousel-fade ${styles.carousel_container}`} data-ride="carousel">
             <div className={`carousel-inner ${styles.carousel_slides_container}`}>
                 {
                     images.map((image, i) => (
-                        <CarouselItem image={image} key={`carousel-item ${i}`} active={(i === 0) ? true : false} />
+                        <CarouselItem image={image.url} key={`carousel-item ${i}`} active={(i === 0) ? true : false} />
                     ))
                 }
             </div>

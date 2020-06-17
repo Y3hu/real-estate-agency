@@ -6,9 +6,12 @@ const CardsComponent = ({ info = {}, onSelect }) => {
     let { price } = info
     price = new Intl.NumberFormat().format(price)
 
+    let image = info.images.find(image => image.portrait === true)
+    console.log(image)
+
     return (
         <div className={`card ${styles.card_shadow}`}>
-            <img src={info.images[0]} className="card-img-top" alt="propertie look" title="propertie look" loading="lazy" />
+            <img src={image ? image.url : ''} className="card-img-top" alt="propertie look" title="propertie look" loading="lazy" />
             <div>
                 <h5 className="card-title">
                     ${price}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DropdownComponent from './dropdown'
 import CardsComponent from './cards'
 import PropertyComponent from './property'
+import SpinnerComponent from '../Shared/Spinner'
 import { useParams } from 'react-router-dom'
 
 import { withFirebase } from '../Firebase'
@@ -10,7 +11,7 @@ import styles from './properties.module.scss'
 
 const quantityOptions = () => {
     var options = []
-    for(let i = 0; i<=100; i++){
+    for (let i = 0; i <= 100; i++) {
         options = [...options, i]
     }
     options = [...options, "100+"]
@@ -21,10 +22,6 @@ let optArray = [
     {
         name: "Category",
         options: ["buy", "rent", "other"]
-    },
-    {
-        name: "City",
-        options: []
     },
     {
         name: "Price",
@@ -42,6 +39,7 @@ let optArray = [
 
 const PropertiesComponent = ({ firebase }) => {
     const [dbProperties, setDbProperties] = useState([])
+    const [dbCities, setDbCities] = useState([])
     const [property, setProperty] = useState({})
     const [loading, setLoading] = useState(false)
 
@@ -61,29 +59,18 @@ const PropertiesComponent = ({ firebase }) => {
 
                 setDbProperties(p => [...p, propertie])
             }
-
-            setLoading(false)
         })
 
         firebase.cities().on('value', snapshot => {
             const citiesObject = snapshot.val()
 
             for (let key in citiesObject) {
-                let city = {
-                    uid: key,
-                    ...citiesObject[key]
-                }
+                let city = citiesObject[key].name.toUpperCase()
+                console.log(city)
 
-                optArray.map(o => {
-                    if (o.name === "City") {
-                        let cityFound = o.options.find(c => c === city.name)
-                        console.log(cityFound)
-
-                        if (!cityFound) o.options = [...o.options, city.name.toUpperCase()]
-                    }
-                    return 0
-                })
+                setDbCities(cities => [...cities, city])
             }
+            setLoading(false)
 
         })
 
@@ -105,6 +92,7 @@ const PropertiesComponent = ({ firebase }) => {
                     <>
                         <div className={styles.properties_top}>
 
+                            <DropdownComponent key="cities_dropdown" name="Cities" options={dbCities} />
                             {
                                 optArray.map((e, i) => (
                                     <DropdownComponent key={i} name={e.name} options={e.options} />
@@ -117,8 +105,7 @@ const PropertiesComponent = ({ firebase }) => {
                                 (dbProperties.length > 0 && !loading) ?
                                     dbProperties.map((p, i) => (
                                         <CardsComponent key={i} info={p} onSelect={setProperty} />
-                                    )) :
-                                    ''
+                                    )) : <SpinnerComponent />
                             }
                         </div>
                     </>

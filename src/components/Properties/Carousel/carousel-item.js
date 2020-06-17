@@ -12,10 +12,3 @@ const CarouselItemComponent = ({ image, active }) => {
 }
 
 export default CarouselItemComponent
-
-/**
-<div className="carousel-caption d-none d-md-block">
-                <h5>$249,000</h5>
-                <p>The home includes a bright and spacious open floor plan overlooking Lake Arenal.</p>
-            </div>
- */

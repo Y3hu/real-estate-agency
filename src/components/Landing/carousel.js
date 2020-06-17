@@ -8,7 +8,7 @@ import styles from './landing.module.scss'
 
 const CarouselComponent = () => {
 
-    return(
+    return (
         <div id="carouselExampleCaptions" className="carousel slide carousel-fade" data-ride="carousel">
             <ol className="carousel-indicators">
                 <li data-target="#carouselExampleCaptions" data-slide-to="0" className="active"></li>
@@ -16,22 +16,22 @@ const CarouselComponent = () => {
                 <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
             </ol>
             <div className={`carousel-inner ${styles.carousel_slides_container}`}>
-                <div className={`carousel-item active ${styles.carousel_slide}`} style={{backgroundImage: `url(${RioCeleste})`}}>
+                <div className={`carousel-item active ${styles.carousel_slide}`} style={{ backgroundImage: `url(${RioCeleste})` }} data-interval="3000">
                     {/**<img src={RioCeleste} className="d-block" alt="Rio Celeste" />*/}
-                    
+
                     <div className="carousel-caption d-none d-md-block">
                         <h5>$40,000</h5>
                         <p>Boasts 112 feet (34 meters) right on the shore of the famous Rio Celeste!</p>
                     </div>
                 </div>
-                <div className={`carousel-item ${styles.carousel_slide}`} style={{backgroundImage: `url(${LakeArenal})`}}>
+                <div className={`carousel-item ${styles.carousel_slide}`} style={{ backgroundImage: `url(${LakeArenal})` }} data-interval="3000">
                     {/**<img src={LakeArenal} className="d-block" alt="Lake Arenal" />*/}
                     <div className="carousel-caption d-none d-md-block">
                         <h5>$199,000</h5>
                         <p> Inspired by Huf House in Germany, is constructed of steel, concrete and glass, and sits on a 1200 sq m lot.</p>
                     </div>
                 </div>
-                <div className={`carousel-item ${styles.carousel_slide}`} style={{backgroundImage: `url(${LakeArenal2})`}}>
+                <div className={`carousel-item ${styles.carousel_slide}`} style={{ backgroundImage: `url(${LakeArenal2})` }} data-interval="3000">
                     {/**<img src={LakeArenal2} className="d-block" alt={LakeArenal2} />*/}
                     <div className="carousel-caption d-none d-md-block">
                         <h5>$249,000</h5>
