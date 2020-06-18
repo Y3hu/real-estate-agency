@@ -14,7 +14,7 @@ const propertyTypeOptions = [
 
 const categoryOptions = [
     ["residential", "Residential"],
-    ["acreage", "Acreage"],
+    ["land/lots", "Land/Lots"],
     ["commercial", "Commercial"],
     ["developments", "Developments"],
     ["rentals", "Rentals"]
@@ -77,76 +77,3 @@ const Names = ({ setForm, formData }) => {
 }
 
 export default Names
-
-/**<form>
-                        <div className="form align-items-center">
-                            <div className="col-auto">
-                                <label className="sr-only" htmlFor="inlineFormName">Listing Code</label>
-                                <div className="input-group mb-2">
-                                    <div className="input-group-prepend">
-                                        <div className={`input-group-text ${styles.labels_to_left}`}>Listing Code</div>
-                                    </div>
-                                    <input type="text" name="listingCode" className={`form-control ${styles.input_size}`} onChange={onGeneralChange} value={state.GENERAL.listingCode || ''} id="inlineFormName" />
-                                </div>
-                            </div>
-                            <div className="col-auto">
-                                <label className="sr-only" htmlFor="inlineInputLastName">Listing Date</label>
-                                <div className="input-group mb-2">
-                                    <div className="input-group-prepend">
-                                        <div className={`input-group-text ${styles.labels_to_left}`}>Listing Date</div>
-                                    </div>
-                                    <input type="text" name="listingDate" className={`form-control ${styles.input_size}`} onChange={onGeneralChange} value={state.GENERAL.listingDate || ''} id="inlineInputLastName" />
-                                </div>
-                            </div>
-                            <div className="col-auto">
-                                <label className="sr-only" htmlFor="inlineInputLastName">Property Type</label>
-                                <div className="input-group mb-2">
-                                    <div className="input-group-prepend">
-                                        <div className={`input-group-text ${styles.labels_to_left}`}>Property Type</div>
-                                    </div>
-                                    <select className="form-control">
-                                        <option>Default select</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-auto">
-                                <label className="sr-only" htmlFor="inlineInputLastName">Category</label>
-                                <div className="input-group mb-2">
-                                    <div className="input-group-prepend">
-                                        <div className={`input-group-text ${styles.labels_to_left}`}>Category</div>
-                                    </div>
-                                    <select className="form-control">
-                                        <option>Default select</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-auto">
-                                <label className="sr-only" htmlFor="inlineInputLastName">Property Title</label>
-                                <div className="input-group mb-2">
-                                    <div className="input-group-prepend">
-                                        <div className={`input-group-text ${styles.labels_to_left}`}>Property Title</div>
-                                    </div>
-                                    <input type="text" name="propertyTitle" className={`form-control ${styles.input_size}`} onChange={onGeneralChange} value={state.GENERAL.propertyTitle || ''} id="inlineInputLastName" />
-                                </div>
-                            </div>
-                            <div className="col-auto">
-                                <label className="sr-only" htmlFor="inlineInputLastName">Price</label>
-                                <div className="input-group mb-2">
-                                    <div className="input-group-prepend">
-                                        <div className={`input-group-text ${styles.labels_to_left}`}>Price</div>
-                                    </div>
-                                    <input type="number" name="price" className={`form-control ${styles.input_size}`} onChange={onGeneralChange} value={state.GENERAL.price || ''} id="inlineInputLastName" />
-                                </div>
-                            </div>
-                            <div className="col-auto">
-                                <label className="sr-only" htmlFor="inlineInputMessage">Description</label>
-                                <div className="input-group mb-2">
-                                    <div className="input-group-prepend">
-                                        <div className={`input-group-text ${styles.labels_to_left}`}>Description</div>
-                                    </div>
-                                    <textarea name="description" className={`form-control ${styles.input_size}`} onChange={onGeneralChange} value={state.GENERAL.description || ''} id="inlineInputMessage" rows="4"></textarea>
-                                </div>
-                            </div>
-                            {state.error && <p>{state.error.message}</p>}
-                        </div>
-                    </form> */

@@ -13,7 +13,7 @@ const PropertiesManagementComponent = () => {
     return (
         <div className={styles.manager_properties_container}>
             <div className={styles.manager_top}>
-                <h1>Properties Manager</h1>
+                <h1>Add a new property</h1>
             </div>
             <div className={styles.manager_bottom}>
                 <TabsComponent showAlertMessage={showAlertMessage} />

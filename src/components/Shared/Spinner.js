@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SpinnerComponent = ({ backgroundColor = "white" }) => {
+const SpinnerComponent = ({ backgroundColor, percent }) => {
     return (
         <div className="d-flex justify-content-center">
             <div className="spinner-grow text-light"
@@ -9,11 +9,19 @@ const SpinnerComponent = ({ backgroundColor = "white" }) => {
                     minHeight: "8rem",
                     maxWidth: "8rem",
                     maxHeight: "8rem",
-                    backgroundColor: backgroundColor
+                    backgroundColor: !backgroundColor ? "#0e0e95" : "white",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                 }}
                 role="status"
             >
-                <span className="sr-only">Loading...</span>
+                <span style={{ color: !backgroundColor ? "white" : "#0e0e95", fontSize: "1.5rem" }}>
+                    {
+                        (percent) ? percent.toString()
+                            : 'Loading...'
+                    }
+                </span>
             </div>
         </div>
     )

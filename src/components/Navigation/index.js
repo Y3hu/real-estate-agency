@@ -37,13 +37,14 @@ const NavigationAuth = () => (
         <div className={`collapse navbar-collapse ${styles.nav_list}`} id="navbarTogglerDemo02">
             <div className={`${styles.nav_list_items_container}`}>
                 <i className={`${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.LANDING} className="nav-link" style={{ color: "white", textAlign: "center" }}>Editing <span className="sr-only">(current)</span></Link>
+                    <Link to={`${ROUTES.MANAGEPROPERTIES}/all`} className="nav-link" style={{ color: "white", textAlign: "center" }}>Add <span className="sr-only">(current)</span></Link>
                 </i>
                 <i className={`${styles.nav_items_styles}`}>
-                    <Link to={`${ROUTES.MANAGEPROPERTIES}/all`} className="nav-link" style={{ color: "white", textAlign: "center" }}>Adding</Link>
+                    <Link to={ROUTES.EDIT} className="nav-link" style={{ color: "white", textAlign: "center" }}>Edit</Link>
                 </i>
                 <i className={`${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.ACCOUNT} className="nav-link" style={{ color: "white", textAlign: "center" }}>Deleting</Link>
+
+                    <Link to={ROUTES.LANDING} className="nav-link" style={{ color: "white", textAlign: "center" }}>Delete</Link>
                 </i>
                 <i className={`${styles.nav_items_styles}`}>
                     <Link to={ROUTES.ADMIN} className="nav-link" style={{ color: "white", textAlign: "center" }}>Admin</Link>

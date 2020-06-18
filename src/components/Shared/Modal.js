@@ -19,12 +19,12 @@ const ModalComponent =
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <h5 className="modal-title" id="exampleModalLabel" style={{ color: "#0e0e95" }}>Alert</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div className="modal-body">
+                            <div className="modal-body" style={{ color: "#0e0e95" }}>
                                 {message || "..."}
                             </div>
                             <div className="modal-footer">

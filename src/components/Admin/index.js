@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import AccountComponent from './account'
 
 import { AuthUserContext, withAuthorization } from '../Session'
 
@@ -36,6 +37,7 @@ const AdminComponent = ({ firebase }) => {
                     <h4>Hi {authUser.email}</h4>
                     {loading && <div>Loading ...</div>}
                     <UserList users={users} />
+                    <AccountComponent />
                 </div>
             }
         </AuthUserContext.Consumer>

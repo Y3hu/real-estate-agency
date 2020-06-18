@@ -13,7 +13,7 @@ import SignUpPage from '../SignUp'
 import SignInPage from '../SignIn'
 import PasswordForgetPage from '../PasswordForget'
 import ManagerProperties from '../ManagerProperties'
-import AccountPage from '../Account'
+import EditPage from '../Edit'
 import AdminPage from '../Admin'
 import About from '../About'
 import Contact from '../Contact'
@@ -34,7 +34,7 @@ const App = () => {
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
         <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
         <Route path={ROUTES.MANAGEPROPERTIES} component={ManagerProperties} />
-        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+        <Route path={ROUTES.EDIT} component={EditPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
         <Route path={ROUTES.ABOUT} component={About} />
         <Route path={ROUTES.CONTACT} component={Contact} />
