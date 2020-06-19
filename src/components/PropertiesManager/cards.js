@@ -3,7 +3,7 @@ import React from 'react'
 import DefaultImage from '../../assets/default.jpg'
 import styles from './properties.module.scss'
 
-const CardsComponent = ({ info = {}, onSelect }) => {
+const CardsComponent = ({ info = {}, onSelect, onDelete }) => {
     let { price } = info
     price = new Intl.NumberFormat().format(price)
 
@@ -17,8 +17,11 @@ const CardsComponent = ({ info = {}, onSelect }) => {
                     ${price}
                 </h5>
                 <p className="card-text">{info.propertyTitle}</p>
-                <button className={`btn ${styles.button_animated}`} onClick={e => onSelect(info)}>
-                    <span>View more</span>
+                <button className={`btn ${styles.button_animated}`} style={{ marginRight: "10%" }} onClick={e => onSelect(info)}>
+                    <span>Edit this</span>
+                </button>
+                <button className={`btn ${styles.button_animated}`} onClick={e => onDelete(info)}>
+                    <span>Delete this</span>
                 </button>
             </div>
         </div>

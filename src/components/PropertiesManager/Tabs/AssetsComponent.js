@@ -7,7 +7,7 @@ import { withAuthorization } from '../../Session'
 import styles from './tabs.module.scss'
 import DragAndDropComponent from './DragAndDrop'
 
-const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage }) => {
+const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage, redirect }) => {
     const [imagesAsFiles, setImagesAsFiles] = useState([])
     const [imagesUrls, setImagesUrls] = useState([])
     const [videoAsFile, setVideoAsFile] = useState({})
@@ -15,7 +15,6 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage }) => {
     const [uploading, setUploading] = useState(false)
     const [cities, setCities] = useState([])
     const [imageSelected, setImageSelected] = useState('')
-    const [percent, setPercent] = useState(0)
 
     const { city } = formData
 
@@ -200,7 +199,6 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage }) => {
                                         document.getElementById("images").style.visibility = "visible"
                                         document.getElementById("images").style.display = "flex"
                                     }
-                                    setPercent(index * 100 / imagesAsFiles.length)
 
                                 })
                         })
@@ -237,7 +235,7 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage }) => {
     const deleteImages = e => {
 
         if (imagesUrls.length > 0) {
-            Object.values(imagesAsFiles).forEach(image => {
+            imagesAsFiles.forEach(image => {
                 firebase.storage.ref(`/images/${image.name}`).delete()
                     .then(() => {
                         console.log('file deleted')
@@ -299,7 +297,10 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage }) => {
         // Create a user in your Firebase realtime database
         firebase.propertie(propertieInfo.listingCode)
             .set({ ...propertieInfo })
-            .then(() => showAlertMessage())
+            .then(() => {
+                showAlertMessage()
+                redirect()
+            })
     }
 
     return (
@@ -334,7 +335,7 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage }) => {
                     <div className={styles.details_form_container_images}>
                         {
                             (Object.keys(imagesAsFiles).length > imagesUrls.length && uploading) ?
-                                <Spinner backgroundColor="#0e0e95" percent={percent} />
+                                <Spinner backgroundColor="#0e0e95" />
                                 : <DragAndDropComponent imageChanges={imageChanges} />
                         }
                         <div id="images" className={styles.details_form_container_images}></div>

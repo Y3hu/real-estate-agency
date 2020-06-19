@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import AccountComponent from './account'
+import { SignUpLink } from '../SignUp'
+import { Spinner } from '../Shared'
 
 import { AuthUserContext, withAuthorization } from '../Session'
+
+import styles from './admin.module.scss'
 
 const AdminComponent = ({ firebase }) => {
 
@@ -33,33 +36,40 @@ const AdminComponent = ({ firebase }) => {
     return (
         <AuthUserContext.Consumer>
             {authUser =>
-                <div>
-                    <h4>Hi {authUser.email}</h4>
-                    {loading && <div>Loading ...</div>}
-                    <UserList users={users} />
-                    <AccountComponent />
+                <div className={styles.admin_container}>
+                    <div className={styles.admin_top}>
+                        <h1>Users Manager</h1>
+                    </div>
+                    {
+                        loading ? <Spinner /> : <><SignUpLink /><UsersTable users={users} /></>
+                    }
                 </div>
             }
         </AuthUserContext.Consumer>
     )
 }
 
-const UserList = ({ users }) => (
-    <ul>
-        {users.map(user => (
-            <li key={user.uid}>
-                <span>
-                    <strong>ID:</strong> {user.uid}
-                </span>
-                <span>
-                    <strong>E-Mail:</strong> {user.email}
-                </span>
-                <span>
-                    <strong>Username:</strong> {user.username}
-                </span>
-            </li>
-        ))}
-    </ul>
+const UsersTable = ({ users }) => (
+    <div className="table-responsive">
+        <table className="table table-bordered table-dark">
+            <thead style={{ backgroundColor: "#0e0e95" }}>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">E-Mail</th>
+                    <th scope="col">Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                {users.map(user => (
+                    <tr>
+                        <td>{user.uid}</td>
+                        <td>{user.email}</td>
+                        <td>{user.username}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    </div>
 )
 
 const condition = authUser => !!authUser

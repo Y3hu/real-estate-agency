@@ -1,7 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { compose } from 'recompose'
-import { SignUpLink } from '../SignUp'
 import { PasswordForgetLink } from '../PasswordForget'
 import { withFirebase } from '../Firebase'
 import * as ROUTES from '../../constants/routes'
@@ -28,7 +27,7 @@ const SignInPage = () => (
           <div className="card-footer">
             <div style={{ display: "flex", flexFlow: "row no wrap", justifyContent: "space-between", alignItems: "center" }}>
               <PasswordForgetLink />
-              <SignUpLink />
+
             </div>
           </div>
         </div>
@@ -54,11 +53,14 @@ const SignInFormBase = props => {
     props.firebase.doSignInWithEmailAndPassword(email.trim(), password)
       .then(() => {
         cleanState({ ...INITIAL_STATE })
-        props.history.push(ROUTES.ADMIN)
+        props.history.push(ROUTES.MANAGEPROPERTIES)
       })
-      .catch(error => {
-        changeState({ error })
-      })
+      .catch(error => changeState({
+        target: {
+          name: "error",
+          value: error
+        }
+      }))
 
   }
 
@@ -85,7 +87,7 @@ const SignInFormBase = props => {
         required
       />
       <button className="btn btn-lg btn-primary btn-block mb-1" style={{ backgroundColor: "#00008B" }} type="submit" disabled={isInvalid}>Sign In</button>
-      {state.error && <p>{state.error.message}</p>}
+      {state.error && <p style={{ color: "#00008B" }}>{state.error.message}</p>}
     </form>
   )
 

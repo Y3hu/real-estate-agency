@@ -1,0 +1,210 @@
+// variables:
+$breakpoint-xs: 360px;
+$breakpoint-sm: 767px;
+$breakpoint-md: 1023px;
+$breakpoint-lg: 1360px;
+
+@mixin media($media) {
+  @if $media==xs {
+    @media (max-width: $breakpoint-sm) {
+      @content;
+    }
+  }
+
+  @else if $media==sm {
+    @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+      @content;
+    }
+  }
+
+  @else if $media==md {
+    @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+      @content;
+    }
+  }
+
+  @else if $media==lg {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  }
+}
+
+.manager_properties_container {
+  display        : flex;
+  flex-flow      : column nowrap;
+  justify-content: center;
+  align-items    : center;
+  min-width      : 100%;
+  max-width      : 100%;
+}
+
+.manager_top {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  min-width      : 100%;
+  max-width      : 100%;
+
+  h1 {
+    color: black;
+  }
+}
+
+.box-shadow {
+  -webkit-box-shadow: 6px 6px 22px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow   : 6px 6px 22px -1px rgba(0, 0, 0, 0.75);
+  box-shadow        : 6px 6px 22px -1px rgba(0, 0, 0, 0.75);
+}
+
+.carousel_slides_container {
+  max-width      : 350px;
+  max-height     : 200px;
+  background-size: cover;
+  border-radius  : 10px;
+  @extend .box-shadow;
+
+  @include media(lg) {
+    min-width : 950px;
+    max-height: 530px;
+  }
+
+  @include media(md) {
+    min-width : 950px;
+    max-height: 530px;
+  }
+}
+
+.carousel_slide {
+  display        : flex;
+  flex-flow      : column wrap;
+  align-items    : flex-start;
+  justify-content: center;
+  background-size: cover;
+  min-width      : 950px;
+  min-height     : 500px;
+
+  img {
+    max-width: 350px;
+
+    @include media(lg) {
+      min-width : 950px;
+      min-height: 530px;
+    }
+
+    @include media(md) {
+      min-width : 950px;
+      min-height: 530px;
+    }
+  }
+}
+
+//image component
+
+.details_form_container {
+  display        : flex;
+  justify-content: flex-start;
+  align-items    : flex-start;
+  flex-flow      : column wrap;
+  min-width      : 100%;
+}
+
+.details_form_checks_container {
+  display        : flex;
+  flex-flow      : column nowrap;
+  justify-content: flex-start;
+  align-items    : flex-start;
+  background     : #ffffff 0% 0% no-repeat padding-box;
+  border         : 1px solid #dddddd;
+  opacity        : 1;
+  min-width      : 99%;
+  min-height     : 18vh;
+  margin         : 1vh .5%;
+}
+
+.details_form_checks_tags {
+  display        : flex;
+  flex-flow      : row wrap;
+  justify-content: space-between;
+  align-items    : flex-start;
+  width          : 100%;
+}
+
+.details_form_checks_tag {
+  background    : #eceeef 0% 0% no-repeat padding-box;
+  border        : 1px solid #dddddd;
+  opacity       : 1;
+  height        : 6vh;
+  letter-spacing: 0px;
+  text-align    : center;
+  font-size     : 30px;
+  margin-bottom : 1vh;
+  color         : #0e0e95;
+}
+
+.details_form_checks_options {
+  display        : flex;
+  flex-flow      : row wrap;
+  justify-content: flex-end;
+  align-items    : flex-start;
+
+  button {
+    font-size: 25px;
+
+    &:hover {
+      background-color: #0e0e95;
+    }
+
+    @include media(lg) {
+      font-size: 35px;
+    }
+
+    @include media(md) {
+      font-size: 35px;
+    }
+  }
+
+}
+
+.option_disabled {
+  color : gray;
+  cursor: not-allowed;
+}
+
+.option_enable {
+  color : #00008B;
+  cursor: pointer;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.details_form_container_images {
+  display        : flex;
+  flex-flow      : row wrap;
+  justify-content: space-evenly;
+  align-items    : flex-end;
+  min-width      : 100%;
+
+  img {
+    width : 20vw;
+    height: 10vh;
+
+    @include media(lg) {
+      width : 15vw;
+      height: unset;
+    }
+  }
+
+  video {
+    width: 45vw;
+  }
+}
+
+.upload_button {
+  display     : flex;
+  align-self  : flex-end;
+  justify-self: flex-end;
+  margin-right: .5vw;
+}

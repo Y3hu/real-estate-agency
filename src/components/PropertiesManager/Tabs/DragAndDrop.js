@@ -22,7 +22,8 @@ const DragAndDropComponent = ({ imageChanges }) => {
         justifyContent: 'space-around',
         alignItems: 'center',
         textAlign: 'center',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        color: "#0e0e95"
     }
 
     return (

@@ -8,12 +8,13 @@ import { withAuthentication } from '../Session'
 
 import Navigation from '../Navigation'
 import FooterComponent from '../Footer'
-import LandingPage from '../Landing'
+import HomePage from '../Home'
 import SignUpPage from '../SignUp'
 import SignInPage from '../SignIn'
 import PasswordForgetPage from '../PasswordForget'
-import ManagerProperties from '../ManagerProperties'
-import EditPage from '../Edit'
+import CarouselManager from '../CarouselManager'
+import Account from '../Account'
+import PropertiesManager from '../PropertiesManager'
 import AdminPage from '../Admin'
 import About from '../About'
 import Contact from '../Contact'
@@ -29,12 +30,13 @@ const App = () => {
         <Navigation />
       </header>
       <main className={styles.main_container}>
-        <Route exact path={ROUTES.LANDING} component={LandingPage} />
+        <Route exact path={ROUTES.HOME} component={HomePage} />
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
         <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-        <Route path={ROUTES.MANAGEPROPERTIES} component={ManagerProperties} />
-        <Route path={ROUTES.EDIT} component={EditPage} />
+        <Route path={ROUTES.MANAGEPROPERTIES} component={PropertiesManager} />
+        <Route path={ROUTES.CAROUSEL} component={CarouselManager} />
+        <Route path={ROUTES.ACCOUNT} component={Account} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
         <Route path={ROUTES.ABOUT} component={About} />
         <Route path={ROUTES.CONTACT} component={Contact} />

@@ -2,7 +2,9 @@ import React from 'react'
 
 import styles from './properties.module.scss'
 
-const DropdownComponent = ({ name, options }) => {
+const DropdownComponent = ({ name, options, func }) => {
+
+    const filter = f => func(f.toString().toLowerCase())
 
     return (
         <div className={`btn-group ${styles.dropdown}`}>
@@ -12,7 +14,7 @@ const DropdownComponent = ({ name, options }) => {
             <div className={`dropdown-menu dropdown-menu-lg-right ${styles.dropdown_menu}`}>
                 {
                     options.map((opt, i) => (
-                        <button key={i} className="dropdown-item" type="button">{opt}</button>
+                        <button key={i} className="dropdown-item" type="button" onClick={() => filter(opt)}>{opt}</button>
                     ))
                 }
             </div>

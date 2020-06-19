@@ -46,15 +46,27 @@ class Firebase {
 
     users = () => this.db.ref('users')
 
+    // *** Category API ***
+
     categories = () => this.db.ref('categories')
+
+    // *** Property API ***
 
     propertie = uid => this.db.ref(`properties/${uid}`)
 
     properties = () => this.db.ref('properties')
 
+    // *** City API ***
+
     city = uid => this.db.ref(`cities/${uid}`)
 
     cities = () => this.db.ref('cities')
+
+    // *** Carousel API ***
+
+    image = uid => this.db.ref(`carousel/${uid}`)
+
+    images = () => this.db.ref('carousel')
 
 }
 

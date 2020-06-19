@@ -21,11 +21,11 @@ const quantityOptions = () => {
 let optArray = [
     {
         name: "Category",
-        options: ["buy", "rent", "other"]
+        options: ["commercial", "residential", "developments", "rentals", "land/lots"]
     },
     {
         name: "Price",
-        options: ["Min. $0 - $50,000 Max", "Min $50,000 - $150,000 Max", "Min $150,000 - $250,000 Max", "Min $250,000 - $ 400,000 Max", "Min $400,000 +"]
+        options: ["Min $0 - $50,000 Max", "Min $50,000 - $150,000 Max", "Min $150,000 - $250,000 Max", "Min $250,000 - $ 400,000 Max", "Min $400,000 +"]
     },
     {
         name: "Bedrooms",
@@ -42,9 +42,13 @@ const PropertiesComponent = ({ firebase }) => {
     const [dbCities, setDbCities] = useState([])
     const [property, setProperty] = useState({})
     const [loading, setLoading] = useState(false)
+    const [city, setCity] = useState(null)
+    const [category, setCategory] = useState(null)
+    const [price, setPrice] = useState(null)
+    const [bedrooms, setBedrooms] = useState(null)
+    const [bathrooms, setBathrooms] = useState(null)
 
-    let { filter } = useParams();
-    console.log(filter)
+    let { filter } = useParams()
 
     useEffect(() => {
         setLoading(true)
@@ -66,20 +70,64 @@ const PropertiesComponent = ({ firebase }) => {
 
             for (let key in citiesObject) {
                 let city = citiesObject[key].name.toUpperCase()
-                console.log(city)
 
                 setDbCities(cities => [...cities, city])
             }
-            setLoading(false)
-
         })
 
+        setLoading(false)
+        if (filter !== "all") setCategory(filter === "land_lots" ? "land/lots" : filter.toString())
 
         return () => {
             firebase.properties().off()
             firebase.cities().off()
         }
-    }, [firebase])
+    }, [firebase, filter])
+
+    const setPriceRange = price => {
+
+        let key = price.toString().toLowerCase()
+        switch (key) {
+            case "min $0 - $50,000 max": setPrice(1)
+                break;
+            case "min $50,000 - $150,000 max": setPrice(2)
+                break;
+            case "min $150,000 - $250,000 max": setPrice(3)
+                break;
+            case "min $250,000 - $400,000 max": setPrice(4)
+                break;
+            default: setPrice(5)
+                break;
+        }
+    }
+
+    const filterProperties = () => {
+        let filteredProperties = [...dbProperties]
+
+        if (city) filteredProperties = filteredProperties.filter(p => p.city.toLowerCase() === city.toString().toLowerCase())
+        if (category) filteredProperties = filteredProperties.filter(p => p.category.toLowerCase() === category.toString().toLowerCase())
+        if (bedrooms) filteredProperties = filteredProperties.filter(p => p.beds.toString().toLowerCase() === bedrooms.toString().toLowerCase())
+        if (bathrooms) filteredProperties = filteredProperties.filter(p => p.baths.toString().toLowerCase() === bathrooms.toString().toLowerCase())
+
+        if (price) {
+
+            let key = price
+            switch (key) {
+                case 1: filteredProperties = filteredProperties.filter(p => p.price.toLowerCase() >= 0 && p.price.toLowerCase() < 50000)
+                    break;
+                case 2: filteredProperties = filteredProperties.filter(p => p.price.toLowerCase() >= 50000 && p.price.toLowerCase() < 150000)
+                    break;
+                case 3: filteredProperties = filteredProperties.filter(p => p.price.toLowerCase() >= 150000 && p.price.toLowerCase() < 250000)
+                    break;
+                case 4: filteredProperties = filteredProperties.filter(p => p.price.toLowerCase() >= 250000 && p.price.toLowerCase() < 400000)
+                    break;
+                default: filteredProperties = filteredProperties.filter(p => p.price.toLowerCase() > 400000)
+                    break;
+            }
+        }
+
+        return [...filteredProperties]
+    }
 
     return (
         <div className={styles.properties_container}>
@@ -92,20 +140,30 @@ const PropertiesComponent = ({ firebase }) => {
                     <>
                         <div className={styles.properties_top}>
 
-                            <DropdownComponent key="cities_dropdown" name="Cities" options={dbCities} />
+                            <DropdownComponent key="cities_dropdown" name="City" options={dbCities} func={setCity} />
                             {
                                 optArray.map((e, i) => (
-                                    <DropdownComponent key={i} name={e.name} options={e.options} />
+                                    <DropdownComponent
+                                        key={i}
+                                        name={e.name}
+                                        options={e.options}
+                                        func={(e.name === "Category") ? setCategory : (e.name === "Price") ? setPriceRange : (e.name === "Bedrooms") ? setBedrooms : setBathrooms}
+                                    />
                                 ))
                             }
 
                         </div>
                         <div className={styles.properties_bottom}>
                             {
-                                (dbProperties.length > 0 && !loading) ?
-                                    dbProperties.map((p, i) => (
+
+
+                                (filterProperties().length > 0 && !loading) ?
+                                    filterProperties().map((p, i) => (
                                         <CardsComponent key={i} info={p} onSelect={setProperty} />
-                                    )) : <SpinnerComponent />
+                                    ))
+                                    // eslint-disable-next-line
+                                    : (city || category || bedrooms || bathrooms || price && filterProperties().length <= 0) ? <h3 style={{ marginTop: "10vh"}}>No matches, try changing the filters...</h3>
+                                        : <SpinnerComponent />
                             }
                         </div>
                     </>
