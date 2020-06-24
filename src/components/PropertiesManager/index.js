@@ -8,7 +8,6 @@ import TabsComponent from './Tabs'
 import { Alert, Spinner } from '../Shared'
 
 import AlertHook from '../../hooks/alertHook'
-import { useParams } from 'react-router-dom'
 
 import { withFirebase } from '../Firebase'
 
@@ -151,8 +150,6 @@ const PropertiesComponent = ({ firebase, history }) => {
     const [loading, setLoading] = useState(false)
 
     const { added, showAlertMessage } = AlertHook()
-    let { filter } = useParams()
-    console.log(filter)
 
     useEffect(() => {
         setLoading(true)
@@ -166,7 +163,6 @@ const PropertiesComponent = ({ firebase, history }) => {
                 }
 
                 let found = dbProperties.find(p => p.uid === property.uid)
-                console.log(found)
 
                 if (!found) setDbProperties(p => [...p, property])
             }
@@ -179,7 +175,7 @@ const PropertiesComponent = ({ firebase, history }) => {
         }
     }, [firebase, dbProperties])
 
-    const addOrEditProperty = property => property ? setProperty({ ...property }) : setProperty({ ...defaultData })
+    const addOrEditProperty = state => state ? setProperty({ ...state }) : setProperty({ ...defaultData })
 
     const onDelete = property => {
         let { uid, images, video } = property

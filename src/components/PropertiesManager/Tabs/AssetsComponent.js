@@ -19,7 +19,9 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage, redire
     const { city } = formData
 
     useEffect(() => {
-        let imagesArray = [...formData.images, ...imagesAsFiles]
+        cleanImagesAndState()
+        setImagesUrls(imgs => [...imgs, ...formData.images])
+        let imagesArray = (imagesUrls.length > 0) ? [...imagesUrls, ...imagesAsFiles] : [...formData.images, ...imagesAsFiles]
         firebase.cities().on('value', snapshot => {
             const citiesObject = snapshot.val()
 
@@ -34,7 +36,6 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage, redire
 
         })
 
-        cleanImagesAndState()
         drawImages(imagesArray)
 
         return () => firebase.cities().off()
@@ -43,32 +44,12 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage, redire
 
     const drawImages = imagesArr => {
 
-        if (formData.images.length > 0) setImagesUrls(imgs => [...imgs, ...formData.images])
-
         if (imagesArr.length > 0) {
             imagesArr.map(file => {
 
                 if (file) {
-                    let figure = document.createElement("figure")
-                    let image = document.createElement("img")
 
-                    figure.classList.add("figure")
-
-                    image.src = (file.type === "image/jpeg" || file.type === "image/jpg" || file.type === "image/png") ? window.URL.createObjectURL(file) : file.url
-                    image.classList.add("figure-img", "img-fluid", "rounded")
-                    image.style.width = "150px"
-                    image.style.height = "150px"
-                    image.style.cursor = "pointer"
-
-                    figure.setAttribute("id", file.name)
-
-                    figure.addEventListener("click", () => {
-                        setImageSelected(figure.id)
-                        setImageSelectedStyles(figure.id)
-                    })
-
-                    figure.appendChild(image)
-                    document.getElementById("images").appendChild(figure)
+                    document.getElementById("images").appendChild(buildFigure(file))
                 }
 
                 return 0
@@ -76,6 +57,53 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage, redire
 
         }
 
+    }
+
+    const buildFigure = file => {
+        let figure = document.createElement("figure")
+        let image = document.createElement("img")
+        let button = document.createElement("button")
+        let i = document.createElement("i")
+        let span_read = document.createElement("span")
+
+        figure.classList.add("figure")
+        figure.style.display = "flex"
+        figure.style.flexFlow = "column nowrap"
+        figure.style.justifyContent = "flex-end"
+        figure.style.alignItems = "flex-end"
+        figure.style.marginTop = "1vh"
+
+        image.src = (file.type === "image/jpeg" || file.type === "image/jpg" || file.type === "image/png") ? window.URL.createObjectURL(file) : file.url
+        image.classList.add("figure-img", "img-fluid", "rounded")
+        image.style.width = "150px"
+        image.style.height = "150px"
+        image.style.cursor = "pointer"
+        image.setAttribute("id", file.name)
+
+        button.classList.add("btn", "btn-danger", "badge", "badge-light")
+        button.innerHTML = "remove"
+        button.setAttribute("type", "button")
+        button.style.marginBottom = ".5vh"
+        button.addEventListener("click", () => {
+            deleteImage(image.id)
+        })
+
+        i.classList.add("fas", "fa-minus-circle")
+
+        span_read.innerHTML = "delete image button"
+        span_read.classList.add("sr-only")
+
+        image.addEventListener("click", () => {
+            setImageSelected(image.id)
+            setImageSelectedStyles(image.id)
+        })
+
+        button.appendChild(i)
+        button.appendChild(span_read)
+        figure.appendChild(button)
+        figure.appendChild(image)
+
+        return figure
     }
 
     const imageChanges = async (files) => {
@@ -96,7 +124,7 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage, redire
     }
 
     const setImageSelectedStyles = id => {
-        [...imagesAsFiles, ...imagesUrls].map(image => {
+        [...formData.images, ...imagesUrls, ...imagesAsFiles].map(image => {
 
             if (image && image.name) {
                 if (image.name === id) {
@@ -229,26 +257,52 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage, redire
                     firebase.storage.ref('videos').child(videoAsFile.name).getDownloadURL()
                         .then(fireBaseUrl => setVideoAsUrl(fireBaseUrl))
                 })
-
     }
+
+    const deleteImage = name => {
+        let object_found = formData.images.find(object => object.name === name)
+        let file_found = imagesAsFiles.find(file => file.name === name)
+
+        if (object_found) {
+            deleteFromFireBase(object_found.name)
+            let newImagesUrls = formData.images.filter(image => image.name !== object_found.name)
+
+            cleanImagesAndState()
+            formData.images = [...newImagesUrls]
+            setImagesUrls([...newImagesUrls])
+            drawImages([...newImagesUrls, ...imagesAsFiles])
+        }
+        if (file_found) {
+            let newImagesAsFiles = imagesAsFiles.filter(image => image.name !== file_found.name)
+            cleanImagesAndState()
+            setImagesAsFiles([...newImagesAsFiles])
+            drawImages([...imagesUrls, ...newImagesAsFiles])
+        }
+    }
+
+    console.log(imagesUrls)
 
     const deleteImages = e => {
 
         if (imagesUrls.length > 0) {
             imagesAsFiles.forEach(image => {
-                firebase.storage.ref(`/images/${image.name}`).delete()
-                    .then(() => {
-                        console.log('file deleted')
-                    }).catch(error => {
-                        // Uh-oh, an error occurred!
-                        console.log(error)
-                    });
+                deleteFromFireBase(image.name)
             })
             setTimeout(() => {
                 cleanImagesAndState()
                 setImagesAsFiles([])
             }, 800)
         }
+    }
+
+    const deleteFromFireBase = name => {
+        firebase.storage.ref(`/images/${name}`).delete()
+            .then(() => {
+                console.log('file deleted')
+            }).catch(error => {
+                // Uh-oh, an error occurred!
+                console.log(error)
+            })
     }
 
     const deleteVideo = e => {
@@ -369,7 +423,6 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage, redire
 
                     </div>
                 </div>
-
             </div>
             <Modal buttonName="" message="Edit this property?" classes={`btn btn-primary btn-lg fas fa-upload ${styles.upload_button}`} func={printPropertieInfo} />
         </div>
