@@ -20,8 +20,8 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage, redire
 
     useEffect(() => {
         cleanImagesAndState()
-        setImagesUrls(imgs => [...imgs, ...formData.images])
-        let imagesArray = (imagesUrls.length > 0) ? [...imagesUrls, ...imagesAsFiles] : [...formData.images, ...imagesAsFiles]
+        setImagesUrls(imgs => (formData.images) ? [...imgs, ...formData.images] : [...imgs])
+        let imagesArray = (imagesUrls.length > 0) ? [...imagesUrls, ...imagesAsFiles] : (formData.images) ? [...formData.images, ...imagesAsFiles] : [...imagesAsFiles]
         firebase.cities().on('value', snapshot => {
             const citiesObject = snapshot.val()
 
@@ -124,7 +124,10 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage, redire
     }
 
     const setImageSelectedStyles = id => {
-        [...formData.images, ...imagesUrls, ...imagesAsFiles].map(image => {
+
+        let imagesToIterate = (formData.images) ? [...formData.images, ...imagesUrls, ...imagesAsFiles] : [...imagesUrls, ...imagesAsFiles]
+
+        imagesToIterate.map(image => {
 
             if (image && image.name) {
                 if (image.name === id) {
@@ -260,7 +263,7 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage, redire
     }
 
     const deleteImage = name => {
-        let object_found = formData.images.find(object => object.name === name)
+        let object_found = (formData.images) ? formData.images.find(object => object.name === name) : null
         let file_found = imagesAsFiles.find(file => file.name === name)
 
         if (object_found) {
@@ -279,8 +282,6 @@ const AssetsComponent = ({ firebase, setForm, formData, showAlertMessage, redire
             drawImages([...imagesUrls, ...newImagesAsFiles])
         }
     }
-
-    console.log(imagesUrls)
 
     const deleteImages = e => {
 

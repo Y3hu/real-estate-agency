@@ -67,10 +67,8 @@ const defaultData = {
         electricity: false,
         water: false,
         internet: false,
-        hot_water: {
-            gas: false,
-            electric: false
-        },
+        hot_water_gas: false,
+        hot_water_electric: false,
         cable: false,
         satellite: false,
         central_air: false,
@@ -97,14 +95,10 @@ const defaultData = {
         storage_shed: false,
         furnished: false,
         washing_machine: false,
-        dryer: {
-            gas: false,
-            electric: false,
-        },
-        oven: {
-            gas: false,
-            electric: false
-        },
+        dryer_gas: false,
+        dryer_electric: false,
+        oven_gas: false,
+        oven_electric: false,
         refrigerator: false,
         freezer: false,
         dishwasher: false,

@@ -61,7 +61,7 @@ const UsersTable = ({ users }) => (
             </thead>
             <tbody>
                 {users.map(user => (
-                    <tr>
+                    <tr key={user.uid}>
                         <td>{user.uid}</td>
                         <td>{user.email}</td>
                         <td>{user.username}</td>

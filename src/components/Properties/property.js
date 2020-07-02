@@ -58,6 +58,7 @@ const PropertyComponent = ({ property, setProperty }) => {
                     <ul className="list-group">
                         <li className="list-group-item"><strong>Country:</strong> {property.country}</li>
                         <li className="list-group-item"><strong>Province:</strong> {property.province}</li>
+                        <li className="list-group-item"><strong>City:</strong> {property.city}</li>
                         <li className="list-group-item"><strong>Region:</strong> {property.region}</li>
                         <li className="list-group-item"><strong>House Size (ft²):</strong> {property.house.ft2} ft²</li>
                         <li className="list-group-item"><strong>House Size (m²):</strong> {property.house.m2} m²</li>
@@ -70,11 +71,27 @@ const PropertyComponent = ({ property, setProperty }) => {
             </div>
             <div className={styles.property_medium}>
 
-                <div className="alert alert-info" role="alert">
-                    {property.propertyTitle}
+                <div className={styles.property_medium_left}>
+                    <span className={`alert alert-primary ${styles.property_medium_alert}`} role="alert">
+                        {property.propertyTitle}
+                    </span>
                 </div>
-                <div className="alert alert-info" role="alert">
-                    ${property.price}
+
+                <div className={styles.property_medium_right}>
+                    {
+                        (property.originalPrice) ?
+                            <>
+                                <span className="alert alert-danger" role="alert" style={{ fontSize: "1.2rem"}}>
+                                    Before: <strike>${property.originalPrice}</strike>
+                                </span>
+                                <span className={`alert alert-primary ${styles.property_medium_alert}`} role="alert" style={{ fontWeight: "bold", fontSize: "2.2rem" }}>
+                                    Now: ${property.price}
+                                </span>
+                            </> :
+                            <span className={`alert alert-primary ${styles.property_medium_alert}`} role="alert">
+                                ${property.price}
+                            </span>
+                    }
                 </div>
 
             </div>
@@ -99,7 +116,7 @@ const PropertyComponent = ({ property, setProperty }) => {
                             <hr className="my-4" />
                             <ul>
                                 {
-                                    general.map((e, i) => <li key={i}>{e}</li>)
+                                    general.map((e, i) => <li key={i}>{e.replace(/_/g, " ").toLowerCase()}</li>)
                                 }
                             </ul>
                             <br />
@@ -107,7 +124,7 @@ const PropertyComponent = ({ property, setProperty }) => {
                             <hr className="my-4" />
                             <ul>
                                 {
-                                    features.map((e, i) => <li key={i}>{e}</li>)
+                                    features.map((e, i) => <li key={i}>{e.replace(/_/g, " ").toLowerCase()}</li>)
                                 }
                             </ul>
                             <br />
@@ -115,7 +132,7 @@ const PropertyComponent = ({ property, setProperty }) => {
                             <hr className="my-4" />
                             <ul>
                                 {
-                                    community.map((e, i) => <li key={i}>{e}</li>)
+                                    community.map((e, i) => <li key={i}>{e.replace(/_/g, " ").toLowerCase()}</li>)
                                 }
                             </ul>
                         </div>

@@ -23,7 +23,7 @@ const Amenities = ({ setForm, formData }) => {
                         type="checkbox"
                         onChange={setForm} />
 
-                    <ItemForm label="water"
+                    <ItemForm label="Water"
                         name="general.water"
                         id="GeneralWater"
                         htmlFor="GeneralWater"
@@ -31,7 +31,7 @@ const Amenities = ({ setForm, formData }) => {
                         type="checkbox"
                         onChange={setForm} />
 
-                    <ItemForm label="internet"
+                    <ItemForm label="Internet"
                         name="general.internet"
                         id="GeneralInternet"
                         htmlFor="GeneralInternet"
@@ -40,22 +40,22 @@ const Amenities = ({ setForm, formData }) => {
                         onChange={setForm} />
 
                     <ItemForm label="Hot Water Gas"
-                        name="general.hot_water.gas"
+                        name="general.hot_water_gas"
                         id="GeneralHotWaterGas"
                         htmlFor="GeneralHotWaterGas"
-                        checked={general.hot_water.gas}
+                        checked={general.hot_water_gas}
                         type="checkbox"
                         onChange={setForm} />
 
                     <ItemForm label="Hot Water Electric"
-                        name="general.hot_water.electric"
+                        name="general.hot_water_electric"
                         id="GeneralHotWaterElectric"
                         htmlFor="GeneralHotWaterElectric"
-                        checked={general.hot_water.electric}
+                        checked={general.hot_water_electric}
                         type="checkbox"
                         onChange={setForm} />
 
-                    <ItemForm label="cable"
+                    <ItemForm label="Cable"
                         name="general.cable"
                         id="GeneralCable"
                         htmlFor="GeneralCable"
@@ -63,7 +63,7 @@ const Amenities = ({ setForm, formData }) => {
                         type="checkbox"
                         onChange={setForm} />
 
-                    <ItemForm label="satellite"
+                    <ItemForm label="Satellite"
                         name="general.satellite"
                         id="GeneralSatellite"
                         htmlFor="GeneralSatellite"
@@ -79,7 +79,7 @@ const Amenities = ({ setForm, formData }) => {
                         type="checkbox"
                         onChange={setForm} />
 
-                    <ItemForm label="central_vac"
+                    <ItemForm label="Central Vac"
                         name="general.central_vac"
                         id="GeneralCentralVac"
                         htmlFor="GeneralCentralVac"
@@ -95,7 +95,7 @@ const Amenities = ({ setForm, formData }) => {
                         type="checkbox"
                         onChange={setForm} />
 
-                    <ItemForm label="heating"
+                    <ItemForm label="Heating"
                         name="general.heating"
                         id="GeneralHeating"
                         htmlFor="GeneralHeating"
@@ -134,7 +134,7 @@ const Amenities = ({ setForm, formData }) => {
                         type="checkbox"
                         onChange={setForm} />
 
-                    <ItemForm label="cameras"
+                    <ItemForm label="Cameras"
                         name="features.cameras"
                         id="FeaturesCameras"
                         htmlFor="FeaturesCameras"
@@ -222,7 +222,7 @@ const Amenities = ({ setForm, formData }) => {
                         type="checkbox"
                         onChange={setForm} />
 
-                    <ItemForm label="carport"
+                    <ItemForm label="Carport"
                         name="features.carport"
                         id="FeaturesCarport"
                         htmlFor="FeaturesCarport"
@@ -230,7 +230,7 @@ const Amenities = ({ setForm, formData }) => {
                         type="checkbox"
                         onChange={setForm} />
 
-                    <ItemForm label="storage_shed"
+                    <ItemForm label="Storage Shed"
                         name="features.storage_shed"
                         id="FeaturesStorageShed"
                         htmlFor="FeaturesStorageShed"
@@ -255,34 +255,34 @@ const Amenities = ({ setForm, formData }) => {
                         onChange={setForm} />
 
                     <ItemForm label="Dryer Gas"
-                        name="features.dryer.gas"
+                        name="features.dryer_gas"
                         id="FeaturesDryerGas"
                         htmlFor="FeaturesDryerGas"
-                        checked={features.dryer.gas}
+                        checked={features.dryer_gas}
                         type="checkbox"
                         onChange={setForm} />
 
                     <ItemForm label="Dryer Electric"
-                        name="features.dryer.electric"
+                        name="features.dryer_electric"
                         id="FeaturesDryerElectric"
                         htmlFor="FeaturesDryerElectric"
-                        checked={features.dryer.electric}
+                        checked={features.dryer_electric}
                         type="checkbox"
                         onChange={setForm} />
 
                     <ItemForm label="Oven Gas"
-                        name="features.oven.gas"
+                        name="features.oven_gas"
                         id="FeaturesOvenGas"
                         htmlFor="FeaturesOvenGas"
-                        checked={features.oven.gas}
+                        checked={features.oven_gas}
                         type="checkbox"
                         onChange={setForm} />
 
                     <ItemForm label="Oven Electric"
-                        name="features.oven.electric"
+                        name="features.oven_electric"
                         id="FeaturesOvenElectric"
                         htmlFor="FeaturesOvenElectric"
-                        checked={features.oven.electric}
+                        checked={features.oven_electric}
                         type="checkbox"
                         onChange={setForm} />
 
@@ -370,7 +370,7 @@ const Amenities = ({ setForm, formData }) => {
                         type="checkbox"
                         onChange={setForm} />
 
-                    <ItemForm label="pool"
+                    <ItemForm label="Pool"
                         name="features.pool"
                         id="FeaturesPool"
                         htmlFor="FeaturesPool"

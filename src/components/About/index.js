@@ -12,7 +12,7 @@ const AboutComponent = props => {
             <div className={styles.media_container}>
                 <figure className="figure">
                     <img title="Lake Arenal" src={About_Image} className="figure-img img-fluid" alt="Lake Arenal View" />
-                    <figcaption>El Lago Properties and Construction on Lake Arenal</figcaption>
+                    <figcaption>El Lago Properties on Lake Arenal</figcaption>
                 </figure>
                 <iframe title="location" width="600" height="450" frameBorder="0"
                     src={`https://www.google.com/maps/embed/v1/place?q=Highway+142+50807+Arenal,+Guanacaste,+Costa+Rica&key=${process.env.REACT_APP_LOCATION_API_KEY}`} allowFullScreen></iframe>

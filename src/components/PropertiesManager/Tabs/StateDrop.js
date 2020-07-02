@@ -3,7 +3,7 @@ import React from "react"
 import styles from './tabs.module.scss'
 
 const StateDrop = ({ label, options, htmlFor, ...others }) => (
-    <div className="col-auto">
+    <div style={{ width: "100%" }}>
         <label className="sr-only" htmlFor={htmlFor}>{label}</label>
         <div className="input-group mb-2">
             <div className="input-group-prepend">

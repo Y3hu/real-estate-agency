@@ -25,53 +25,68 @@ const Names = ({ setForm, formData }) => {
 
     return (
 
-        <div className="form align-items-center">
-            <ItemForm
-                label="Listing Code"
-                name="listingCode"
-                value={listingCode}
-                onChange={setForm}
-            />
-            <ItemForm
-                label="Listing Date"
-                name="listingDate"
-                value={listingDate}
-                onChange={setForm}
-            />
-            <StateDrop label="Propertie Type" name="propertyType" options={propertyTypeOptions} value={propertyType} onChange={setForm} />
-            <StateDrop label="Category" name="category" options={categoryOptions} value={category} onChange={setForm} />
-            <ItemForm
-                label="Property Title"
-                name="propertyTitle"
-                value={propertyTitle}
-                onChange={setForm}
-            />
-            <ItemForm
-                label="Price"
-                name="price"
-                value={price}
-                type="number"
-                onChange={setForm}
-            />
-            <ItemForm
-                label="Original Price"
-                name="originalPrice"
-                type="number"
-                value={originalPrice}
-                onChange={setForm}
-            />
+        <form>
 
-            <div className="col-auto">
-                <label className="sr-only" htmlFor="inlineInputMessage">Description</label>
-                <div className="input-group mb-2">
-                    <div className="input-group-prepend">
-                        <div className={`input-group-text ${styles.labels_to_left}`}>Description</div>
+            <div className="row">
+                <ItemForm
+                    label="Listing Code"
+                    name="listingCode"
+                    value={listingCode}
+                    onChange={setForm}
+                />
+
+
+                <ItemForm
+                    label="Listing Date"
+                    name="listingDate"
+                    value={listingDate}
+                    onChange={setForm}
+                />
+
+                <div className="col-md-6 mb-3">
+                    <StateDrop label="Propertie Type" name="propertyType" options={propertyTypeOptions} value={propertyType} onChange={setForm} />
+                </div>
+
+                <div className="col-md-6 mb-3">
+                    <StateDrop label="Category" name="category" options={categoryOptions} value={category} onChange={setForm} />
+                </div>
+
+                <ItemForm
+                    label="Property Title"
+                    name="propertyTitle"
+                    value={propertyTitle}
+                    onChange={setForm}
+                />
+
+
+                <ItemForm
+                    label="Price"
+                    name="price"
+                    value={price}
+                    type="number"
+                    onChange={setForm}
+                />
+
+
+                <ItemForm
+                    label="Original Price"
+                    name="originalPrice"
+                    type="number"
+                    value={originalPrice}
+                    onChange={setForm}
+                />
+
+                <div className="col-md-6 mb-3">
+                    <label className="sr-only" htmlFor="inlineInputMessage">Description</label>
+                    <div className="input-group mb-2">
+                        <div className="input-group-prepend">
+                            <div className={`input-group-text ${styles.labels_to_left}`}>Description</div>
+                        </div>
+                        <textarea name="description" className={`form-control ${styles.input_size}`} onChange={setForm} value={description} id="inlineInputMessage" rows="4"></textarea>
                     </div>
-                    <textarea name="description" className={`form-control ${styles.input_size}`} onChange={setForm} value={description} id="inlineInputMessage" rows="4"></textarea>
                 </div>
             </div>
-
-        </div>
+        </form>
 
     )
 }

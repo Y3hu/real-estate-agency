@@ -44,7 +44,7 @@ const HomeComponent = ({ firebase }) => {
             {
                 (loading) ? <Spinner /> :
                     <React.Fragment>
-                        <div className={styles.carousel_container}>
+                        <div className={styles.carousel_container} style={{ minHeight: "20vh" }}>
                             <Carousel dbImages={dbImages} />
                         </div>
 

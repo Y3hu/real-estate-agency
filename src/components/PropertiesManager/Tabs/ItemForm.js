@@ -6,7 +6,7 @@ const ItemForm = ({ label, htmlFor, children, type = "text", ...otherProps }) =>
 
 
     (type === "text" || type === "number") ? (
-        <div className="col-auto">
+        <div className="col-md-6 mb-3">
             <label className="sr-only" htmlFor={htmlFor}>{label}</label>
             <div className="input-group mb-2">
                 <div className="input-group-prepend">
