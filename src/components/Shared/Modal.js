@@ -36,7 +36,6 @@ const ModalComponent =
                                     onClick={() => {
                                         if (userEmail) func(userEmail)
                                         else func()
-
                                     }}
                                     data-dismiss="modal"
                                 >

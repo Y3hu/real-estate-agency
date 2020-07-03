@@ -7,9 +7,7 @@ const Carousel = ({ dbImages }) => {
     return (
         <div id="carouselExampleCaptions" className="carousel slide carousel-fade" data-ride="carousel">
             <ol className="carousel-indicators">
-                <li data-target="#carouselExampleCaptions" data-slide-to="0" className="active"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                {dbImages.map((image, i) => (<li data-target="#carouselExampleCaptions" data-slide-to={i} key={image.name} className={image.cover ? "active" : ''}></li>))}
             </ol>
             <div className={`carousel-inner ${styles.carousel_slides_container}`}>
                 {

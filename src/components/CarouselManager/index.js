@@ -36,6 +36,8 @@ const HomeComponent = ({ firebase }) => {
 
     }, [firebase, dbImages])
 
+    console.log(dbImages)
+
     return (
         <div className={`${styles.manager_properties_container}`}>
             <div className={styles.manager_top}>
@@ -48,7 +50,7 @@ const HomeComponent = ({ firebase }) => {
                             <Carousel dbImages={dbImages} />
                         </div>
 
-                        <Images firebase={firebase} setDbImages={setDbImages} showAlertMessage={showAlertMessage} dbImages={dbImages} />
+                        <Images dbImages={dbImages} firebase={firebase} showAlertMessage={showAlertMessage} />
                         {
                             (added) ? <Alert message="Images added successfully!" /> : ''
                         }

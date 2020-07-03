@@ -42,6 +42,8 @@ const PropertyComponent = ({ property, setProperty }) => {
 
     }
 
+    const transformPrice = price => new Intl.NumberFormat().format(price)
+
     return (
         <div className={styles.property_container}>
             <button
@@ -81,15 +83,15 @@ const PropertyComponent = ({ property, setProperty }) => {
                     {
                         (property.originalPrice) ?
                             <>
-                                <span className="alert alert-danger" role="alert" style={{ fontSize: "1.2rem"}}>
-                                    Before: <strike>${property.originalPrice}</strike>
+                                <span className="alert alert-danger" role="alert" style={{ fontSize: "1.2rem" }}>
+                                    Before: <strike>${transformPrice(property.originalPrice)}</strike>
                                 </span>
                                 <span className={`alert alert-primary ${styles.property_medium_alert}`} role="alert" style={{ fontWeight: "bold", fontSize: "2.2rem" }}>
-                                    Now: ${property.price}
+                                    Now: ${transformPrice(property.price)}
                                 </span>
                             </> :
                             <span className={`alert alert-primary ${styles.property_medium_alert}`} role="alert">
-                                ${property.price}
+                                ${transformPrice(property.price)}
                             </span>
                     }
                 </div>

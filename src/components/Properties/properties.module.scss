@@ -288,7 +288,8 @@ $breakpoint-lg: 1360px;
   align-items    : center;
 
   @include media(lg) {
-    width: 55%;
+    width     : 55%;
+    min-height: 100%;
   }
 
   @include media(md) {
@@ -494,4 +495,29 @@ $breakpoint-lg: 1360px;
   background-color: #fff;
   color           : #000;
   opacity         : 0.6;
+  border-radius   : 6px;
+}
+
+.floatButton {
+  position        : fixed;
+  width           : 60px;
+  height          : 60px;
+  bottom          : 25px;
+  right           : 25px;
+  background-color: #00008B;
+  border-color    : gray;
+  border-radius   : 50px;
+  color           : #fff;
+  font-size       : 2rem;
+  @extend .card_shadow;
+
+  @include media(lg) {
+    width           : 80px;
+    height          : 80px;
+    bottom          : 40px;
+    right           : 40px;
+    background-color: #fff;
+    color           : #00008B;
+  }
+
 }

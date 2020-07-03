@@ -129,6 +129,14 @@ const PropertiesComponent = ({ firebase }) => {
         return [...filteredProperties]
     }
 
+    const resetFilter = () => {
+        setCity(null)
+        setCategory(null)
+        setBedrooms(null)
+        setBathrooms(null)
+        setPrice(null)
+    }
+
     return (
         <div className={styles.properties_container}>
             {
@@ -162,9 +170,14 @@ const PropertiesComponent = ({ firebase }) => {
                                         <CardsComponent key={i} info={p} onSelect={setProperty} />
                                     ))
                                     // eslint-disable-next-line
-                                    : (city || category || bedrooms || bathrooms || price && filterProperties().length <= 0) ? <h3 style={{ marginTop: "10vh"}}>No matches, try changing the filters...</h3>
+                                    : (city || category || bedrooms || bathrooms || price && filterProperties().length <= 0) ? <h3 style={{ marginTop: "10vh" }}>No matches, try changing the filters or click the reset filters button below...</h3>
                                         : <SpinnerComponent />
                             }
+                            <button
+                                className={`fas fa-sync-alt ${styles.floatButton}`}
+                                onClick={() => resetFilter()}
+                            >
+                            </button>
                         </div>
                     </>
             }

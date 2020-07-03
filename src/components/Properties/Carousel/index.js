@@ -6,6 +6,10 @@ import styles from './carousel.module.scss'
 
 const CarouselComponent = ({ images = [] }) => {
 
+    if (!images.length) {
+        return <h1 style={{ color: "#000" }}>{`<< Still no images or pictures for this property >>`}</h1>
+    }
+
     return (
         <div id="carouselExampleFade" className={`carousel slide carousel-fade ${styles.carousel_container}`} data-ride="carousel">
             <div className={`carousel-inner ${styles.carousel_slides_container}`}>
