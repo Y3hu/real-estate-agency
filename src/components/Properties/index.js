@@ -47,6 +47,7 @@ const PropertiesComponent = ({ firebase }) => {
     const [price, setPrice] = useState(null)
     const [bedrooms, setBedrooms] = useState(null)
     const [bathrooms, setBathrooms] = useState(null)
+    const [listingCode, setLisntingCode] = useState(null)
 
     let { filter } = useParams()
 
@@ -56,12 +57,14 @@ const PropertiesComponent = ({ firebase }) => {
             const propertiesObject = snapshot.val()
 
             for (let key in propertiesObject) {
-                let propertie = {
+                let property = {
                     uid: key,
                     ...propertiesObject[key]
                 }
 
-                setDbProperties(p => [...p, propertie])
+                let found = dbProperties.find(dbProperty => dbProperty.uid === property.uid)
+
+                if (!found) setDbProperties(p => [...p, property])
             }
         })
 
@@ -76,13 +79,17 @@ const PropertiesComponent = ({ firebase }) => {
         })
 
         setLoading(false)
-        if (filter !== "all") setCategory(filter === "land_lots" ? "land/lots" : filter.toString())
+        if (filter !== "all") {
+
+            if (filter !== "land_lots" && filter !== "residential" && filter !== "commercial" && filter !== "developments" && filter !== "rentals") setLisntingCode(filter)
+            else setCategory(filter === "land_lots" ? "land/lots" : filter.toString())
+        }
 
         return () => {
             firebase.properties().off()
             firebase.cities().off()
         }
-    }, [firebase, filter])
+    }, [firebase, filter, dbProperties])
 
     const setPriceRange = price => {
 
@@ -108,6 +115,7 @@ const PropertiesComponent = ({ firebase }) => {
         if (category) filteredProperties = filteredProperties.filter(p => p.category.toLowerCase() === category.toString().toLowerCase())
         if (bedrooms) filteredProperties = filteredProperties.filter(p => p.beds.toString().toLowerCase() === bedrooms.toString().toLowerCase())
         if (bathrooms) filteredProperties = filteredProperties.filter(p => p.baths.toString().toLowerCase() === bathrooms.toString().toLowerCase())
+        if (listingCode) filteredProperties = filteredProperties.filter(p => p.listingCode.toString().toLowerCase() === listingCode.toString().toLowerCase())
 
         if (price) {
 
@@ -126,6 +134,8 @@ const PropertiesComponent = ({ firebase }) => {
             }
         }
 
+        console.log(filteredProperties)
+
         return [...filteredProperties]
     }
 
@@ -135,6 +145,7 @@ const PropertiesComponent = ({ firebase }) => {
         setBedrooms(null)
         setBathrooms(null)
         setPrice(null)
+        setLisntingCode(null)
     }
 
     return (
@@ -170,7 +181,7 @@ const PropertiesComponent = ({ firebase }) => {
                                         <CardsComponent key={i} info={p} onSelect={setProperty} />
                                     ))
                                     // eslint-disable-next-line
-                                    : (city || category || bedrooms || bathrooms || price && filterProperties().length <= 0) ? <h3 style={{ marginTop: "10vh" }}>No matches, try changing the filters or click the reset filters button below...</h3>
+                                    : (city || category || bedrooms || bathrooms || price || listingCode && filterProperties().length <= 0) ? <h3 style={{ marginTop: "10vh" }}>No matches, try changing the filters or click the reset filters button below...</h3>
                                         : <SpinnerComponent />
                             }
                             <button

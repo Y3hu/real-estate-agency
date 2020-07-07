@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, withRouter } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes'
 import SignOut from '../SignOut'
 import Logo from '../../assets/logo.png'
@@ -8,17 +8,31 @@ import { AuthUserContext } from '../Session'
 
 import styles from './navigation.module.scss'
 
-const NavigationComponent = () => (
-    <div className={styles.nav_container}>
-        <AuthUserContext.Consumer>
-            {authUser =>
-                authUser ? <NavigationAuth /> : <NavigationNonAuth />
-            }
-        </AuthUserContext.Consumer>
-    </div>
-)
+const NavigationComponent = ({ history }) => {
+    const [listingCode, setListingCode] = useState("")
 
-const NavigationAuth = () => (
+    const onListingCodeChange = e => setListingCode(e.target.value)
+
+    const onPressSearch = e => {
+        e.preventDefault()
+        history.push(`${ROUTES.PROPERTIES}/${listingCode}`)
+        setListingCode("")
+    }
+
+    const props = { listingCode, onListingCodeChange, onPressSearch }
+
+    return (
+        <div className={styles.nav_container}>
+            <AuthUserContext.Consumer>
+                {authUser =>
+                    authUser ? <NavigationAuth {...props} /> : <NavigationNonAuth {...props} />
+                }
+            </AuthUserContext.Consumer>
+        </div>
+    )
+}
+
+const NavigationAuth = ({ listingCode, onListingCodeChange, onPressSearch }) => (
     <nav className={`navbar fixed-top navbar-expand-lg ${styles.nav_container}`}>
         <div className={`navbar-brand ${styles.logo_search_input}`}>
             <img className={styles.logo} src={Logo} title="logo" alt="logo" />
@@ -27,9 +41,9 @@ const NavigationAuth = () => (
             </button>
             <form className={styles.form}>
                 <div className="input-group">
-                    <input className="form-control border-right-0" type="text" placeholder="listing code number"></input>
+                    <input className="form-control border-right-0" type="text" placeholder="listing code number" onChange={onListingCodeChange} value={listingCode}></input>
                     <span className="input-group-append bg-white">
-                        <button className="btn border border-left-0" type="button"><i className="fas fa-search"></i></button>
+                        <button className="btn border border-left-0" type="button" onClick={onPressSearch}><i className="fas fa-search"></i></button>
                     </span>
                 </div>
             </form>
@@ -57,7 +71,7 @@ const NavigationAuth = () => (
     </nav>
 )
 
-const NavigationNonAuth = () => (
+const NavigationNonAuth = ({ listingCode, onListingCodeChange, onPressSearch }) => (
     <nav className={`navbar fixed-top navbar-expand-lg ${styles.nav_container}`}>
         <div className={`navbar-brand ${styles.logo_search_input}`}>
             <img className={styles.logo} src={Logo} title="logo" alt="logo" />
@@ -66,9 +80,9 @@ const NavigationNonAuth = () => (
             </button>
             <form className={styles.form}>
                 <div className="input-group">
-                    <input className="form-control border-right-0" type="text" placeholder="listing code number"></input>
+                    <input className="form-control border-right-0" type="text" placeholder="listing code number" onChange={onListingCodeChange} value={listingCode}></input>
                     <span className="input-group-append bg-white">
-                        <button className="btn border border-left-0" type="button"><i className="fas fa-search"></i></button>
+                        <button className="btn border border-left-0" type="button" onClick={onPressSearch}><i className="fas fa-search"></i></button>
                     </span>
                 </div>
             </form>
@@ -95,4 +109,4 @@ const NavigationNonAuth = () => (
     </nav>
 )
 
-export default NavigationComponent
+export default withRouter(NavigationComponent)
