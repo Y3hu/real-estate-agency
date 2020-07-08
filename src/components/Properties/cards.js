@@ -1,9 +1,9 @@
 import React from 'react'
-
+import * as STRINGS from '../../constants/strings'
 import DefaultImage from '../../assets/default.jpg'
 import styles from './properties.module.scss'
 
-const CardsComponent = ({ info = {}, onSelect }) => {
+const CardsComponent = ({ info = {}, onSelect, language }) => {
     let { price } = info
     price = new Intl.NumberFormat().format(price)
 
@@ -18,7 +18,7 @@ const CardsComponent = ({ info = {}, onSelect }) => {
                 </h5>
                 <p className={`card-text ${styles.card_text}`}>{info.propertyTitle}</p>
                 <button className={`btn ${styles.button_animated}`} onClick={e => onSelect(info)}>
-                    <span>View more</span>
+                    <span>{!language ? 'View more' : STRINGS.VIEWMORE}</span>
                 </button>
             </div>
         </div>

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import useFormHook from '../../hooks/formHook'
+import useFormHook from '../../../hooks/formHook'
 import axios from 'axios'
+import * as STRINGS from '../../../constants/strings'
 
-import styles from './contact.module.scss'
+import styles from './form.module.scss'
 
 const INITIAL_STATE = {
     name: '',
@@ -12,7 +13,7 @@ const INITIAL_STATE = {
     error: null
 }
 
-const FormComponent = ({ message, showAlertMessage }) => {
+const FormComponent = ({ message, showAlertMessage, language }) => {
     const { state, changeState, cleanState } = useFormHook({ INITIAL_STATE })
     const [allow, setAllow] = useState(true)
 
@@ -22,14 +23,14 @@ const FormComponent = ({ message, showAlertMessage }) => {
             changeState({
                 target: {
                     name: "message",
-                    value: `Hello, I am interested in this property ${message}. Please contact me.`
+                    value: !language ? `Hello, I am interested in this property ${message}. Please contact me.` : STRINGS.MESSAGECONTENT(message)
                 }
             })
             setAllow(false)
         }
 
 
-    }, [message, changeState, allow])
+    }, [state, message, changeState, allow, language])
 
     const onSubmitForm = async (e) => {
         e.preventDefault()
@@ -42,7 +43,7 @@ const FormComponent = ({ message, showAlertMessage }) => {
 
         axios.post('https://us-central1-real-estate-agency-3a42a.cloudfunctions.net/sendMessage', userInfo)
             .then(res => {
-                cleanState()
+                cleanState({ INITIAL_STATE })
                 showAlertMessage()
             })
             .catch(err => console.log(err))
@@ -57,9 +58,12 @@ const FormComponent = ({ message, showAlertMessage }) => {
     }
 
     let isInvalid =
+        !state.name ||
         state.name.length < 3 ||
+        !state.lastName ||
         state.lastName.length < 3 ||
         !validateEmail(state.email) ||
+        !state.message ||
         state.message.length < 3
 
     return (
@@ -69,7 +73,7 @@ const FormComponent = ({ message, showAlertMessage }) => {
                     <label className="sr-only" htmlFor="inlineFormName">Name</label>
                     <div className="input-group mb-2">
                         <div className="input-group-prepend">
-                            <div className={`input-group-text ${styles.labels_to_left}`}>Name</div>
+                            <div className={`input-group-text ${styles.labels_to_left}`}>{!language ? 'Name' : STRINGS.NAME}</div>
                         </div>
                         <input type="text" name="name" className={`form-control ${styles.input_size}`} onChange={e => changeState(e)} value={state.name || ''} id="inlineFormName" required />
                     </div>
@@ -78,7 +82,7 @@ const FormComponent = ({ message, showAlertMessage }) => {
                     <label className="sr-only" htmlFor="inlineInputLastName">Last Name</label>
                     <div className="input-group mb-2">
                         <div className="input-group-prepend">
-                            <div className={`input-group-text ${styles.labels_to_left}`}>Last Name</div>
+                            <div className={`input-group-text ${styles.labels_to_left}`}>{!language ? 'Last Name' : STRINGS.LASTNAME}</div>
                         </div>
                         <input type="text" name="lastName" className={`form-control ${styles.input_size}`} onChange={e => changeState(e)} value={state.lastName || ''} id="inlineInputLastName" />
                     </div>
@@ -87,7 +91,7 @@ const FormComponent = ({ message, showAlertMessage }) => {
                     <label className="sr-only" htmlFor="inlineInputEmail">Email</label>
                     <div className="input-group mb-2">
                         <div className="input-group-prepend">
-                            <div className={`input-group-text ${styles.labels_to_left}`}>Email</div>
+                            <div className={`input-group-text ${styles.labels_to_left}`}>{!language ? 'Email' : STRINGS.EMAIL}</div>
                         </div>
                         <input type="email" name="email" className={`form-control ${styles.input_size}`} onChange={e => changeState(e)} value={state.email || ''} id="inlineInputEmail" required />
                     </div>
@@ -96,14 +100,14 @@ const FormComponent = ({ message, showAlertMessage }) => {
                     <label className="sr-only" htmlFor="inlineInputMessage">Message</label>
                     <div className="input-group mb-2">
                         <div className="input-group-prepend">
-                            <div className={`input-group-text ${styles.labels_to_left}`}>Message</div>
+                            <div className={`input-group-text ${styles.labels_to_left}`}>{!language ? 'Message' : STRINGS.MESSAGE}</div>
                         </div>
                         <textarea name="message" className={`form-control ${styles.input_size}`} onChange={e => changeState(e)} value={state.message || ''} id="inlineInputMessage" rows="4" disabled={!allow}>
                         </textarea>
                     </div>
                 </div>
                 <div className={`col-auto ${styles.submit_button}`}>
-                    <button type="submit" className="btn btn-primary mb-2" style={{ backgroundColor: "#2699fb", border: 0 }} disabled={isInvalid}>Submit</button>
+                    <button type="submit" className="btn btn-primary mb-2" style={{ backgroundColor: "#2699fb", border: 0 }} disabled={isInvalid}>{!language ? 'Submit' : STRINGS.SUBMIT}</button>
                 </div>
                 {state.error && <p>{state.error.message}</p>}
             </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -24,23 +24,30 @@ import * as ROUTES from '../../constants/routes'
 import styles from './app.module.scss'
 
 const App = () => {
+  const [language, setLanguage] = useState(false)
+
+  const changeLanguage = _ => {
+    let input = document.getElementById("toggle-state")
+    setLanguage(input.checked)
+  }
+
   return (
     <Router>
       <header>
-        <Navigation />
+        <Navigation changeLanguage={changeLanguage} language={language} />
       </header>
       <main className={styles.main_container}>
-        <Route exact path={ROUTES.HOME} component={HomePage} />
+        <Route exact path={ROUTES.HOME}> <HomePage language={language} /> </Route>
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+        <Route path={ROUTES.SIGN_IN} > <SignInPage language={language} /> </Route>
+        <Route path={ROUTES.PASSWORD_FORGET}> <PasswordForgetPage language={language} /> </Route>
         <Route path={ROUTES.MANAGEPROPERTIES} component={PropertiesManager} />
         <Route path={ROUTES.CAROUSEL} component={CarouselManager} />
         <Route path={ROUTES.ACCOUNT} component={Account} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
-        <Route path={ROUTES.ABOUT} component={About} />
-        <Route path={ROUTES.CONTACT} component={Contact} />
-        <Route path={`${ROUTES.PROPERTIES}/:filter`} component={Properties} />
+        <Route path={ROUTES.ABOUT}> <About language={language} /> </Route>
+        <Route path={ROUTES.CONTACT}> <Contact language={language} /> </Route>
+        <Route path={`${ROUTES.PROPERTIES}/:filter`}> <Properties language={language} /> </Route>
       </main>
       <FooterComponent />
     </Router>

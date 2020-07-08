@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes'
+import * as STRINGS from '../../constants/strings'
 import SignOut from '../SignOut'
 import Logo from '../../assets/logo.png'
 
@@ -8,7 +9,7 @@ import { AuthUserContext } from '../Session'
 
 import styles from './navigation.module.scss'
 
-const NavigationComponent = ({ history }) => {
+const NavigationComponent = ({ changeLanguage, language, history }) => {
     const [listingCode, setListingCode] = useState("")
 
     const onListingCodeChange = e => setListingCode(e.target.value)
@@ -19,7 +20,7 @@ const NavigationComponent = ({ history }) => {
         setListingCode("")
     }
 
-    const props = { listingCode, onListingCodeChange, onPressSearch }
+    const props = { listingCode, onListingCodeChange, onPressSearch, changeLanguage, language }
 
     return (
         <div className={styles.nav_container}>
@@ -50,6 +51,7 @@ const NavigationAuth = ({ listingCode, onListingCodeChange, onPressSearch }) => 
         </div>
         <div className={`collapse navbar-collapse ${styles.nav_list}`} id="navbarTogglerDemo02">
             <div className={`${styles.nav_list_items_container}`}>
+
                 <i className={`${styles.nav_items_styles}`}>
                     <Link to={`${ROUTES.MANAGEPROPERTIES}`} className="nav-link" style={{ color: "white", textAlign: "center" }}>Manager <span className="sr-only">(current)</span></Link>
                 </i>
@@ -71,7 +73,7 @@ const NavigationAuth = ({ listingCode, onListingCodeChange, onPressSearch }) => 
     </nav>
 )
 
-const NavigationNonAuth = ({ listingCode, onListingCodeChange, onPressSearch }) => (
+const NavigationNonAuth = ({ listingCode, onListingCodeChange, onPressSearch, changeLanguage, language }) => (
     <nav className={`navbar fixed-top navbar-expand-lg ${styles.nav_container}`}>
         <div className={`navbar-brand ${styles.logo_search_input}`}>
             <img className={styles.logo} src={Logo} title="logo" alt="logo" />
@@ -80,29 +82,36 @@ const NavigationNonAuth = ({ listingCode, onListingCodeChange, onPressSearch }) 
             </button>
             <form className={styles.form}>
                 <div className="input-group">
-                    <input className="form-control border-right-0" type="text" placeholder="listing code number" onChange={onListingCodeChange} value={listingCode}></input>
+                    <input className="form-control border-right-0" type="text" placeholder={!language ? "listing code number" : STRINGS.LISTINGCODE} onChange={onListingCodeChange} value={listingCode}></input>
                     <span className="input-group-append bg-white">
                         <button className="btn border border-left-0" type="button" onClick={onPressSearch}><i className="fas fa-search"></i></button>
                     </span>
                 </div>
             </form>
         </div>
+        <div className={styles.check_box} onClick={changeLanguage}>
+            <input id="toggle-state" type="checkbox" data-toggle="toggle" data-on="English" data-off="Español" data-onstyle="secondary" data-offstyle="success" />
+        </div>
         <div className={`collapse navbar-collapse ${styles.nav_list}`} id="navbarTogglerDemo02">
+
             <div className={`navbar-nav mr-auto mt-2 mt-lg-0 ${styles.nav_list_items_container}`}>
+
                 <i className={`${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.HOME} className="nav-link" style={{ color: "white", textAlign: "center" }}>Home</Link>
+                    <Link to={ROUTES.HOME} className="nav-link" style={{ color: "white", textAlign: "center" }}>
+                        {language ? STRINGS.HOME : 'Home'}
+                    </Link>
                 </i>
                 <i className={`${styles.nav_items_styles}`}>
-                    <Link to={`${ROUTES.PROPERTIES}/all`} className="nav-link" style={{ color: "white", textAlign: "center" }}>Properties</Link>
+                    <Link to={`${ROUTES.PROPERTIES}/all`} className="nav-link" style={{ color: "white", textAlign: "center" }}>{language ? STRINGS.PROPERTIES : 'Properties'}</Link>
                 </i>
                 <i className={`${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.ABOUT} className="nav-link" style={{ color: "white", textAlign: "center" }}>About</Link>
+                    <Link to={ROUTES.ABOUT} className="nav-link" style={{ color: "white", textAlign: "center" }}>{language ? STRINGS.ABOUT : 'About'}</Link>
                 </i>
                 <i className={`${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.CONTACT} className="nav-link" style={{ color: "white", textAlign: "center" }}>Contact</Link>
+                    <Link to={ROUTES.CONTACT} className="nav-link" style={{ color: "white", textAlign: "center" }}>{language ? STRINGS.CONTACT : 'Contact'}</Link>
                 </i>
                 <i className={`${styles.nav_items_styles}`}>
-                    <Link to={ROUTES.SIGN_IN} className="nav-link" style={{ color: "white", textAlign: "center" }}>Sign In</Link>
+                    <Link to={ROUTES.SIGN_IN} className="nav-link" style={{ color: "white", textAlign: "center" }}>{language ? STRINGS.SIGNIN : 'Sign In'}</Link>
                 </i>
             </div>
         </div>

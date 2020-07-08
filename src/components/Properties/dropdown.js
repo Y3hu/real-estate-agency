@@ -4,7 +4,23 @@ import styles from './properties.module.scss'
 
 const DropdownComponent = ({ name, options, func }) => {
 
-    const filter = f => func(f.toString().toLowerCase())
+    const filter = f => {
+
+        switch (f) {
+            case "comercial": func("commercial")
+                break;
+            case "residencial": func("residential")
+                break;
+            case "desarrollos": func("developments")
+                break;
+            case "alquileres": func("rentals")
+                break;
+            case "terrenos/lotes": func("land/lots")
+                break;
+            default: func(f.toString().toLowerCase())
+                break;
+        }
+    }
 
     return (
         <div className={`btn-group ${styles.dropdown}`}>

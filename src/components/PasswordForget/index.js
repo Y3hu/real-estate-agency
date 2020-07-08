@@ -2,12 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { withFirebase } from '../Firebase'
 import * as ROUTES from '../../constants/routes'
+import * as STRINGS from '../../constants/strings'
 import useFormHook from '../../hooks/formHook'
 
-const PasswordForgetPage = () => (
+const PasswordForgetPage = ({ language }) => (
   <div>
-    <h1>PasswordForget</h1>
-    <PasswordForgetForm />
+    <PasswordForgetForm language={language} />
   </div>
 )
 
@@ -16,7 +16,7 @@ const INITIAL_STATE = {
   error: null,
 }
 
-const PasswordForgetFormBase = props => {
+const PasswordForgetFormBase = ({ language, firebase }) => {
 
   const { state, changeState, cleanState } = useFormHook({ ...INITIAL_STATE })
 
@@ -24,7 +24,7 @@ const PasswordForgetFormBase = props => {
     const { email } = state
     event.preventDefault()
 
-    props.firebase
+    firebase
       .doPasswordReset(email)
       .then(() => {
         cleanState({ ...INITIAL_STATE })
@@ -47,7 +47,7 @@ const PasswordForgetFormBase = props => {
 
     <div className="card" style={{ minHeight: "15rem" }}>
       <div className="card-header" style={{ color: "#00008B", minWidth: "100%" }}>
-        <h6>Forgot Password? Send link to email</h6>
+        <h6>{!language ? 'Forgot Password? Send link to email' : STRINGS.CARDTITLE}</h6>
       </div>
       <div className="card-body">
 
@@ -60,7 +60,7 @@ const PasswordForgetFormBase = props => {
                 value={state.email || ''}
                 onChange={changeState}
                 type="text"
-                placeholder="Email Address"
+                placeholder={!language ? "Email Address" : STRINGS.EMAIL}
               />
             </div>
 
@@ -68,8 +68,8 @@ const PasswordForgetFormBase = props => {
           </div>
 
           <button className="btn btn-primary btn-block" style={{ backgroundColor: "#00008B" }} disabled={isInvalid} type="submit">
-            Send email
-              </button>
+            {!language ? 'Send email' : STRINGS.SENDMAIL}
+          </button>
 
         </form>
 
@@ -85,9 +85,9 @@ const PasswordForgetFormBase = props => {
 
 }
 
-const PasswordForgetLink = () => (
+const PasswordForgetLink = ({ language }) => (
   <p>
-    <Link to={ROUTES.PASSWORD_FORGET} style={{ color: "#00008B" }}>Forgot Password?</Link>
+    <Link to={ROUTES.PASSWORD_FORGET} style={{ color: "#00008B" }}>{!language ? 'Forgot Password?' : STRINGS.FORGOTPASSWORD}</Link>
   </p>
 )
 

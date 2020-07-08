@@ -14,12 +14,21 @@ const categoriesArray = [
     { name: "RENTALS", image: "https://www.w3schools.com/w3images/house5.jpg", filter: "rentals" }
 ]
 
-const HomeComponent = ({ firebase }) => {
+const categoriasArray = [
+    { name: "RESIDENCIAL", image: "https://www.w3schools.com/w3images/house1.jpg", filter: "residential" },
+    { name: "TERRENOS / LOTES", image: "https://www.w3schools.com/w3images/house2.jpg", filter: "land_lots" },
+    { name: "COMERCIAL", image: "https://www.w3schools.com/w3images/house3.jpg", filter: "commercial" },
+    { name: "DESARROLLOS", image: "https://www.w3schools.com/w3images/house4.jpg", filter: "developments" },
+    { name: "ALQUILERES", image: "https://www.w3schools.com/w3images/house5.jpg", filter: "rentals" }
+]
+
+const HomeComponent = ({ firebase, language }) => {
     const [loading, setLoading] = useState(false)
     const [dbImages, setDbImages] = useState([])
 
     useEffect(() => {
         setLoading(true)
+        console.log(language)
 
         firebase.images().on('value', snapshot => {
             // eslint-disable-next-line
@@ -41,14 +50,17 @@ const HomeComponent = ({ firebase }) => {
     return (
         <div className={`${styles.landing_container}`}>
             {
-                (loading) ? <Spinner /> :
+                (loading) ? <Spinner language={language} /> :
                     <React.Fragment>
                         <div className={styles.carousel_container}>
                             <Carousel dbImages={dbImages} />
                         </div>
                         <div className={styles.categories_container}>
-                            {
+                            {!language ?
                                 categoriesArray.map((e, i) => (
+                                    <CategoriesComponent category={e} key={i} />
+                                )) :
+                                categoriasArray.map((e, i) => (
                                     <CategoriesComponent category={e} key={i} />
                                 ))
                             }

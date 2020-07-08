@@ -4,29 +4,30 @@ import { compose } from 'recompose'
 import { PasswordForgetLink } from '../PasswordForget'
 import { withFirebase } from '../Firebase'
 import * as ROUTES from '../../constants/routes'
+import * as STRINGS from '../../constants/strings'
 import useFormHook from '../../hooks/formHook'
 import styles from './signin.module.scss'
 
-const SignInPage = () => (
+const SignInPage = ({ language }) => (
   <div className={`container pt-3 ${styles.signIn_container}`}>
     <div className="row justify-content-sm-center">
       <div className="col-sm-10 col-md-6">
         <div className="card border-info">
-          <div className="card-header" style={{ color: "#00008B" }}>Sign In</div>
+          <div className="card-header" style={{ color: "#00008B" }}>{!language ? 'Sign In' : STRINGS.SSIGNIN}</div>
           <div className="card-body">
             <div className="row">
               <div className="col-md-4 text-center">
                 <img src="https://placeimg.com/128/128/nature" alt="profile" />
               </div>
               <div className="col-md-8">
-                <SignInForm />
+                <SignInForm language={language} />
               </div>
 
             </div>
           </div>
           <div className="card-footer">
             <div style={{ display: "flex", flexFlow: "row no wrap", justifyContent: "space-between", alignItems: "center" }}>
-              <PasswordForgetLink />
+              <PasswordForgetLink language={language} />
 
             </div>
           </div>
@@ -42,7 +43,7 @@ const INITIAL_STATE = {
   error: null,
 }
 
-const SignInFormBase = props => {
+const SignInFormBase = ({ firebase, history, language }) => {
   //const [state, setState] = useState({...INITIAL_STATE})
   const { state, changeState, cleanState } = useFormHook({ ...INITIAL_STATE })
 
@@ -50,10 +51,10 @@ const SignInFormBase = props => {
     const { email, password } = state
     event.preventDefault()
 
-    props.firebase.doSignInWithEmailAndPassword(email.trim(), password)
+    firebase.doSignInWithEmailAndPassword(email.trim(), password)
       .then(() => {
         cleanState({ ...INITIAL_STATE })
-        props.history.push(ROUTES.MANAGEPROPERTIES)
+        history.push(ROUTES.MANAGEPROPERTIES)
       })
       .catch(error => changeState({
         target: {
@@ -74,7 +75,7 @@ const SignInFormBase = props => {
         value={state.email || ''}
         onChange={changeState}
         type="text"
-        placeholder="Email Address"
+        placeholder={!language ? 'Email Address' : STRINGS.EMAIL}
         required autoFocus
       />
       <input
@@ -83,10 +84,10 @@ const SignInFormBase = props => {
         value={state.password || ''}
         onChange={changeState}
         type="password"
-        placeholder="Password"
+        placeholder={!language ? 'Password' : STRINGS.PASSWORD}
         required
       />
-      <button className="btn btn-lg btn-primary btn-block mb-1" style={{ backgroundColor: "#00008B" }} type="submit" disabled={isInvalid}>Sign In</button>
+      <button className="btn btn-lg btn-primary btn-block mb-1" style={{ backgroundColor: "#00008B" }} type="submit" disabled={isInvalid}>{!language ? 'Sign In' : STRINGS.SSIGNIN}</button>
       {state.error && <p style={{ color: "#00008B" }}>{state.error.message}</p>}
     </form>
   )

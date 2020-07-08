@@ -105,7 +105,7 @@ $breakpoint-lg: 1360px;
 }
 
 .nav_list {
-  width           : 100%;
+  width: 100%;
 
   @include media(lg) {
     width: 98%;
@@ -161,4 +161,24 @@ $breakpoint-lg: 1360px;
   @include media(md) {
     max-width: 25%;
   }
+}
+
+.check_box {
+  width          : 100%;
+  padding-left   : 1vw;
+  margin-top     : -5.4vh;
+  display        : flex;
+  justify-content: flex-start;
+  align-items    : center;
+
+  @include media(lg) {
+    margin-top  : 2vh;
+    padding-left: 1.5vw;
+  }
+
+  @include media(md) {
+    margin-top  : 2vh;
+    padding-left: 1.5vw;
+  }
+
 }

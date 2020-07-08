@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SpinnerComponent = ({ backgroundColor }) => {
+const SpinnerComponent = ({ backgroundColor, language }) => {
     return (
         <div className="d-flex justify-content-center">
             <div className="spinner-grow text-light"
@@ -16,7 +16,7 @@ const SpinnerComponent = ({ backgroundColor }) => {
                 }}
                 role="status"
             >
-                <span style={{ color: !backgroundColor ? "#0e0e95" : "#FFF", fontSize: "1.5rem" }}> Loading... </span>
+                <span style={{ color: !backgroundColor ? "#0e0e95" : "#FFF", fontSize: "1.5rem" }}> {!language ? 'Loading...' : 'Cargando...'} </span>
             </div>
         </div>
     )

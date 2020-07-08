@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import AlertHook from '../../hooks/alertHook'
 import styles from './properties.module.scss'
 import CarouselComponent from './Carousel'
-import FormComponent from '../Contact/form'
-import AlertComponent from '../Shared/Alert'
+import { Alert, Form } from '../Shared'
+import * as STRINGS from '../../constants/strings'
 
-const PropertyComponent = ({ property, setProperty }) => {
+const PropertyComponent = ({ property, setProperty, language }) => {
     const [general, setGeneral] = useState([])
     const [features, setFeatures] = useState([])
     const [community, setCommunity] = useState([])
@@ -50,7 +50,7 @@ const PropertyComponent = ({ property, setProperty }) => {
                 className={`fas fa-arrow-alt-circle-left ${styles.backButton}`}
                 onClick={() => setProperty({})}
             >
-                Back
+                {!language ? 'Back' : STRINGS.BACK}
             </button>
             <div className={styles.property_top}>
                 <div className={styles.property_top_left}>
@@ -58,16 +58,16 @@ const PropertyComponent = ({ property, setProperty }) => {
                 </div>
                 <div className={styles.property_top_right}>
                     <ul className="list-group">
-                        <li className="list-group-item"><strong>Country:</strong> {property.country}</li>
-                        <li className="list-group-item"><strong>Province:</strong> {property.province}</li>
-                        <li className="list-group-item"><strong>City:</strong> {property.city}</li>
-                        <li className="list-group-item"><strong>Region:</strong> {property.region}</li>
-                        <li className="list-group-item"><strong>House Size (ft²):</strong> {property.house.ft2} ft²</li>
-                        <li className="list-group-item"><strong>House Size (m²):</strong> {property.house.m2} m²</li>
-                        <li className="list-group-item"><strong>Lot Size (acres):</strong> {property.lot.acres} acres</li>
-                        <li className="list-group-item"><strong>Lot Size (m²):</strong> {property.lot.m2} m²</li>
-                        <li className="list-group-item"><strong>Beds:</strong> {property.beds}</li>
-                        <li className="list-group-item"><strong>Baths:</strong> {property.baths}</li>
+                        <li className="list-group-item"><strong>{!language ? 'Country' : STRINGS.COUNTRY}:</strong> {property.country}</li>
+                        <li className="list-group-item"><strong>{!language ? 'Province' : STRINGS.PROVINCE}:</strong> {property.province}</li>
+                        <li className="list-group-item"><strong>{!language ? 'City' : STRINGS.CITY}:</strong> {property.city}</li>
+                        <li className="list-group-item"><strong>{!language ? 'Region' : STRINGS.REGION}:</strong> {property.region}</li>
+                        <li className="list-group-item"><strong>{!language ? 'House Size (ft²)' : STRINGS.HOUSESIZEFT2}:</strong> {property.house.ft2} ft²</li>
+                        <li className="list-group-item"><strong>{!language ? 'House Size (m²)' : STRINGS.HOUSESIZEM2}:</strong> {property.house.m2} m²</li>
+                        <li className="list-group-item"><strong>{!language ? 'Lot Size (acres)' : STRINGS.LOTSIZEACRES}:</strong> {property.lot.acres} acres</li>
+                        <li className="list-group-item"><strong>{!language ? 'Lot Size (m²)' : STRINGS.LOTSIZEM2}:</strong> {property.lot.m2} m²</li>
+                        <li className="list-group-item"><strong>{!language ? 'Beds' : STRINGS.BEDS}:</strong> {property.beds}</li>
+                        <li className="list-group-item"><strong>{!language ? 'Baths' : STRINGS.BATHS}:</strong> {property.baths}</li>
                     </ul>
                 </div>
             </div>
@@ -84,10 +84,10 @@ const PropertyComponent = ({ property, setProperty }) => {
                         (property.originalPrice) ?
                             <>
                                 <span className="alert alert-danger" role="alert" style={{ fontSize: "1.2rem" }}>
-                                    Before: <strike>${transformPrice(property.originalPrice)}</strike>
+                                    {!language ? 'Before' : STRINGS.BEFORE}: <strike>${transformPrice(property.originalPrice)}</strike>
                                 </span>
                                 <span className={`alert alert-primary ${styles.property_medium_alert}`} role="alert" style={{ fontWeight: "bold", fontSize: "2.2rem" }}>
-                                    Now: ${transformPrice(property.price)}
+                                    {!language ? 'Now' : STRINGS.NOW}: ${transformPrice(property.price)}
                                 </span>
                             </> :
                             <span className={`alert alert-primary ${styles.property_medium_alert}`} role="alert">
@@ -102,7 +102,7 @@ const PropertyComponent = ({ property, setProperty }) => {
 
                     <div className="jumbotron-fluid">
                         <div className="container">
-                            <h1 className="display-4">Description</h1>
+                            <h1 className="display-4">{!language ? 'Description' : STRINGS.DESCRIPTION}</h1>
                             <hr className="my-4" />
                             <br />
                             <p className="lead">{property.description}</p>
@@ -111,10 +111,10 @@ const PropertyComponent = ({ property, setProperty }) => {
 
                     <div className="jumbotron-fluid">
                         <div className="container">
-                            <h1 className="display-4">Amenities</h1>
+                            <h1 className="display-4">{!language ? 'Amenities' : STRINGS.AMENITIES}</h1>
                             <br />
                             <br />
-                            <h2 className="display-6">General</h2>
+                            <h3 className="display-6">{!language ? 'General' : STRINGS.GENERAL}</h3>
                             <hr className="my-4" />
                             <ul>
                                 {
@@ -122,7 +122,7 @@ const PropertyComponent = ({ property, setProperty }) => {
                                 }
                             </ul>
                             <br />
-                            <h2 className="display-6">Features</h2>
+                            <h3 className="display-6">{!language ? 'Features' : STRINGS.FEATURES}</h3>
                             <hr className="my-4" />
                             <ul>
                                 {
@@ -130,7 +130,7 @@ const PropertyComponent = ({ property, setProperty }) => {
                                 }
                             </ul>
                             <br />
-                            <h2 className="display-6">Community</h2>
+                            <h3 className="display-6">{!language ? 'Community' : STRINGS.COMMUNITY}</h3>
                             <hr className="my-4" />
                             <ul>
                                 {
@@ -146,11 +146,11 @@ const PropertyComponent = ({ property, setProperty }) => {
                         <div className="container">
                             <h1 className="display-5">Contact the agent</h1>
                             <hr className="my-4" />
-                            <FormComponent message={`(${property.listingCode}) (${property.propertyTitle})`} showAlertMessage={showAlertMessage} />
+                            <Form message={`(${property.listingCode}) (${property.propertyTitle})`} showAlertMessage={showAlertMessage} language={language} />
                         </div>
                     </div>
                     {
-                        (added) ? <AlertComponent message="Message sent successfully!" /> : ''
+                        (added) ? <Alert message="Message sent successfully!" /> : ''
                     }
                 </div>
             </div>

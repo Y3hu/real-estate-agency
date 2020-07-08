@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import DropdownComponent from './dropdown'
 import CardsComponent from './cards'
 import PropertyComponent from './property'
-import SpinnerComponent from '../Shared/Spinner'
+import { Spinner } from '../Shared'
 import { useParams } from 'react-router-dom'
+import * as STRINGS from '../../constants/strings'
 
 import { withFirebase } from '../Firebase'
 
@@ -18,26 +19,7 @@ const quantityOptions = () => {
     return options
 }
 
-let optArray = [
-    {
-        name: "Category",
-        options: ["commercial", "residential", "developments", "rentals", "land/lots"]
-    },
-    {
-        name: "Price",
-        options: ["Min $0 - $50,000 Max", "Min $50,000 - $150,000 Max", "Min $150,000 - $250,000 Max", "Min $250,000 - $ 400,000 Max", "Min $400,000 +"]
-    },
-    {
-        name: "Bedrooms",
-        options: quantityOptions()
-    },
-    {
-        name: "Bathrooms",
-        options: quantityOptions()
-    }
-]
-
-const PropertiesComponent = ({ firebase }) => {
+const PropertiesComponent = ({ firebase, language }) => {
     const [dbProperties, setDbProperties] = useState([])
     const [dbCities, setDbCities] = useState([])
     const [property, setProperty] = useState({})
@@ -148,23 +130,46 @@ const PropertiesComponent = ({ firebase }) => {
         setLisntingCode(null)
     }
 
+    const optArray = [
+        {
+            label: !language ? "Category" : "Categoria",
+            name: "Category",
+            options: !language ? ["commercial", "residential", "developments", "rentals", "land/lots"] : ["comercial", "residencial", "desarrollos", "alquileres", "terrenos/lotes"]
+        },
+        {
+            label: !language ? "Price" : "Precio",
+            name: "Price",
+            options: ["Min $0 - $50,000 Max", "Min $50,000 - $150,000 Max", "Min $150,000 - $250,000 Max", "Min $250,000 - $ 400,000 Max", "Min $400,000 +"]
+        },
+        {
+            label: !language ? "Bedrooms" : "Habitaciones",
+            name: "Bedrooms",
+            options: quantityOptions()
+        },
+        {
+            label: !language ? "Bathrooms" : "Baños",
+            name: "Bathrooms",
+            options: quantityOptions()
+        }
+    ]
+
     return (
         <div className={styles.properties_container}>
             {
                 (Object.keys(property).length) ?
                     <>
 
-                        <PropertyComponent property={property} setProperty={setProperty} />
+                        <PropertyComponent property={property} setProperty={setProperty} language={language} />
                     </> :
                     <>
                         <div className={styles.properties_top}>
 
-                            <DropdownComponent key="cities_dropdown" name="City" options={dbCities} func={setCity} />
+                            <DropdownComponent key="cities_dropdown" name={!language ? "City" : "Ciudad"} options={dbCities} func={setCity} />
                             {
                                 optArray.map((e, i) => (
                                     <DropdownComponent
                                         key={i}
-                                        name={e.name}
+                                        name={e.label}
                                         options={e.options}
                                         func={(e.name === "Category") ? setCategory : (e.name === "Price") ? setPriceRange : (e.name === "Bedrooms") ? setBedrooms : setBathrooms}
                                     />
@@ -178,11 +183,16 @@ const PropertiesComponent = ({ firebase }) => {
 
                                 (filterProperties().length > 0 && !loading) ?
                                     filterProperties().map((p, i) => (
-                                        <CardsComponent key={i} info={p} onSelect={setProperty} />
+                                        <CardsComponent key={i} info={p} onSelect={setProperty} language={language} />
                                     ))
                                     // eslint-disable-next-line
-                                    : (city || category || bedrooms || bathrooms || price || listingCode && filterProperties().length <= 0) ? <h3 style={{ marginTop: "10vh" }}>No matches, try changing the filters or click the reset filters button below...</h3>
-                                        : <SpinnerComponent />
+                                    : (city || category || bedrooms || bathrooms || price || listingCode && filterProperties().length <= 0) ?
+                                        <h3 style={{ marginTop: "10vh" }}>
+                                            {
+                                                !language ? 'No matches, try changing the filters or click the reset filters button below...' : STRINGS.NOMATCHES
+                                            }
+                                        </h3>
+                                        : <Spinner language={language} />
                             }
                             <button
                                 className={`fas fa-sync-alt ${styles.floatButton}`}
