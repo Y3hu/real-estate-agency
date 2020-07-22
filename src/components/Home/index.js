@@ -6,20 +6,26 @@ import { Spinner, Carousel } from '../Shared'
 
 import styles from './landing.module.scss'
 
+import RESIDENTIALIMG from '../../assets/RESIDENTIAL.png'
+import LANDLOTSIMG from '../../assets/LANDLOTS.jpeg'
+import COMMERCIALIMG from '../../assets/COMMERCIAL.jpg'
+import DEVELOPMENTSIMG from '../../assets/DEVELOPMENTS.png'
+import RENTALSIMG from '../../assets/RENTALS.JPG'
+
 const categoriesArray = [
-    { name: "RESIDENTIAL", image: "https://www.w3schools.com/w3images/house1.jpg", filter: "residential" },
-    { name: "LAND / LOTS", image: "https://www.w3schools.com/w3images/house2.jpg", filter: "land_lots" },
-    { name: "COMMERCIAL", image: "https://www.w3schools.com/w3images/house3.jpg", filter: "commercial" },
-    { name: "DEVELOPMENTS", image: "https://www.w3schools.com/w3images/house4.jpg", filter: "developments" },
-    { name: "RENTALS", image: "https://www.w3schools.com/w3images/house5.jpg", filter: "rentals" }
+    { name: "RESIDENTIAL", image: RESIDENTIALIMG, filter: "residential" },
+    { name: "LAND / LOTS", image: LANDLOTSIMG, filter: "land_lots" },
+    { name: "COMMERCIAL", image: COMMERCIALIMG, filter: "commercial" },
+    { name: "DEVELOPMENTS", image: DEVELOPMENTSIMG, filter: "developments" },
+    { name: "RENTALS", image: RENTALSIMG, filter: "rentals" }
 ]
 
 const categoriasArray = [
-    { name: "RESIDENCIAL", image: "https://www.w3schools.com/w3images/house1.jpg", filter: "residential" },
-    { name: "TERRENOS / LOTES", image: "https://www.w3schools.com/w3images/house2.jpg", filter: "land_lots" },
-    { name: "COMERCIAL", image: "https://www.w3schools.com/w3images/house3.jpg", filter: "commercial" },
-    { name: "DESARROLLOS", image: "https://www.w3schools.com/w3images/house4.jpg", filter: "developments" },
-    { name: "ALQUILERES", image: "https://www.w3schools.com/w3images/house5.jpg", filter: "rentals" }
+    { name: "RESIDENCIAL", image: RESIDENTIALIMG, filter: "residential" },
+    { name: "TERRENOS / LOTES", image: LANDLOTSIMG, filter: "land_lots" },
+    { name: "COMERCIAL", image: COMMERCIALIMG, filter: "commercial" },
+    { name: "DESARROLLOS", image: DEVELOPMENTSIMG, filter: "developments" },
+    { name: "ALQUILERES", image: RENTALSIMG, filter: "rentals" }
 ]
 
 const HomeComponent = ({ firebase, language }) => {
@@ -28,7 +34,6 @@ const HomeComponent = ({ firebase, language }) => {
 
     useEffect(() => {
         setLoading(true)
-        console.log(language)
 
         firebase.images().on('value', snapshot => {
             // eslint-disable-next-line

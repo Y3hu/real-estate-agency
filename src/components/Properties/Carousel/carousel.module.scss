@@ -31,12 +31,13 @@ $breakpoint-lg: 1360px;
 }
 
 .carousel_container {
-    display        : flex;
-    margin-bottom  : 5vh;
-    flex-flow      : column wrap;
-    align-items    : center;
-    justify-content: center;
-    min-width      : 100%;
+    display         : flex;
+    margin-bottom   : 5vh;
+    flex-flow       : column wrap;
+    align-items     : center;
+    justify-content : center;
+    min-width       : 100%;
+    background-color: rgb(211, 211, 211);
 
     @include media(lg) {
         flex-flow      : row wrap;

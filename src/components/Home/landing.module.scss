@@ -271,4 +271,50 @@ $breakpoint-lg: 1360px;
       }
     }
   }
+
+  @include media(sm) {
+
+    button {
+      width            : 25.5vw;
+      height           : 25.5vh;
+      margin           : 2%;
+      font-size        : larger;
+      background-size  : 100%;
+      background-repeat: no-repeat;
+      border           : none;
+      color            : #ffffff;
+      text-align       : center;
+      padding          : 20px;
+      transition       : all 0.5s;
+      cursor           : pointer;
+
+      &:hover span {
+        padding-right: 25px;
+      }
+
+      &:hover span:after {
+        opacity: 1;
+        right  : 0;
+      }
+
+      span {
+        cursor    : pointer;
+        display   : inline-block;
+        position  : relative;
+        color     : #fff;
+        width     : 90%;
+        background: rgba(0, 0, 0, 0.6);
+        transition: 0.5s;
+
+        &::after {
+          content   : "\00bb";
+          position  : absolute;
+          opacity   : 0;
+          top       : 0;
+          right     : -20px;
+          transition: 0.5s;
+        }
+      }
+    }
+  }
 }

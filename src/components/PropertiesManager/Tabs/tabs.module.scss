@@ -68,6 +68,12 @@ $breakpoint-lg: 1360px;
             height   : 8vh;
             width    : 100%;
         }
+
+        @include media(sm) {
+            font-size: larger;
+            height   : 8vh;
+            width    : 100%;
+        }
     }
 
     @include media(lg) {
@@ -75,6 +81,10 @@ $breakpoint-lg: 1360px;
     }
 
     @include media(md) {
+        width: 100%;
+    }
+
+    @include media(sm) {
         width: 100%;
     }
 }
@@ -99,7 +109,7 @@ $breakpoint-lg: 1360px;
 
 .labels_to_left {
     color     : white;
-    background: #2699fb 0% 0% no-repeat padding-box;
+    background: #007bff 0% 0% no-repeat padding-box;
     border    : 0;
     opacity   : 1;
 
@@ -179,6 +189,10 @@ $breakpoint-lg: 1360px;
     font-size     : 30px;
     margin-bottom : 1vh;
     color         : #0e0e95;
+
+    @include media(sm) {
+        font-size: 25px;
+    }
 }
 
 .details_form_checks_checks {

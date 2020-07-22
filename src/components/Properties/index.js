@@ -116,8 +116,6 @@ const PropertiesComponent = ({ firebase, language }) => {
             }
         }
 
-        console.log(filteredProperties)
-
         return [...filteredProperties]
     }
 

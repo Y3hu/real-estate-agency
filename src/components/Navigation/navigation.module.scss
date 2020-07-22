@@ -62,6 +62,7 @@ $breakpoint-lg: 1360px;
   @include media(md) {
     padding: 0 2vw;
   }
+
 }
 
 .form {
@@ -152,7 +153,7 @@ $breakpoint-lg: 1360px;
 }
 
 .logo {
-  width: 59%;
+  width: 45%;
 
   @include media(lg) {
     max-width: 25%;
@@ -160,6 +161,10 @@ $breakpoint-lg: 1360px;
 
   @include media(md) {
     max-width: 25%;
+  }
+
+  @include media(sm) {
+    max-width: 35%;
   }
 }
 

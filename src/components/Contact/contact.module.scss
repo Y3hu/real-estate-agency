@@ -5,19 +5,25 @@ $breakpoint-md: 1023px;
 $breakpoint-lg: 1360px;
 
 @mixin media($media) {
-  @if $media == xs {
+  @if $media==xs {
     @media (max-width: $breakpoint-sm) {
       @content;
     }
-  } @else if $media == sm {
+  }
+
+  @else if $media==sm {
     @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
       @content;
     }
-  } @else if $media == md {
+  }
+
+  @else if $media==md {
     @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
       @content;
     }
-  } @else if $media == lg {
+  }
+
+  @else if $media==lg {
     @media (min-width: $breakpoint-lg) {
       @content;
     }
@@ -25,19 +31,19 @@ $breakpoint-lg: 1360px;
 }
 
 .contact_container {
-  display: flex;
-  flex-flow: column wrap;
+  display        : flex;
+  flex-flow      : column wrap;
   justify-content: center;
-  align-items: center;
-  min-width: 100%;
-  min-height: 100%;
-  color: #000;
+  align-items    : center;
+  min-width      : 100%;
+  min-height     : 100%;
+  color          : #000;
 }
 
 .contact_top_section {
-  display: flex;
-  flex-flow: column wrap;
-  min-width: 100%;
+  display      : flex;
+  flex-flow    : column wrap;
+  min-width    : 100%;
   margin-bottom: 2vh;
 
   @include media(lg) {
@@ -50,7 +56,7 @@ $breakpoint-lg: 1360px;
 }
 
 .contact_bottom_section {
-  display: flex;
+  display  : flex;
   flex-flow: column wrap;
   min-width: 100%;
 
@@ -64,23 +70,23 @@ $breakpoint-lg: 1360px;
 }
 
 .contact_top_section_left {
-  display: flex;
-  flex-flow: column wrap;
+  display        : flex;
+  flex-flow      : column wrap;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 1%;
+  align-items    : center;
+  width          : 100%;
+  padding        : 1%;
 
   h1 {
-    text-align: center;
-    letter-spacing: 0px;
-    opacity: 1;
+    text-align     : center;
+    letter-spacing : 0px;
+    opacity        : 1;
     text-decoration: underline;
   }
 
   p {
-    text-align: left;
-    font: Italic 20px/30px Georgia;
+    text-align    : left;
+    font          : Italic 20px/30px Georgia;
     letter-spacing: 0px;
 
     opacity: 1;
@@ -97,82 +103,83 @@ $breakpoint-lg: 1360px;
 
 .contact_top_section_right {
   visibility: hidden;
-  display: none;
-  width: 0;
+  display   : none;
+  width     : 0;
 
   @include media(lg) {
-    align-items: flex-end;
-    width: 60%;
-    visibility: visible;
-    display: flex;
-    flex-flow: column wrap;
+    align-items    : flex-end;
+    width          : 60%;
+    visibility     : visible;
+    display        : flex;
+    flex-flow      : column wrap;
     justify-content: center;
   }
 
   @include media(md) {
-    align-items: flex-end;
-    width: 60%;
-    visibility: visible;
-    display: flex;
-    flex-flow: column wrap;
+    align-items    : flex-end;
+    width          : 60%;
+    visibility     : visible;
+    display        : flex;
+    flex-flow      : column wrap;
     justify-content: center;
   }
 
   iframe {
-    width: 90%;
+    width        : 90%;
     border-radius: 10px;
   }
 }
 
 .contact_bottom_section_left {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 1%;
+  display         : flex;
+  flex-flow       : column wrap;
+  justify-content : center;
+  align-items     : center;
+  width           : 100%;
+  padding         : 1%;
+  background-color: #fff;
 
   @include media(lg) {
     align-items: flex-end;
-    width: 40%;
+    width      : 40%;
   }
 
   @include media(md) {
     align-items: flex-end;
-    width: 40%;
+    width      : 40%;
   }
 }
 
 .contact_bottom_section_right {
-  display: flex;
-  flex-flow: column wrap;
+  display        : flex;
+  flex-flow      : column wrap;
   justify-content: center;
-  align-items: center;
-  width: 100%;
+  align-items    : center;
+  width          : 100%;
 
   @include media(lg) {
     align-items: flex-end;
-    width: 60%;
+    width      : 60%;
   }
 
   @include media(md) {
     align-items: flex-end;
-    width: 60%;
+    width      : 60%;
   }
 
   iframe {
-    width: 90%;
+    width        : 90%;
     border-radius: 10px;
   }
 }
 
 .labels_to_left {
-  width: 90px;
+  width     : 90px;
   text-align: center;
-  color: white;
-  background: #2699fb 0% 0% no-repeat padding-box;
-  border: 0;
-  opacity: 1;
+  color     : white;
+  background: #00008b 0% 0% no-repeat padding-box;
+  border    : 0;
+  opacity   : 1;
 }
 
 .input_size {

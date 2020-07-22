@@ -178,6 +178,14 @@ $breakpoint-lg: 1360px;
       @include media(lg) {
         height: 22vh;
       }
+
+      @include media(md) {
+        height: 22vh;
+      }
+
+      @include media(sm) {
+        height: 22vh;
+      }
     }
 
     @include media(lg) {
@@ -190,6 +198,12 @@ $breakpoint-lg: 1360px;
       width : 20vw;
       height: 40vh;
       margin: 2vh;
+    }
+
+    @include media(sm) {
+      width : 22vw;
+      height: 55vh;
+
     }
   }
 
@@ -221,6 +235,10 @@ $breakpoint-lg: 1360px;
     height: 5vh;
   }
 
+  @include media(sm) {
+    margin-bottom: 2vh;
+  }
+
   &:hover span {
     padding-right: 26px;
   }
@@ -243,6 +261,10 @@ $breakpoint-lg: 1360px;
 
     @include media(lg) {
       width: 140px;
+    }
+
+    @include media(md) {
+      width: 135px;
     }
 
     &:hover {

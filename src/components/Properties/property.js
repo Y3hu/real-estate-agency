@@ -4,6 +4,7 @@ import styles from './properties.module.scss'
 import CarouselComponent from './Carousel'
 import { Alert, Form } from '../Shared'
 import * as STRINGS from '../../constants/strings'
+//import translate from 'translate'
 
 const PropertyComponent = ({ property, setProperty, language }) => {
     const [general, setGeneral] = useState([])
@@ -43,6 +44,9 @@ const PropertyComponent = ({ property, setProperty, language }) => {
     }
 
     const transformPrice = price => new Intl.NumberFormat().format(price)
+
+    //const translateText = text => translate(text, { to: 'es', engine: 'google', key: process.env.REACT_APP_LOCATION_API_KEY })
+
 
     return (
         <div className={styles.property_container}>
@@ -105,7 +109,9 @@ const PropertyComponent = ({ property, setProperty, language }) => {
                             <h1 className="display-4">{!language ? 'Description' : STRINGS.DESCRIPTION}</h1>
                             <hr className="my-4" />
                             <br />
-                            <p className="lead">{property.description}</p>
+                            <p className="lead">
+                                {property.description}
+                            </p>
                         </div>
                     </div>
 

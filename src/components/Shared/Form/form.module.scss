@@ -34,7 +34,7 @@ $breakpoint-lg: 1360px;
     width     : 90px;
     text-align: center;
     color     : white;
-    background: #2699fb 0% 0% no-repeat padding-box;
+    background: #00008b 0% 0% no-repeat padding-box;
     border    : 0;
     opacity   : 1;
 }
@@ -53,6 +53,7 @@ $breakpoint-lg: 1360px;
 
 .submit_button {
     button {
-        width: 150px;
+        background: #00008b 0% 0% no-repeat padding-box !important;
+        width     : 150px;
     }
 }

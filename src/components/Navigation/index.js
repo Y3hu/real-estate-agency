@@ -3,7 +3,8 @@ import { Link, withRouter } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes'
 import * as STRINGS from '../../constants/strings'
 import SignOut from '../SignOut'
-import Logo from '../../assets/logo.png'
+//import Logo from '../../assets/logo.png'
+import Logo from '../../assets/FullColor.png'
 
 import { AuthUserContext } from '../Session'
 

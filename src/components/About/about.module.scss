@@ -5,197 +5,225 @@ $breakpoint-md: 1023px;
 $breakpoint-lg: 1360px;
 
 @mixin media($media) {
-  @if $media == xs {
-    @media (max-width: $breakpoint-sm) { @content; }
-  }
-  @else if $media == sm {
-    @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) { @content; }
-  }
-  @else if $media == md {
-    @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) { @content; }
-  }
-  @else if $media == lg {
-    @media (min-width: $breakpoint-lg) { @content; }
-  }
+    @if $media==xs {
+        @media (max-width: $breakpoint-sm) {
+            @content;
+        }
+    }
+
+    @else if $media==sm {
+        @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+            @content;
+        }
+    }
+
+    @else if $media==md {
+        @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+            @content;
+        }
+    }
+
+    @else if $media==lg {
+        @media (min-width: $breakpoint-lg) {
+            @content;
+        }
+    }
 }
 
-.about_container{
-    display: flex;
-    flex-flow: column-reverse wrap;
+.about_container {
+    display        : flex;
+    flex-flow      : column-reverse wrap;
     justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    color: #000;
+    align-items    : center;
+    width          : 100%;
+    color          : #000;
 
-    @include media(lg){
+    @include media(lg) {
         flex-flow: column wrap;
-        color: #fff;
+        color    : #fff;
     }
 
-    @include media(md){
+    @include media(md) {
         flex-flow: column wrap;
-        color: #fff;
+        color    : #fff;
+    }
+
+    @include media(sm) {
+        flex-flow: column wrap;
+        color    : #fff;
     }
 }
 
-.box-shadow{
-    -webkit-box-shadow: 6px 6px 22px -1px rgba(0,0,0,0.75);
-    -moz-box-shadow: 6px 6px 22px -1px rgba(0,0,0,0.75);
-    box-shadow: 6px 6px 22px -1px rgba(0,0,0,0.75);
+.box-shadow {
+    -webkit-box-shadow: 6px 6px 22px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow   : 6px 6px 22px -1px rgba(0, 0, 0, 0.75);
+    box-shadow        : 6px 6px 22px -1px rgba(0, 0, 0, 0.75);
 }
 
-.media_container{
-    margin-bottom: 4vh;
-    min-width: 100%;
-    display: flex;
-    flex-flow: column-reverse wrap;
+.media_container {
+    margin-bottom  : 4vh;
+    min-width      : 100%;
+    display        : flex;
+    flex-flow      : column-reverse wrap;
     justify-content: center;
-    align-items: center;
+    align-items    : center;
 
-    @include media(lg){
-        flex-flow: row wrap;
+    @include media(lg) {
+        flex-flow      : row wrap;
         justify-content: space-around;
-        align-items: flex-start;
+        align-items    : flex-start;
     }
 
-    @include media(md){
-        flex-flow: row wrap;
+    @include media(md) {
+        flex-flow      : row wrap;
         justify-content: space-around;
-        align-items: flex-start;
+        align-items    : flex-start;
     }
 
-    figure{
-        max-width: 85vw;
-        height: 250px;
+    @include media(sm) {
+        flex-flow      : row wrap;
+        justify-content: space-around;
+        align-items    : flex-start;
+    }
+
+    figure {
+        max-width    : 85vw;
+        height       : 250px;
         border-radius: 5px 5px 0 0;
         @extend .box-shadow;
         z-index: 100;
-        
-        img{
+
+        img {
             border-radius: 5px 5px 0 0;
-            width: 100%;
-            height: 100%;
+            width        : 100%;
+            height       : 100%;
         }
 
-        figcaption{
+        figcaption {
             @extend .box-shadow;
-            z-index: 2;
-            margin-top: -1.5vh;
-            border-radius: 0 0 5px 5px;
-            display: flex;
+            z-index        : 2;
+            margin-top     : -1.5vh;
+            border-radius  : 0 0 5px 5px;
+            display        : flex;
             justify-content: center;
-            align-items: center;
-            font-size: 18px;
-            text-align: center;
-            background: #D1D1E1 0% 0% no-repeat padding-box;
-            border: 1px solid #707070;
-            opacity: 1;
-            letter-spacing: 0px;
-            color: #00008B;
-            height: 11vh;
+            align-items    : center;
+            font-size      : 18px;
+            text-align     : center;
+            background     : #D1D1E1 0% 0% no-repeat padding-box;
+            border         : 1px solid #707070;
+            opacity        : 1;
+            letter-spacing : 0px;
+            color          : #00008B;
+            height         : 11vh;
         }
 
-        @include media(lg){
-            width: 60%;
-            height: 400px;
+        @include media(lg) {
+            width        : 60%;
+            height       : 400px;
             border-radius: 5px 5px 0 0;
         }
-    
-        @include media(md){
-            width: 60%;
-            height: 400px;
+
+        @include media(md) {
+            width        : 60%;
+            height       : 400px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        @include media(sm) {
+            width        : 60%;
+            height       : 250px;
             border-radius: 5px 5px 0 0;
         }
     }
 
-    iframe{
-        width: 350px;
-        height: 500px;
+    iframe {
+        width        : 350px;
+        height       : 500px;
         margin-bottom: 2vh;
         border-radius: 5px;
         @extend .box-shadow;
 
-        @include media(lg){
-            width: 32%;
+        @include media(lg) {
+            width : 32%;
             height: 500px;
             margin: 0;
         }
 
-        @include media(md){
-            width: 32%;
+        @include media(md) {
+            width : 32%;
             height: 500px;
             margin: 0;
         }
     }
 }
 
-.info_container{
-    display: flex;
-    flex-flow: column wrap;
+.info_container {
+    display        : flex;
+    flex-flow      : column wrap;
     justify-content: center;
-    align-items: center;
-    min-width: 100%;
+    align-items    : center;
+    min-width      : 100%;
 
-    @include media(lg){
-        flex-flow: row wrap;
+    @include media(lg) {
+        flex-flow      : row wrap;
         justify-content: space-around;
-        align-items: flex-end;
+        align-items    : flex-end;
     }
 
-    @include media(md){
-        flex-flow: row wrap;
+    @include media(md) {
+        flex-flow      : row wrap;
         justify-content: space-around;
-        align-items: flex-end;
+        align-items    : flex-end;
     }
 
-    p{
+    p {
         font-size: 20px;
     }
 }
 
-.paragraph{
-    text-align: left;
-    font-size: 25px;
+.paragraph {
+    text-align    : left;
+    font-size     : 25px;
     letter-spacing: 0px;
-    opacity: 1;
+    opacity       : 1;
 }
 
-.info_left{
+.info_left {
     width: 95%;
 
-    h1{
-        margin-bottom: 2vh;
-        text-align: center;
+    h1 {
+        margin-bottom : 2vh;
+        text-align    : center;
         letter-spacing: 0px;
-        opacity: 1;
-        font-size: 40px;
+        opacity       : 1;
+        font-size     : 40px;
     }
 
-    p{
-       @extend .paragraph;
+    p {
+        @extend .paragraph;
     }
-    
-    @include media(lg){
+
+    @include media(lg) {
         width: 60%;
     }
 
-    @include media(md){
+    @include media(md) {
         width: 60%;
     }
 }
 
-.info_right{
+.info_right {
     width: 95%;
 
-    p{
+    p {
         @extend .paragraph;
-     }
+    }
 
-    @include media(lg){
+    @include media(lg) {
         width: 30%;
     }
 
-    @include media(md){
+    @include media(md) {
         width: 30%;
     }
 }
