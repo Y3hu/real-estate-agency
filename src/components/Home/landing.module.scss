@@ -44,10 +44,11 @@ $breakpoint-lg: 1360px;
   flex-flow      : column wrap;
   align-items    : center;
   justify-content: center;
-  min-width      : 100%;
+  width      : 100%;
 
   @include media(lg) {
-    width          : 40%;
+    max-width          : 39%;
+
     margin-bottom  : 4vh;
     flex-flow      : row wrap;
     justify-content: space-around;
@@ -68,20 +69,25 @@ $breakpoint-lg: 1360px;
 }
 
 .carousel_slides_container {
-  max-width      : 350px;
-  max-height     : 200px;
-  background-size: cover;
+  width      : 350px;
+  height     : 200px;
+  
   border-radius  : 10px;
   @extend .box-shadow;
 
   @include media(lg) {
-    min-width : 950px;
-    max-height: 530px;
+    width : 900px;
+    height: 450px;
   }
 
   @include media(md) {
-    min-width : 950px;
-    max-height: 530px;
+    width : 950px;
+    height: 530px;
+  }
+
+  @include media(sm) {
+    width : 500px;
+    height: 250px;
   }
 }
 
@@ -91,21 +97,22 @@ $breakpoint-lg: 1360px;
   align-items    : flex-start;
   justify-content: center;
   background-size: cover;
-  min-width      : 950px;
-  min-height     : 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  @include media(lg) {
+    width : 900px;
+    height: 450px;
+  }
 
-  img {
-    max-width: 350px;
+  @include media(md) {
+    width : 950px;
+    height: 530px;
+  }
 
-    @include media(lg) {
-      min-width : 950px;
-      min-height: 530px;
-    }
-
-    @include media(md) {
-      min-width : 950px;
-      min-height: 530px;
-    }
+  @include media(sm) {
+    width : 500px;
+    height: 250px;
   }
 }
 

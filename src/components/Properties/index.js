@@ -196,6 +196,9 @@ const PropertiesComponent = ({ firebase, language }) => {
                                 className={`fas fa-sync-alt ${styles.floatButton}`}
                                 onClick={() => resetFilter()}
                             >
+                            {
+                                !language ? "\nreset filters" : STRINGS.RESETFILTERS
+                            }
                             </button>
                         </div>
                     </>

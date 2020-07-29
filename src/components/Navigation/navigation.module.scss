@@ -63,6 +63,10 @@ $breakpoint-lg: 1360px;
     padding: 0 2vw;
   }
 
+  @include media(sm) {
+    padding: 0;
+  }
+
 }
 
 .form {
@@ -183,6 +187,11 @@ $breakpoint-lg: 1360px;
 
   @include media(md) {
     margin-top  : 2vh;
+    padding-left: 1.5vw;
+  }
+
+  @include media(sm) {
+    margin-top  : -7.5vh;
     padding-left: 1.5vw;
   }
 

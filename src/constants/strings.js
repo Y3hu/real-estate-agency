@@ -15,6 +15,7 @@ export const BEDROOMS = 'Habitaciones'
 export const BATHROOMS = 'Baños'
 export const NOMATCHES = 'No hay coincidencias, intenta cambiando los filtros o presiona el botón de reestablecer que se encuentra debajo...'
 export const VIEWMORE = 'Ver más'
+export const RESETFILTERS = "\nlimpiar filtros"
 
 //PROPERTY PAGE
 export const BACK = 'Atrás'
@@ -38,14 +39,22 @@ export const COMMUNITY = 'Comunidad'
 
 //ABOUT PAGE
 export const ABOUTUS = 'Acerca de nosotros'
-export const AFIRSTPARAGRAPH = ''
-export const ASECONDPARAGRAPH = ''
-export const ATHIRDPARAGRAPH = ''
+export const AFIRSTPARAGRAPH = 'El Lago Properties on Lake Arenal es una compañía de bienes raíces de servicio completo que ofrece a nuestros clientes una variedad de servicios. Nuestra misión es ayudarlo a encontrar su pequeño pedazo de paraíso en Costa Rica y hacer que su mudanza sea lo más fácil posible.'
+export const ASECONDPARAGRAPH = 'Estamos aquí para ayudar a nuestros clientes con la compra de cualquier tipo de propiedad en el Lago Arenal o el área metropolitana de Tilarán. Nos especializamos en propiedades residenciales, comerciales y de alquiler, así como en tierras en bruto y desarrollos futuros. No importa qué tipo de propiedad esté buscando comprar, personalizaremos nuestra búsqueda y tomaremos todo el tiempo que sea necesario para ayudarlo a encontrar una combinación perfecta.'
+export const ATHIRDPARAGRAPH = 'También nos complacerá brindarle cualquier información o asistencia que pueda necesitar antes, durante o después del proceso de compra en un entorno transparente de baja presión. Hacemos todo lo posible para que su transición a Costa Rica sea lo más fluida y sin complicaciones posible.'
+export const AFOURTHPARAGRAPH = 'Algunos de nuestros servicios incluyen: '
+export const AFIRSTLI = 'Venta de Propiedades'
+export const ASECONDLI = 'Propiedades para Alquilar'
+export const ATHIRDLI = 'Propiedad Administrativa'
+export const AFOURTHLI = 'Construcción'
+export const AFIFTHLI = 'Asistencia de Reubicación'
+export const ASIXTHLI = 'Servicios de Traducción'
 
 //CONTACT PAGE
-export const CFIRSTPARAGRAPH = 'Para solicitar más información, dejar comentarios o simplemente saludar - contáctanos.'
-export const CSECONDPARAGRAPH = '¡Completa todos los campos solicitados y te contactaremos lo antes posible!'
-export const CTHIRDPARAGRAPH = 'Además, puedes enviarme un correo electrónico directo a'
+export const CFIRSTPARAGRAPH = 'Si desea obtener más información sobre uno de nuestros listados o si desea incluir su propiedad en venta con nosotros, complete el siguiente formulario y nos pondremos en contacto con usted lo antes posible.'
+export const CSECONDPARAGRAPH = 'Además, no dude en enviarnos un correo electrónico directo a '
+export const CTHIRDPARAGRAPH = ' o llámenos al '
+export const CFOURTHPARAGRAPH = '¡Pura Vida!'
 
 //SIGNIN PAGE
 export const SSIGNIN = 'Iniciar Sesión'

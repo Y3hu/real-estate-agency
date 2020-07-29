@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { withFirebase } from '../Firebase'
 
 import CategoriesComponent from './categories'
-import { Spinner, Carousel } from '../Shared'
+import Carousel from './carousel'
+import { Spinner } from '../Shared'
 
 import styles from './landing.module.scss'
 
@@ -58,7 +59,7 @@ const HomeComponent = ({ firebase, language }) => {
                 (loading) ? <Spinner language={language} /> :
                     <React.Fragment>
                         <div className={styles.carousel_container}>
-                            <Carousel dbImages={dbImages} />
+                            <Carousel/>
                         </div>
                         <div className={styles.categories_container}>
                             {!language ?

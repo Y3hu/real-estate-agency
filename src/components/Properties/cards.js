@@ -5,7 +5,7 @@ import styles from './properties.module.scss'
 
 const CardsComponent = ({ info = {}, onSelect, language }) => {
     let { price } = info
-    price = new Intl.NumberFormat().format(price)
+    price = new Intl.NumberFormat('en-US').format(price)
 
     let image = (info.images && info.images.length > 0) ? info.images.find(image => image.portrait === true) : ''
 

@@ -41,18 +41,28 @@ $breakpoint-lg: 1360px;
 }
 
 .contact_top_section {
-  display      : flex;
-  flex-flow    : column wrap;
-  min-width    : 100%;
-  margin-bottom: 2vh;
+  display        : flex;
+  flex-flow      : column wrap;
+  justify-content: center;
+  align-items    : center;
+  width          : 100%;
+  padding        : 1%;
 
-  @include media(lg) {
-    flex-flow: row wrap;
+  h1 {
+    text-align     : center;
+    letter-spacing : 0px;
+    opacity        : 1;
+    color: #00008b;
   }
 
-  @include media(md) {
-    flex-flow: row wrap;
+  p {
+    text-align    : left;
+    font          : 20px/30px Georgia;
+    letter-spacing: 0px;
+    opacity: 1;
+    color: #000;
   }
+
 }
 
 .contact_bottom_section {
@@ -101,6 +111,12 @@ $breakpoint-lg: 1360px;
   }
 }
 
+iframe, video{
+  max-width: 90%;
+  border-radius: 10px;
+  border: none;
+}
+
 .contact_top_section_right {
   visibility: hidden;
   display   : none;
@@ -113,6 +129,7 @@ $breakpoint-lg: 1360px;
     display        : flex;
     flex-flow      : column wrap;
     justify-content: center;
+  
   }
 
   @include media(md) {
@@ -122,11 +139,6 @@ $breakpoint-lg: 1360px;
     display        : flex;
     flex-flow      : column wrap;
     justify-content: center;
-  }
-
-  iframe {
-    width        : 90%;
-    border-radius: 10px;
   }
 }
 
@@ -156,6 +168,7 @@ $breakpoint-lg: 1360px;
   justify-content: center;
   align-items    : center;
   width          : 100%;
+  margin-top: 2vh;
 
   @include media(lg) {
     align-items: flex-end;
@@ -198,4 +211,37 @@ $breakpoint-lg: 1360px;
   button {
     width: 150px;
   }
+}
+
+p{
+  
+  a{
+    color: #fff !important;
+    text-decoration: underline !important;
+    
+  }
+
+  @include media(lg){
+    color: #fff !important;
+
+    a{
+      color: #000 !important;
+    }
+  }
+
+  @include media(md){
+    color: #fff !important;
+  }
+  
+}
+
+.text{
+  color: #fff !important;margin-top: 2vh;
+  font-size: 35px !important;
+  font-weight: bold !important;
+  text-transform: uppercase;
+	/**background: linear-gradient(to top, #002b7f 15%, #fff 30%, #EF3340 50%, #fff 65%, #002b7f 75%);
+	-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;*/
+  
 }

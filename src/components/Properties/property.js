@@ -43,7 +43,7 @@ const PropertyComponent = ({ property, setProperty, language }) => {
 
     }
 
-    const transformPrice = price => new Intl.NumberFormat().format(price)
+    const transformPrice = price => new Intl.NumberFormat('en-US').format(price)
 
     //const translateText = text => translate(text, { to: 'es', engine: 'google', key: process.env.REACT_APP_LOCATION_API_KEY })
 
@@ -51,10 +51,11 @@ const PropertyComponent = ({ property, setProperty, language }) => {
     return (
         <div className={styles.property_container}>
             <button
-                className={`fas fa-arrow-alt-circle-left ${styles.backButton}`}
+                className={`${styles.backButton}`}
                 onClick={() => setProperty({})}
             >
-                {!language ? 'Back' : STRINGS.BACK}
+             <i className="fas fa-arrow-alt-circle-left"></i> 
+             <p>{!language ? 'Back' : STRINGS.BACK}</p>
             </button>
             <div className={styles.property_top}>
                 <div className={styles.property_top_left}>

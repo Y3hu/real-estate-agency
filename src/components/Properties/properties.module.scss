@@ -547,13 +547,21 @@ $breakpoint-lg: 1360px;
 }
 
 .backButton {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
   font-size       : 2rem;
   border-radius   : 5px;
   margin          : 1vh 0;
   height          : 45px;
-  width           : 150px;
-  background-color: #00008B;
-  color           : white;
+  width           : 120px;
+  color: #fff;
+  background-color: #28a745;
+
+  i{
+    height: 45px;
+  }
 
   &:hover {
     @extend .card_shadow;
@@ -574,11 +582,20 @@ $breakpoint-lg: 1360px;
   bottom          : 25px;
   right           : 25px;
   background-color: #00008B;
+  border: 0;
   border-color    : gray;
   border-radius   : 50px;
   color           : #fff;
   font-size       : 2rem;
+  font-size: 14px;
+
   @extend .card_shadow;
+
+  &:hover{
+    background-color: #fff;
+    border-color    : gray;  
+    color           : #00008B;
+  }
 
   @include media(lg) {
     width           : 80px;
@@ -587,6 +604,45 @@ $breakpoint-lg: 1360px;
     right           : 40px;
     background-color: #fff;
     color           : #00008B;
+    font-size: 19.5px;
+
+    &:hover{
+      background-color: #00008B;
+      border-color    : gray;  
+      color           : #fff;
+    }
+  }
+
+  @include media(md) {
+    width           : 80px;
+    height          : 80px;
+    bottom          : 40px;
+    right           : 40px;
+    background-color: #fff;
+    color           : #00008B;
+    font-size: 19.5px;
+
+    &:hover{
+      background-color: #00008B;
+      border-color    : gray;  
+      color           : #fff;
+    }
+  }
+
+  @include media(sm) {
+    width           : 80px;
+    height          : 80px;
+    bottom          : 40px;
+    right           : 40px;
+    background-color: #fff;
+    color           : #00008B;
+    font-size: 18.5px;
+
+    &:hover{
+      background-color: #00008B;
+      border-color    : gray;  
+      color           : #fff;
+    }
   }
 
 }
