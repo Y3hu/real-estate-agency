@@ -9,21 +9,15 @@ $breakpoint-lg: 1360px;
     @media (max-width: $breakpoint-sm) {
       @content;
     }
-  }
-
-  @else if $media==sm {
+  } @else if $media==sm {
     @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
       @content;
     }
-  }
-
-  @else if $media==md {
+  } @else if $media==md {
     @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
       @content;
     }
-  }
-
-  @else if $media==lg {
+  } @else if $media==lg {
     @media (min-width: $breakpoint-lg) {
       @content;
     }
@@ -31,33 +25,33 @@ $breakpoint-lg: 1360px;
 }
 
 .properties_container {
-  display        : flex;
-  flex-flow      : column wrap;
+  display: flex;
+  flex-flow: column wrap;
   justify-content: center;
-  align-items    : center;
-  min-width      : 100%;
-  max-width      : 100%;
-  margin-top     : -2vh;
+  align-items: center;
+  min-width: 100%;
+  max-width: 100%;
+  margin-top: -2vh;
 
   @include media(sm) {
-    flex-flow      : row nowrap;
+    flex-flow: row nowrap;
     justify-content: space-between;
-    align-items    : flex-start;
+    align-items: flex-start;
   }
 }
 
 .dropdown_rounded {
-  background   : #00008b 0% 0% no-repeat padding-box;
-  border       : 1px solid #cccccc;
-  opacity      : 1;
+  background: #00008b 0% 0% no-repeat padding-box;
+  border: 1px solid #cccccc;
+  opacity: 1;
   border-radius: 26px;
 }
 
 .dropdown {
   @extend .dropdown_rounded;
-  border       : 0;
+  border: 0;
   margin-bottom: 1vh;
-  width        : 170px;
+  width: 170px;
 
   &:hover {
     @extend .card_shadow;
@@ -71,13 +65,13 @@ $breakpoint-lg: 1360px;
     @extend .dropdown_rounded;
     color: #fff;
 
-    border    : 0;
+    border: 0;
     margin-top: 1px;
 
     &:hover {
-      color     : #fff;
+      color: #fff;
       background: #00008b 0% 0% no-repeat padding-box;
-      border    : 0;
+      border: 0;
       @extend .card_shadow;
     }
 
@@ -93,9 +87,9 @@ $breakpoint-lg: 1360px;
 
 .dropdown_menu {
   border-radius: 10px;
-  max-width    : 280px;
-  max-height   : 220px;
-  overflow-y   : auto;
+  max-width: 280px;
+  max-height: 220px;
+  overflow-y: auto;
 
   button {
     text-align: center;
@@ -111,68 +105,68 @@ $breakpoint-lg: 1360px;
 }
 
 .properties_top {
-  display        : flex;
-  flex-flow      : row wrap;
+  display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
-  align-items    : flex-end;
-  width          : 100%;
-  min-height     : 8vh;
+  align-items: flex-end;
+  width: 100%;
+  min-height: 8vh;
 
   @include media(lg) {
     justify-content: space-evenly;
-    align-items    : flex-start;
+    align-items: flex-start;
   }
 
   @include media(md) {
     justify-content: space-evenly;
-    align-items    : flex-start;
+    align-items: flex-start;
   }
 
   @include media(sm) {
-    flex-flow      : column nowrap;
+    flex-flow: column nowrap;
     justify-content: center;
-    align-items    : center;
-    padding-top    : 1.5vh;
-    width          : 18.5%;
+    align-items: center;
+    padding-top: 1.5vh;
+    width: 18.5%;
   }
 }
 
 .card_shadow {
   -webkit-box-shadow: 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow   : 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
-  box-shadow        : 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
 }
 
 .properties_bottom {
-  display        : flex;
-  flex-flow      : row wrap;
+  display: flex;
+  flex-flow: row wrap;
   justify-content: space-around;
-  align-items    : center;
-  width          : 100%;
+  align-items: center;
+  width: 100%;
 
   div {
-    display        : flex;
-    flex-flow      : column nowrap;
+    display: flex;
+    flex-flow: column nowrap;
     justify-content: flex-end;
-    align-items    : flex-start;
-    width          : 45vw;
-    height         : 28vh;
-    margin         : .5vh;
+    align-items: flex-start;
+    width: 45vw;
+    height: 28vh;
+    margin: 0.5vh;
 
     p {
-      display           : -webkit-box;
+      display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
-      overflow          : hidden;
-      width             : 95%;
-      height            : 25%;
-      font-weight       : bold;
-      font-size         : 1.2rem;
-      padding-left      : 2px;
+      overflow: hidden;
+      width: 95%;
+      height: 25%;
+      font-weight: bold;
+      font-size: 1.2rem;
+      padding-left: 2px;
 
       @include media(sm) {
-        font-size: .8rem;
-        height   : 30%;
+        font-size: 0.8rem;
+        height: 30%;
       }
     }
 
@@ -181,19 +175,19 @@ $breakpoint-lg: 1360px;
     }
 
     @include media(lg) {
-      width : 20vw;
+      width: 20vw;
       height: 40vh;
       margin: 2vh;
     }
 
     @include media(md) {
-      width : 20vw;
+      width: 20vw;
       height: 40vh;
       margin: 2vh;
     }
 
     @include media(sm) {
-      width : 20vw;
+      width: 20vw;
       height: 40vh;
       margin: 1vh;
     }
@@ -213,21 +207,21 @@ $breakpoint-lg: 1360px;
 }
 
 .button_animated {
-  width     : 70%;
-  height    : 4.5vh;
-  border    : none;
-  font-size : large;
-  color     : #fff;
+  width: 70%;
+  height: 4.5vh;
+  border: none;
+  font-size: large;
+  color: #fff;
   transition: all 0.5s;
-  cursor    : pointer;
+  cursor: pointer;
 
   @include media(lg) {
-    width : 50%;
+    width: 50%;
     height: 5vh;
   }
 
   @include media(md) {
-    width : 50%;
+    width: 50%;
     height: 5vh;
   }
 
@@ -237,18 +231,18 @@ $breakpoint-lg: 1360px;
 
   &:hover span:after {
     opacity: 1;
-    right  : 8px;
+    right: 8px;
   }
 
   span {
-    cursor    : pointer;
-    display   : inline-block;
-    position  : relative;
-    color     : #000;
-    width     : 100%;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    color: #000;
+    width: 100%;
     background: rgba(255, 255, 255, 0.6);
     transition: 0.5s;
-    padding   : 0 5px;
+    padding: 0 5px;
 
     width: 136px;
     @extend .card_shadow;
@@ -262,50 +256,50 @@ $breakpoint-lg: 1360px;
     }
 
     &::after {
-      content   : "\00bb";
-      position  : absolute;
-      opacity   : 0;
-      top       : 0;
-      right     : -26px;
+      content: "\00bb";
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -26px;
       transition: 0.5s;
     }
   }
 }
 
 .property_container {
-  display        : flex;
-  flex-flow      : column wrap;
-  min-width      : 100%;
-  max-width      : 100%;
-  margin-top     : -2vh;
+  display: flex;
+  flex-flow: column wrap;
+  min-width: 100%;
+  max-width: 100%;
+  margin-top: -2vh;
   justify-content: flex-start;
-  align-items    : flex-start;
+  align-items: flex-start;
 }
 
 .property_top_and_bottom {
-  width          : 100%;
-  width          : 100%;
-  display        : flex;
-  flex-flow      : column wrap;
+  width: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
   justify-content: center;
-  align-items    : center;
+  align-items: center;
 
   @include media(lg) {
-    flex-flow      : row wrap;
+    flex-flow: row wrap;
     justify-content: space-between !important;
-    align-items    : flex-start;
+    align-items: flex-start;
   }
 
   @include media(md) {
-    flex-flow      : row wrap;
+    flex-flow: row wrap;
     justify-content: center;
-    align-items    : center;
+    align-items: center;
   }
 
   @include media(sm) {
-    flex-flow      : row wrap;
+    flex-flow: row wrap;
     justify-content: space-between;
-    align-items    : flex-start;
+    align-items: flex-start;
   }
 }
 
@@ -319,22 +313,22 @@ $breakpoint-lg: 1360px;
   }
 
   @include media(sm) {
-    flex-flow      : row nowrap;
-    width          : 100%;
-    align-items    : flex-start;
+    flex-flow: row nowrap;
+    width: 100%;
+    align-items: flex-start;
     justify-content: space-between;
   }
 }
 
 .property_top_left {
-  width          : 100%;
-  display        : flex;
-  flex-flow      : column wrap;
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
   justify-content: center;
-  align-items    : center;
+  align-items: center;
 
   @include media(lg) {
-    width     : 55%;
+    width: 55%;
     min-height: 100%;
   }
 
@@ -344,60 +338,58 @@ $breakpoint-lg: 1360px;
 
   @include media(sm) {
     flex-flow: row nowrap;
-    width    : 55%;
+    width: 55%;
   }
 }
 
 .property_top_right {
-  display    : flex;
-  flex-flow  : column wrap;
+  display: flex;
+  flex-flow: column wrap;
   align-items: center;
-  min-height : 100%;
-  width      : 90%;
-  margin-top : 1.5vh;
+  min-height: 100%;
+  width: 90%;
+  margin-top: 1.5vh;
   @extend .card_shadow;
 
   @include media(lg) {
-    width     : 35%;
+    width: 35%;
     margin-top: 0;
   }
 
   @include media(md) {
-    width     : 35%;
+    width: 35%;
     margin-top: 0;
   }
 
   ul {
-    width     : 100%;
+    width: 100%;
     min-height: 400px;
   }
 
   @include media(sm) {
     width: 40%;
   }
-
 }
 
 .property_medium {
-  display        : flex;
-  flex-flow      : row wrap;
+  display: flex;
+  flex-flow: row wrap;
   justify-content: center;
-  align-items    : center;
-  width          : 100%;
-  margin-top     : 2vh;
+  align-items: center;
+  width: 100%;
+  margin-top: 2vh;
 
   span {
-    font-size    : 1.5rem;
-    font-weight  : bold;
-    border       : none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
     border-radius: 30px;
 
     &:hover {
       -webkit-box-shadow: 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
-      -moz-box-shadow   : 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
-      box-shadow        : 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
+      box-shadow: 4px 4px 16px -4px rgba(0, 0, 0, 0.75);
     }
-
   }
 
   @include media(lg) {
@@ -407,60 +399,58 @@ $breakpoint-lg: 1360px;
   @include media(md) {
     justify-content: space-between;
   }
-
 }
 
 .property_medium_left {
-  width          : 100%;
-  display        : flex;
-  flex-flow      : column wrap;
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
   justify-content: center;
-  align-items    : center;
+  align-items: center;
 
   @include media(lg) {
-    width      : 55%;
+    width: 55%;
     align-items: flex-start;
   }
 
   @include media(md) {
     margin-bottom: 2vh;
-    align-items  : flex-start;
+    align-items: flex-start;
   }
 }
 
 .property_medium_right {
-  display        : flex;
-  flex-flow      : column wrap;
-  align-items    : center;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
   justify-content: center;
-  min-height     : 100%;
-  width          : 95%;
+  min-height: 100%;
+  width: 95%;
 
   @include media(lg) {
-    width          : 35%;
-    margin-top     : 0;
-    flex-flow      : row wrap;
+    width: 35%;
+    margin-top: 0;
+    flex-flow: row wrap;
     justify-content: space-between;
   }
 
   @include media(md) {
-    width          : 35%;
-    margin-top     : 0;
-    flex-flow      : row wrap;
+    width: 35%;
+    margin-top: 0;
+    flex-flow: row wrap;
     justify-content: space-between;
   }
-
 }
 
 .property_medium_alert {
   background-color: #00008b;
-  color           : #FFF;
+  color: #fff;
 }
 
 .property_bottom {
   @extend .property_top_and_bottom;
   justify-content: space-between;
-  margin-top     : 4vh;
+  margin-top: 4vh;
 
   @include media(lg) {
     align-items: flex-start;
@@ -482,7 +472,7 @@ $breakpoint-lg: 1360px;
   }
 
   div:last-child {
-    margin-bottom   : 8vh;
+    margin-bottom: 8vh;
     background-color: #fff;
   }
 
@@ -499,23 +489,23 @@ $breakpoint-lg: 1360px;
   }
 
   ul {
-    display        : flex;
-    flex-flow      : row wrap;
+    display: flex;
+    flex-flow: row wrap;
     justify-content: space-between;
-    align-items    : center;
-    list-style     : none;
+    align-items: center;
+    list-style: none;
 
     li {
       font-size: 1.4rem;
-      width    : 170px;
+      width: 170px;
 
       &::before {
-        content    : "\2022";
-        color      : red;
+        content: "\2022";
+        color: red;
         font-weight: bold;
-        font-size  : 1.4em;
-        display    : inline-block;
-        width      : 1em;
+        font-size: 1.4em;
+        display: inline-block;
+        width: 1em;
         margin-left: -1em;
       }
     }
@@ -523,45 +513,41 @@ $breakpoint-lg: 1360px;
 }
 
 .property_bottom_right {
-  width     : 90%;
+  width: 90%;
   min-height: 400px;
   @extend .card_shadow;
-  margin-top      : 4vh;
+  margin-top: 4vh;
   background-color: #fff;
-  color           : #000;
+  color: #000;
 
   @include media(lg) {
-    width     : 35%;
+    width: 35%;
     margin-top: 0;
   }
 
   @include media(md) {
-    width     : 35%;
+    width: 35%;
     margin-top: 0;
   }
 
   @include media(sm) {
-    width     : 40%;
+    width: 40%;
     margin-top: 0;
   }
 }
 
 .backButton {
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  font-size       : 2rem;
-  border-radius   : 5px;
-  margin          : 1vh 0;
-  height          : 45px;
-  width           : 120px;
+  flex-flow: row nowrap;
+  font-size: 1em;
+  border-radius: 5px;
+  margin: 1vh 0;
+  height: 43px;
+  width: 90px !important;
   color: #fff;
   background-color: #28a745;
-
-  i{
-    height: 45px;
-  }
 
   &:hover {
     @extend .card_shadow;
@@ -570,79 +556,78 @@ $breakpoint-lg: 1360px;
 
 .card_text {
   background-color: #fff;
-  color           : #000;
-  opacity         : 0.6;
-  border-radius   : 6px;
+  color: #000;
+  opacity: 0.6;
+  border-radius: 6px;
 }
 
 .floatButton {
-  position        : fixed;
-  width           : 60px;
-  height          : 60px;
-  bottom          : 25px;
-  right           : 25px;
-  background-color: #00008B;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 25px;
+  right: 25px;
+  background-color: #00008b;
   border: 0;
-  border-color    : gray;
-  border-radius   : 50px;
-  color           : #fff;
-  font-size       : 2rem;
+  border-color: gray;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 2rem;
   font-size: 14px;
 
   @extend .card_shadow;
 
-  &:hover{
+  &:hover {
     background-color: #fff;
-    border-color    : gray;  
-    color           : #00008B;
+    border-color: gray;
+    color: #00008b;
   }
 
   @include media(lg) {
-    width           : 80px;
-    height          : 80px;
-    bottom          : 40px;
-    right           : 40px;
+    width: 80px;
+    height: 80px;
+    bottom: 40px;
+    right: 40px;
     background-color: #fff;
-    color           : #00008B;
+    color: #00008b;
     font-size: 19.5px;
 
-    &:hover{
-      background-color: #00008B;
-      border-color    : gray;  
-      color           : #fff;
+    &:hover {
+      background-color: #00008b;
+      border-color: gray;
+      color: #fff;
     }
   }
 
   @include media(md) {
-    width           : 80px;
-    height          : 80px;
-    bottom          : 40px;
-    right           : 40px;
+    width: 80px;
+    height: 80px;
+    bottom: 40px;
+    right: 40px;
     background-color: #fff;
-    color           : #00008B;
+    color: #00008b;
     font-size: 19.5px;
 
-    &:hover{
-      background-color: #00008B;
-      border-color    : gray;  
-      color           : #fff;
+    &:hover {
+      background-color: #00008b;
+      border-color: gray;
+      color: #fff;
     }
   }
 
   @include media(sm) {
-    width           : 80px;
-    height          : 80px;
-    bottom          : 40px;
-    right           : 40px;
+    width: 80px;
+    height: 80px;
+    bottom: 40px;
+    right: 40px;
     background-color: #fff;
-    color           : #00008B;
+    color: #00008b;
     font-size: 18.5px;
 
-    &:hover{
-      background-color: #00008B;
-      border-color    : gray;  
-      color           : #fff;
+    &:hover {
+      background-color: #00008b;
+      border-color: gray;
+      color: #fff;
     }
   }
-
 }

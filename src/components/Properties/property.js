@@ -54,8 +54,8 @@ const PropertyComponent = ({ property, setProperty, language }) => {
                 className={`${styles.backButton}`}
                 onClick={() => setProperty({})}
             >
-             <i className="fas fa-arrow-alt-circle-left"></i> 
-             <p>{!language ? 'Back' : STRINGS.BACK}</p>
+
+                <i className="fas fa-arrow-alt-circle-left">  {!language ? '    Back' : `    ${STRINGS.BACK}`}</i>
             </button>
             <div className={styles.property_top}>
                 <div className={styles.property_top_left}>
@@ -63,6 +63,7 @@ const PropertyComponent = ({ property, setProperty, language }) => {
                 </div>
                 <div className={styles.property_top_right}>
                     <ul className="list-group">
+                        <li className="list-group-item"><strong>{!language ? 'Listing Code' : STRINGS.LISTINGCODE}:</strong> {property.listingCode}</li>
                         <li className="list-group-item"><strong>{!language ? 'Country' : STRINGS.COUNTRY}:</strong> {property.country}</li>
                         <li className="list-group-item"><strong>{!language ? 'Province' : STRINGS.PROVINCE}:</strong> {property.province}</li>
                         <li className="list-group-item"><strong>{!language ? 'City' : STRINGS.CITY}:</strong> {property.city}</li>
