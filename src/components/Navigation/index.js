@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes'
 import * as STRINGS from '../../constants/strings'
@@ -12,6 +12,22 @@ import styles from './navigation.module.scss'
 
 const NavigationComponent = ({ changeLanguage, language, history }) => {
     const [listingCode, setListingCode] = useState("")
+
+    useEffect(() => {
+
+        //get all nav items elements
+        let navItems = document.querySelectorAll(".nav-link")
+
+        //iterate the nav items and add a listener to each of them
+        navItems.forEach(item => item.addEventListener("click", () => {
+            //validate if toggler button is displayed
+            if (document.getElementById("button-toggler").offsetParent !== null) {
+                //trigger click event of the toggler button
+                document.getElementById("button-toggler").click()
+            }
+        }))
+
+    }, [])
 
     const onListingCodeChange = e => setListingCode(e.target.value)
 
@@ -53,7 +69,7 @@ const NavigationAuth = ({ listingCode, onListingCodeChange, onPressSearch }) => 
         <div className={`collapse navbar-collapse ${styles.nav_list}`} id="navbarTogglerDemo02">
             <div className={`${styles.nav_list_items_container}`}>
 
-                <i className={`${styles.nav_items_styles}`}>
+                <i id="i1" className={`${styles.nav_items_styles}`}>
                     <Link to={`${ROUTES.MANAGEPROPERTIES}`} className="nav-link" style={{ color: "white", textAlign: "center" }}>Manager <span className="sr-only">(current)</span></Link>
                 </i>
                 <i className={`${styles.nav_items_styles}`}>
@@ -78,7 +94,7 @@ const NavigationNonAuth = ({ listingCode, onListingCodeChange, onPressSearch, ch
     <nav className={`navbar fixed-top navbar-expand-lg ${styles.nav_container}`}>
         <div className={`navbar-brand ${styles.logo_search_input}`}>
             <img className={styles.logo} src={Logo} title="logo" alt="logo" />
-            <button className={`navbar-toggler ${styles.nav_button}`} type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <button id="button-toggler" className={`navbar-toggler ${styles.nav_button}`} type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <i className={`navbar-toggler-icon fas fa-bars ${styles.nav_button_icon}`}></i>
             </button>
             <form className={styles.form}>
@@ -91,13 +107,13 @@ const NavigationNonAuth = ({ listingCode, onListingCodeChange, onPressSearch, ch
             </form>
         </div>
         <div className={styles.check_box} onClick={changeLanguage}>
-            <input id="toggle-state" type="checkbox" data-toggle="toggle" data-on="English" data-off="Español" data-onstyle="secondary" data-offstyle="success" />
+            <input id="toggle-state" type="checkbox" data-toggle="toggle" data-on="English" data-off="Español" data-onstyle="success" data-offstyle="success" />
         </div>
         <div className={`collapse navbar-collapse ${styles.nav_list}`} id="navbarTogglerDemo02">
 
             <div className={`navbar-nav mr-auto mt-2 mt-lg-0 ${styles.nav_list_items_container}`}>
 
-                <i className={`${styles.nav_items_styles}`}>
+                <i id="i1" className={`${styles.nav_items_styles}`}>
                     <Link to={ROUTES.HOME} className="nav-link" style={{ color: "white", textAlign: "center" }}>
                         {language ? STRINGS.HOME : 'Home'}
                     </Link>
